@@ -33,32 +33,30 @@
   margin: 20px;
 }
 
-.inputform:focus {
+.inputForm:focus {
   outline: none !important;
   border: 1px solid #edc0bc;
   box-shadow: 0 0 10px #719ece;
 }
 
 .selectForm {
-    width: 180px;
-    padding: 8px 10px;
-    border: 1px solid #a3a2a2;
-    border-radius: 5px;
-    background-color: #f6f6f6;
-    margin: 20px;
-  }
-  
-.selectForm:focus {
-    outline: none !important;
-    border: 1px solid #edc0bc;
-    box-shadow: 0 0 10px #719ece;
-  }
-  
+  width: 180px;
+  padding: 8px 10px;
+  border: 1px solid #a3a2a2;
+  border-radius: 5px;
+  background-color: #f6f6f6;
+  margin: 20px;
+}
 
-.buttonForm[type="submit"] {
+.selectForm:focus {
+  outline: none !important;
+  border: 1px solid #edc0bc;
+  box-shadow: 0 0 10px #719ece;
+}
+
+.buttonForm{
   width: 20%;
   padding: 8px 16px;
-  margin-left: 30%;
   margin-top: 32px;
   border: 1px solid#EDC0BC;
   border-radius: 5px;
@@ -67,12 +65,10 @@
   background-color: #ffe5d9;
 }
 
-.buttonForm[type="submit"]:hover {
+.buttonForm:hover {
   cursor: pointer;
   background-color: #edc0bc;
 }
-
-
 
 .mensaje {
   margin-top: 0.5rem /* 8px */;
@@ -87,12 +83,6 @@
   color: rgb(224, 115, 134);
 }
 
-
-
 .p {
   font-weight: bold;
 }
-
-
-
-

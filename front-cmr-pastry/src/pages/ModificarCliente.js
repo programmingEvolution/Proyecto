@@ -56,12 +56,12 @@ const ModificarCliente = () => {
           ></input>
         </section>
 
-        <section className="flex flex-grow">
+        <section className="flex flex-grow  justify-around">
           <button className="buttonForm" type="submit">
             Guardar
           </button>
 
-          <button className="buttonForm" type="submit">
+          <button className="buttonForm"  type="button">
             Cancelar
           </button>
         </section>

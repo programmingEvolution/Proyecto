@@ -1,12 +1,53 @@
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Swal from "sweetalert2";
 import React from "react";
 
+
+
 const ResgistrarCliente = () => {
+
+  const formik = useFormik({
+    //valores iniciales para formulario con formik
+    initialValues: {
+      idCliente: "",
+      nombreCliente: "",
+     telefono: "",
+      email: "",
+  
+    },
+
+    //Validacion de datos de formulario con yup
+    validationSchema: Yup.object({
+      idCliente: Yup.string().required("El id es obligatorio"),
+      nombreCliente: Yup.string().required("El nombre es obligatorio"),
+    }),
+
+    //Enviar valores
+
+    onSubmit: (values) => {
+      console.log("enviando..");
+      console.log(values);
+
+      //alerta de swal al agregar producto
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "El cliente ha sido registrado",
+        timer: 1500,
+      });
+    },
+  });
+
+
   return (
+
     <div className="contenedorFormulario">
       <h2 className="text-2xl font-extrabold text-gray-800">
         Registrar nuevo cliente
       </h2>
-      <form className="formulario">
+      <form className="formulario" onSubmit={formik.handleSubmit}>
         <section>
           <label className="labelForm" htmlFor="idCliente">
             Id Cliente:
@@ -16,8 +57,18 @@ const ResgistrarCliente = () => {
             id="idCliente"
             placeholder="Ingrese el id del cliente"
             type="ID"
+            onChange={formik.handleChange}
+            value={formik.values.idCliente}
           ></input>
         </section>
+
+        {/* validación con yup para que no deje el campo vacio */}
+        {formik.touched.idCliente && formik.errors.idCliente ? (
+          <div className="mensaje">
+            <p className="p">Error</p>
+            <p>{formik.errors.idCliente}</p>
+          </div>
+        ) : null}
 
         <section>
           <label className="labelForm" htmlFor="nombreCliente">
@@ -28,8 +79,18 @@ const ResgistrarCliente = () => {
             id="nombreCliente"
             placeholder="Ingrese el nombre del cliente"
             type="text"
+            onChange={formik.handleChange}
+            value={formik.values.nombreCliente}
           ></input>
         </section>
+
+        {/* validación con yup para que no deje el campo vacio */}
+        {formik.touched.nombreCliente && formik.errors.nombreCliente ? (
+          <div className="mensaje">
+            <p className="p">Error</p>
+            <p>{formik.errors.nombreCliente}</p>
+          </div>
+        ) : null}
 
         <section>
           <label className="labelForm" htmlFor="telefono">
@@ -40,6 +101,8 @@ const ResgistrarCliente = () => {
             id="telefono"
             placeholder="Ingrese el nombre del telefono del cliente"
             type="text"
+            onChange={formik.handleChange}
+            value={formik.values.telefono}
           ></input>
         </section>
 
@@ -52,11 +115,16 @@ const ResgistrarCliente = () => {
             id="email"
             placeholder="Ingrese el e-mail del cliente"
             type="number"
+            onChange={formik.handleChange}
+            value={formik.values.email}
           ></input>
         </section>
-        <section>
+        <section className="flex flex-grow  justify-around">
           <button className="buttonForm" type="submit">
             Registrar
+          </button>
+          <button className="buttonForm"  type="button">
+            Cancelar
           </button>
         </section>
       </form>
