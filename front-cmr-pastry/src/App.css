@@ -199,3 +199,15 @@ body{
     font-size: 30px;
   }
   /** CSS SIDEBAR DIEGO**/
+
+
+  /** css juliana*/
+
+  
+  .DiseñoTitulo{
+    font-size: 180%;
+    font-style: oblique;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: #775C5A ;
+}
