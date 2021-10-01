@@ -9,6 +9,10 @@ const ModificarEstadoUsuario = () => {
       idUsuario: "12345",
       rolUsuario: "",
       estadoUsuario: "",
+      modificarProducto: false,
+      modificarUsuario: false,
+      añadirProducto: false,
+      añadirUsuario: false,
     },
 
     //Validacion de datos de formulario con yup
@@ -57,7 +61,8 @@ const ModificarEstadoUsuario = () => {
             value={formik.values.estadoUsuario}
           >
             <option>En espera</option>
-            <option>Activo</option>
+            <option>Autorizado</option>
+            <option>No autorizado</option>
           </select>
         </section>
 
@@ -77,6 +82,69 @@ const ModificarEstadoUsuario = () => {
           </select>
         </section>
 
+        <h4 className="text-2xl font-extrabold text-gray-800 pb-10 py-10 ml-10">
+          Permisos de usuario
+        </h4>
+
+        <section>
+          <label className="labelForm" htmlFor="modificarProducto">
+            Modificar Productos:{" "}
+          </label>
+
+          <input
+            className="inputcheck"
+            type="checkbox"
+            id="modificarProducto"
+            onChange={formik.handleChange}
+            value={formik.values.modificarProducto}
+          />
+          <label className="labelcheck">{`${formik.values.modificarProducto}`}</label>
+        </section>
+
+        <section>
+          <label className="labelForm" htmlFor="añadirProducto">
+            Añadir Productos:{" "}
+          </label>
+
+          <input
+            className="inputcheck"
+            type="checkbox"
+            id="añadirProducto"
+            onChange={formik.handleChange}
+            value={formik.values.añadirProducto}
+          />
+          <label className="labelcheck">{`${formik.values.añadirProducto}`}</label>
+        </section>
+        <section>
+          <label className="labelForm" htmlFor="modificarUsuario">
+            Modificar Usuarios:{" "}
+          </label>
+
+          <input
+            className="inputcheck"
+            type="checkbox"
+            id="modificarUsuario"
+            onChange={formik.handleChange}
+            value={formik.values.modificarUsuario}
+          />
+          <label className="labelcheck">{`${formik.values.modificarUsuario}`}</label>
+        </section>
+
+        <section className="">
+          <label className="labelForm" htmlFor="añadirUsuario">
+            Añadir Usuarios:{" "}
+          </label>
+
+          <input
+            className="inputcheck"
+            type="checkbox"
+            id="añadirUsuario"
+            onChange={formik.handleChange}
+            value={formik.values.añadirUsuario}
+          />
+          <label className="labelcheck">{`${formik.values.añadirUsuario}`}</label>
+        </section>
+
         <section className="flex flex-grow  justify-around">
           <button className="buttonForm" type="submit">
             Guardar
@@ -86,7 +154,6 @@ const ModificarEstadoUsuario = () => {
           </button>
         </section>
       </form>
-      
     </div>
   );
 };

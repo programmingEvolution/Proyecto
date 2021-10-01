@@ -1,6 +1,7 @@
 import React from "react";
 
 const ModificarCliente = () => {
+  
   return (
       
     <div className="contenedorFormulario">
