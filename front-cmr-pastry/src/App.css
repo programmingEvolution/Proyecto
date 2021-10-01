@@ -102,3 +102,100 @@
 input[type="checkbox"]:checked + label {
   color: green;
 }
+
+/** CSS SIDEBAR DIEGO**/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+body{
+    background: #f5f5f5;
+}
+#sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: rgba(239, 182, 178, 0.897);
+    left: -200px;
+    transition: all 500ms linear;
+  }
+#sidebar a{
+    color: black;
+}
+  
+  #sidebar.active {
+    left: 0px;
+  }
+  
+  #sidebar ul li {
+    color: black;
+    list-style: none;
+    padding: 15px 10px;
+    margin-top: 20px; 
+    margin-bottom: 30px; 
+    border-bottom: 1px solid rgba(100, 100, 100, .3);
+    text-align: center;
+    font-weight: 600;
+    background: rgb(239, 182, 178);
+    cursor: pointer;
+  }
+  
+  .salir{
+  color: black;
+  list-style: none;
+  padding: 15px 10px;
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+  border-bottom: 1px solid rgba(100, 100, 100, .3);
+  text-align: center;
+  background: rgba(239, 182, 178, 0.8);
+  font-weight: 600; 
+  }
+
+#sidebar .active{
+      border-radius: 0 80px 80px 0;
+      box-shadow: 0px 0px 0px 2px rgba(239, 182, 178, 0.8);
+  }
+#sidebar ul li:hover{
+  border-radius: 0 80px 80px 0;
+  box-shadow: 0px 0px 0px 2px rgba(239, 182, 178, 0.8);
+}
+  .logo {
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+      width: 150px; 
+  }
+  .icono{
+    display: inline-block;
+      margin-left: 20px; 
+      margin-right: 5px;
+      width: 30px; 
+      margin-top: 0px;    
+  }
+  .close{
+    margin-left: 5px; 
+    margin-right: 5px;
+    width: 30px; 
+    margin-top: 0px;  
+  }
+  #sidebar .toggle-btn {
+    position: absolute;
+    left: 230px;
+    top: 20px;
+    cursor: pointer;
+  }
+  
+  #sidebar .toggle-btn span {
+    display: block;
+    width: 40px;
+    text-align: center;
+    font-size: 30px;
+  }
+  /** CSS SIDEBAR DIEGO**/
