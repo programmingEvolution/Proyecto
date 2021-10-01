@@ -1,20 +1,23 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-import ModificarCliente from "./pages/ModificarCliente";
-import ModificarEstadoUsuario from "./pages/ModificarEstadoUsuario";
-import ResgistrarCliente from "./pages/RegistrarCliente";
-import RegistrarProducto from "./pages/RegistrarProducto";
+import Layout from "./layout/Layout";
+import ModificarCliente from "./pages/admin/ModificarCliente";
+import ModificarEstadoUsuario from "./pages/admin/ModificarEstadoUsuario";
+import ModificarProducto from "./pages/admin/ModificarProducto";
+import ResgistrarCliente from "./pages/admin/RegistrarCliente";
+import RegistrarProducto from "./pages/admin/RegistrarProducto";
 
 function App() {
   return (
     <div>
       <Router>
+        <Layout>
         <Switch>
           <Route path="/registrarproducto">
             <RegistrarProducto></RegistrarProducto>
           </Route>
           <Route path="/modificarproducto">
-            <ModificarCliente></ModificarCliente>
+            <ModificarProducto></ModificarProducto>
           </Route>
           <Route path="/registrarcliente">
             <ResgistrarCliente></ResgistrarCliente>
@@ -27,6 +30,8 @@ function App() {
           </Route>
           
         </Switch>
+
+        </Layout>
       </Router>
     </div>
   );
