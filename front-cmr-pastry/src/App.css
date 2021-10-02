@@ -730,9 +730,8 @@ ul {
   border-radius: 15px;
 }
 
-<<<<<<< HEAD
-.contenedorBotonesgrises {
-=======
+
+
 
 /** CSS DASHBOARD DIEGO**/
 main {
@@ -999,9 +998,9 @@ form{
   cursor: pointer;
 }
 /** CSS SIDEBAR DIEGO**/
-=======
+
 .contenedorBotonesgrises{
->>>>>>> 86ded13c5c3ad8052e8496de452ed51eeba29fdf
+
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -1135,7 +1134,3 @@ form{
   margin-right: 10px;
   margin-top: 200px;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 86ded13c5c3ad8052e8496de452ed51eeba29fdf

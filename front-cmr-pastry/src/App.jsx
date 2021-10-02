@@ -12,6 +12,7 @@ import TablaVenta from "./pages/admin/TablaVenta";
 import Index from "./pages/Index";
 import StockProductos from "./pages/StockProductos";
 import Productos from "./pages/Productos";
+import Panel from "./components/Panel";
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
               "/modificarestadousuario",
               "/tablaventas",
               "/stock",
-              "/productos"
+              "/productos",
+              "/panel"
             ]}
           >
             <Switch>
@@ -56,6 +58,9 @@ function App() {
                   </Route>
                   <Route path="/productos">
                     <Productos></Productos>
+                  </Route>
+                  <Route path="/panel">
+                    <Panel></Panel>
                   </Route>
                   <Route path="/login">
                     <Login></Login>
