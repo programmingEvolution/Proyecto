@@ -69,7 +69,7 @@
 .buttonForm {
   width: 20%;
   padding: 8px 16px;
-  margin-top: 32px;
+  margin-top: 20px;
   border: 1px solid#EDC0BC;
   border-radius: 5px;
   display: block;
@@ -513,7 +513,6 @@ td {
 
 .filaImpar {
   justify-items: right;
-  text-align: left;
   background-color: white;
   height: 60px;
   padding-inline: 10px;
@@ -913,6 +912,10 @@ tbody tr:nth-child(even) {
 
 .table-responsive {
   overflow-x: auto;
+  padding-top: 0px;
+}
+.table-responsive table{
+  margin-top: 0px;
 }
 
 /**FORMULARIO VENTAS**/
@@ -1190,7 +1193,6 @@ form {
 
 .filaImparUsu {
   justify-items: right;
-  text-align: left;
   background-color: white;
   height: 60px;
   padding-inline: 10px;
@@ -1274,7 +1276,6 @@ form {
 
 .filaImparCliente {
   justify-items: right;
-  text-align: left;
   background-color: white;
   height: 60px;
   padding-inline: 10px;
