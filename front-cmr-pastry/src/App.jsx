@@ -11,6 +11,7 @@ import RegistrarProducto from "./pages/admin/RegistrarProducto";
 import TablaVenta from "./pages/admin/TablaVenta";
 import Index from "./pages/Index";
 import StockProductos from "./pages/StockProductos";
+import Productos from "./pages/Productos";
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
               "/modificarCliente",
               "/modificarestadousuario",
               "/tablaventas",
-              "/stock"
+              "/stock",
+              "/productos"
             ]}
           >
             <Switch>
@@ -51,6 +53,9 @@ function App() {
                   </Route>
                   <Route path="/stock">
                     <StockProductos></StockProductos>
+                  </Route>
+                  <Route path="/productos">
+                    <Productos></Productos>
                   </Route>
                   <Route path="/login">
                     <Login></Login>
