@@ -199,3 +199,119 @@ body{
     font-size: 30px;
   }
   /** CSS SIDEBAR DIEGO**/
+
+  /** CSS HEADER DANIELA**/
+  .logoGrande{
+    height: 110px;
+    margin-left: 55%;
+
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:30px;
+    background-color: #EDC0BC;
+    height:60px;
+}
+
+.estilosHeader{
+
+    color:#775C5A;
+    font-size:x-large;
+    
+}
+
+
+.botonLogin {
+    background-color :#FFE5D9;
+    color:#775C5A;
+    border:0px;
+    padding: 5px 5px;
+    width: 80px;
+    height: 25px ;
+    border-radius: 10px;
+    font-weight: bolder;
+    text-align: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    box-shadow:2px 2px gray;
+
+    
+
+}
+.botonLogin:hover {
+    cursor: pointer;
+    box-shadow: 4px 4px #EFB6B2;
+    transform: scale(1.1);
+    background-color:white;
+}
+
+/** CSS HEADER DANIELA**/
+
+/** CSS HOME DANIELA**/
+
+.tituloHome{
+  color:#775C5A;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 80px ;
+  text-align:center ;
+  margin-bottom: 90px;
+
+}
+
+.introduccion{
+  color:#775C5A;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 30px;
+  text-align: center ;
+  display: flex;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
+
+
+.herramientas{
+  color:#EFB6B2;
+  font-family:sans-serif;
+  font-size: 40px;
+  text-align: center ;
+  font-style: normal;
+  margin-top: 80px;
+  margin-bottom: 150px;
+}
+.contenedorTarjetasHome{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30%;
+  
+
+}
+
+.tarjetas{
+  padding:3px;
+  background-color:#FFE5D9;
+  width:450px;
+  height: 500px;
+  text-align: center;
+  padding-top: 30px;
+  border-radius: 50px;
+  font-family:sans-serif;
+  color:#775C5A;
+  font-weight: bold;
+  font-size: 22px;
+  margin-left: 25px;
+  margin-right:25px;
+  box-shadow:2px 4px silver;
+  }
+
+.fotosHome{
+  background-color:#FFE5D9;
+  width:400px;
+  height: 400px;
+  margin-top: 30px;
+  border-radius: 15px;
+
+}
