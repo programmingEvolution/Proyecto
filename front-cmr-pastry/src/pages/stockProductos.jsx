@@ -2,264 +2,264 @@ const stockProductos = () => {
     return (
         <div>
             <section> 
-                <ul class="contenedorBotonesgrises">
-                    <li class="buscadoresGrises">Filtrar</li>
-                    <li class="buscadoresGrises">Buscar</li>
-                    <li class="botonesGrises">Añadir a la venta</li>
+                <ul className="contenedorBotonesgrises">
+                    <li className="buscadoresGrises">Filtrar</li>
+                    <li className="buscadoresGrises">Buscar</li>
+                    <li className="botonesGrises">Añadir a la venta</li>
                 </ul>
         </section>
             
 
         <section >
-            <div class="tarjetasProductos">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductos">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Muffins
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Muffins
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 0001</li>
+                    <li className="identificador">ID 0001</li>
                 </ul>
             </div>
 
-            <div class="tarjetasProductos">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductos">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/tortaEmpacada.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/tortaEmpacada.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Mini Muffins
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Mini Muffins
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 0002</li>
+                    <li className="identificador">ID 0002</li>
                 </ul>
             </div>
 
-            <div class="tarjetasProductosNoDispo">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductosNoDispo">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Torta circular grande
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Torta circular grande
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 0003</li>
+                    <li className="identificador">ID 0003</li>
                 </ul>
             </div>
 
-            <div class="tarjetasProductos">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductos">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Torta circular mediana
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Torta circular mediana
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 0004</li>
+                    <li className="identificador">ID 0004</li>
                 </ul>
             </div>
 
-            <div class="tarjetasProductos">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductos">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Torta circular pequeña
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Torta circular pequeña
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 0005</li>
+                    <li className="identificador">ID 0005</li>
                 </ul>
             </div>
 
-            <div class="tarjetasProductos">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductos">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Mini Torta
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Mini Torta
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 0006</li>
+                    <li className="identificador">ID 0006</li>
                 </ul>
             </div>
 
-            <div class="tarjetasProductos">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductos">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Torta en forma de Flor
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Torta en forma de Flor
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 0007</li>
+                    <li className="identificador">ID 0007</li>
                 </ul>
             </div>
 
-            <div class="tarjetasProductos">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductos">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Torta en espiral pequeña
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Torta en espiral pequeña
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 0008</li>
+                    <li className="identificador">ID 0008</li>
                 </ul>
             </div>
 
-            <div class="tarjetasProductos">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductos">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Galletas de mantequilla
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Galletas de mantequilla
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 0009</li>
+                    <li className="identificador">ID 0009</li>
                 </ul>
             </div>
 
-            <div class="tarjetasProductos">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductos">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Galletas de chips de 
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Galletas de chips de 
                             chocolate
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 00010</li>
+                    <li className="identificador">ID 00010</li>
                 </ul>
             </div>
 
-            <div class="tarjetasProductos">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductos">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Chocolates
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Chocolates
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 00011</li>
+                    <li className="identificador">ID 00011</li>
                 </ul>
             </div>
-            <div class="tarjetasProductos">
-                <ul class="contenedorTarjetasPro">
+            <div className="tarjetasProductos">
+                <ul className="contenedorTarjetasPro">
                     <li>
-                        <img class="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinManzana.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/muffinZanahoria.jpeg" alt="foto muffin"/>
                     </li>
                     <li>
-                        <img class="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
+                        <img className="elementos1" src="./media/TortaCircularGrande.jpeg" alt="foto muffin"/>
                     </li>
 
-                    <li class="elementos2">
-                        <ul class="contenidoProducto">Cakecicles
-                            <li class="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
-                            <li class="contenidoProducto">$ / unidad:</li>
+                    <li className="elementos2">
+                        <ul className="contenidoProducto">Cakecicles
+                            <li className="contenidoProducto">Sabores: Zanahoria, manzana, banano y maracuyá. </li>
+                            <li className="contenidoProducto">$ / unidad:</li>
                         </ul></li>
-                    <li class="identificador">ID 00012</li>
+                    <li className="identificador">ID 00012</li>
                 </ul>
             </div>
         </section>
