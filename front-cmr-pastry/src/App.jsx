@@ -10,6 +10,7 @@ import ResgistrarCliente from "./pages/admin/RegistrarCliente";
 import RegistrarProducto from "./pages/admin/RegistrarProducto";
 import TablaVenta from "./pages/admin/TablaVenta";
 import Index from "./pages/Index";
+import StockProductos from "./pages/StockProductos";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               "/modificarCliente",
               "/modificarestadousuario",
               "/tablaventas",
+              "/stock"
             ]}
           >
             <Switch>
@@ -46,6 +48,9 @@ function App() {
                   </Route>
                   <Route path="/tablaventas">
                     <TablaVenta></TablaVenta>
+                  </Route>
+                  <Route path="/stock">
+                    <StockProductos></StockProductos>
                   </Route>
                   <Route path="/login">
                     <Login></Login>
