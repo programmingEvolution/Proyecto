@@ -761,3 +761,269 @@ ul{
   border-radius: 15px;
 
 }
+
+/** CSS DASHBOARD DIEGO**/
+main {
+  margin-left: 200px;
+  max-width: 1500px;
+  margin-top: 0px;
+  min-height: 90vh;
+  padding: 1rem 3rem;
+}
+
+.dash-title {
+  margin-top: 11rem;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.dash-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 5rem;
+}
+
+.card-single {
+  background: #FFE5D9;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.37);
+  cursor: pointer;
+}
+.card-single img{
+  width: 50px;
+}
+
+.card-body {
+  padding: 1.3rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.card-body span {
+  font-size: 1.5rem;
+  color: #000000;
+  padding-right: 1.4rem;
+}
+
+.card-body h5 {
+  color: black;
+  font-size: 3rem;
+}
+
+.card-body h4 {
+  color: var(--color-dark);
+  font-size: 1rem;
+  font-weight: 300;
+  margin-top: .2rem;
+}
+
+.card-footer {
+  padding: .2rem 1rem;
+  background: #FFE5D9;
+  border-radius: 20px;
+}
+
+.card-footer a {
+  color: black;
+  background:#FFE5D9;
+}
+
+.resumen{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-column-gap: 1.5rem;
+}
+
+.activity-card,
+.summary-card,
+.bday-card {
+  background: #FFE5D9;
+  border-radius: 7px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.37);
+  cursor: pointer;
+}
+.summary-single img{
+  width: 50px;
+}
+
+.activity-card h3 {
+  color: var(--text-grey);
+  margin: 2rem;
+  background: #ffe5d9d3;
+}
+
+.activity-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.activity-card thead {
+  background: #efefef;
+  text-align: left;
+}
+
+th, td {
+  font-size: .9rem;
+  padding: 1rem 1rem;
+  color: var(--color-dark);
+}
+
+td {
+  font-size: .8rem;
+}
+
+tbody tr:nth-child(even) {
+  background: #f9fafc;
+}
+
+.badge {
+  padding: .2rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: .7rem;
+}
+
+.badge.exitoso {
+  background: #DEF7EC;
+  color: var(--main-color);
+}
+
+.badge.pendiente {
+  background: #f08205;
+  color: rgb(255, 255, 255);
+}
+
+.td-team {
+  display: flex;
+  align-items: center;
+}
+
+.summary-card {
+  margin-bottom: 1.5rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+.summary-card h3{
+  color: black;
+  margin: 2rem;
+}
+
+.summary-single {
+  padding: .5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.summary-single span {
+  font-size: 1.5rem;
+  color: #777;
+  padding-right: 1rem;
+}
+
+.summary-single h5 {
+  color: var(--main-color);
+  font-size: 1.6rem;
+
+}
+
+.summary-single small {
+  font-weight: 500;
+  color: gray;
+}
+
+.bday-flex {
+  display: flex;
+  align-items: center;
+  margin-bottom: .3rem;
+}
+
+
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+
+
+/**FORMULARIO VENTAS**/
+body{
+  background: #f5f5f5;
+}
+form{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 1rem;  
+  margin-right: auto;
+}
+.field{
+  
+  display: flex;
+  flex-direction: column;
+  width: 18rem;
+}
+.field label{
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 1rem;
+  margin-right: 3rem;}
+
+
+.field input{
+  font-size: 20px;
+  height: 2.2rem;
+  width: 90%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 2px 0px rgba(121, 121, 121, 0.801);
+  border-color: rgba(104, 104, 104, 0);
+}
+.field input.fecha{
+  background: #FFE5D9;
+  margin-left: auto;
+  margin-right: -200px;
+}
+.field label.fecha{
+  margin-left: auto;
+  margin-right: -100px;
+  display: flex;
+}
+.field  button{
+  margin-right: -880px;
+  margin-left: auto;
+  margin-top: -50px;
+  background-color:#FFE5D9 ;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 2px 0px rgba(121, 121, 121, 0.801);
+  border-color: rgba(104, 104, 104, 0);}
+
+.field  button a{
+  color: black;
+  font-family: 400;
+  font-size: 20px;
+}
+.field input.short{
+  max-width: 10px ;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.field input.boton{
+  margin-top: 60px;
+  padding: 1px;
+  background-color:#FFE5D9 ; ;
+  width: 200px;
+  margin-right: -500px;
+  margin-left: auto;
+  justify-content: center;
+  cursor: pointer;
+}
+/** CSS SIDEBAR DIEGO**/
