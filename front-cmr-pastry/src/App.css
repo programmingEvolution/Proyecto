@@ -117,7 +117,8 @@ input[type="checkbox"]:checked + label {
 .body {
   background: #f5f5f5;
 }
-
+li.Salir.pb-8 {
+}
 .sidebar {
   width: 200px;
   height: 100%;
