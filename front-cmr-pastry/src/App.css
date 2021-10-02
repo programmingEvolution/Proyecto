@@ -1339,10 +1339,9 @@ form {
 
 .contenedorStock {
   height: 1000px;
-  width: 2000px;
-  border: 1px solid #ddd;
-  background: #f1f1f1;
+
   overflow-y: scroll;
-  justify-content: center;
+  justify-content: left;
   display: block;
+  align-items: flex-start;
 }

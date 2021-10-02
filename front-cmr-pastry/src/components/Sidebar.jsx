@@ -51,7 +51,7 @@ const Sidebar = () => {
               Productos
             </li>
           </Link>
-          <Link to="/tablaventas">
+          <Link to="/stock">
             <li>
               <img
                 style={{ float: "left" }}

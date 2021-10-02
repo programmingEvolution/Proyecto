@@ -9,7 +9,7 @@ const TablaVenta = () => {
       <section>
         <ContenedorTitulos Titulo="Ventas" />
       </section>
-      <main className="ContenedorconMargen">
+      <div className="ContenedorconMargen">
         <form className="contenedor">
           <select className="selección">
             <option value=""> ID Vendedor</option>
@@ -60,12 +60,14 @@ const TablaVenta = () => {
               <td>Torta en esperial de maracuyá</td>
               <td>2</td>
               <td>74000</td>
-              <td>Pago</td>
               <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
+                <span class="badge exitoso">Finalizada</span>
+              </td>
+              <td>
+                <Link to="/modificarventa">
+                  <span>
+                    <img class="icono" src={edit} alt="Editar" />
+                  </span>
                 </Link>
               </td>
             </tr>
@@ -78,12 +80,14 @@ const TablaVenta = () => {
               <td>Casecicle</td>
               <td>20</td>
               <td>80000</td>
-              <td>Pendiente</td>
               <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
+                <span class="badge exitoso">Finalizada</span>
+              </td>
+              <td>
+                <Link to="/modificarventa">
+                  <span>
+                    <img class="icono" src={edit} alt="Editar" />
+                  </span>
                 </Link>
               </td>
             </tr>
@@ -96,12 +100,14 @@ const TablaVenta = () => {
               <td>Chocolates Relleños</td>
               <td>200</td>
               <td>1000000</td>
-              <td>Pago</td>
               <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
+                <span class="badge exitoso">Finalizada</span>
+              </td>
+              <td>
+                <Link to="/modificarventa">
+                  <span>
+                    <img class="icono" src={edit} alt="Editar" />
+                  </span>
                 </Link>
               </td>
             </tr>
@@ -114,18 +120,20 @@ const TablaVenta = () => {
               <td>Muffins Grandes</td>
               <td>40</td>
               <td>160000</td>
-              <td>Pendiente</td>
               <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
+                <span class="badge pendiente">En despacho</span>
+              </td>
+              <td>
+                <Link to="/modificarventa">
+                  <span>
+                    <img class="icono" src={edit} alt="Editar" />
+                  </span>
                 </Link>
               </td>
             </tr>
           </table>
         </section>
-      </main>
+      </div>
     </div>
   );
 };

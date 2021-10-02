@@ -6,6 +6,7 @@ import ventas from "./img/ventas.png";
 
 import grupo from "./img/grupo.png";
 import clientes from "./img/clientes.png";
+import { Link } from "react-router-dom";
 
 const Panel = () => {
   return (
@@ -15,9 +16,11 @@ const Panel = () => {
       <div class="dash-cards">
         <div class="card-single">
           <div class="card-body">
-            <span>
-              <img src={ventas} alt="" />
-            </span>
+            <Link to="/tablaventas">
+              <span>
+                <img src={ventas} alt="" />
+              </span>
+            </Link>
             <div>
               <h5>40</h5>
               <h4>Ventas</h4>

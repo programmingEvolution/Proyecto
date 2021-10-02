@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import muffinManzana from "../media/muffinManzana.jpeg";
 import muffinZanahoria from "../media/muffinZanahoria.jpeg";
 import TortaCircularGrande from "../media/TortaCircularGrande.jpeg";
@@ -9,12 +10,15 @@ const StockProductos = () => {
         <ul className="contenedorBotonesgrises">
           <li className="buscadoresGrises">Filtrar</li>
           <li className="buscadoresGrises">Buscar</li>
-          <li className="botonesGrises">Añadir a la venta</li>
+          <Link to="registrarventa">
+            <li className="botonesGrises">Añadir a la venta</li>
+          </Link>
         </ul>
       </section>
 
       <section className="contenedorFormulario">
         <div className="tarjetasProductos">
+          <input type="checkbox" />
           <ul className="contenedorTarjetasPro">
             <li>
               <img
@@ -52,6 +56,7 @@ const StockProductos = () => {
         </div>
 
         <div className="tarjetasProductos">
+          <input type="checkbox" />
           <ul className="contenedorTarjetasPro">
             <li>
               <img
@@ -89,6 +94,7 @@ const StockProductos = () => {
         </div>
 
         <div className="tarjetasProductosNoDispo">
+          <input type="checkbox" disabled />
           <ul className="contenedorTarjetasPro">
             <li>
               <img
@@ -125,6 +131,7 @@ const StockProductos = () => {
         </div>
 
         <div className="tarjetasProductos">
+          <input type="checkbox" />
           <ul className="contenedorTarjetasPro">
             <li>
               <img
@@ -161,6 +168,7 @@ const StockProductos = () => {
         </div>
 
         <div className="tarjetasProductos">
+          <input type="checkbox" />
           <ul className="contenedorTarjetasPro">
             <li>
               <img
@@ -197,6 +205,7 @@ const StockProductos = () => {
         </div>
 
         <div className="tarjetasProductos">
+          <input type="checkbox" />
           <ul className="contenedorTarjetasPro">
             <li>
               <img
@@ -233,6 +242,7 @@ const StockProductos = () => {
         </div>
 
         <div className="tarjetasProductos">
+          <input type="checkbox" />
           <ul className="contenedorTarjetasPro">
             <li>
               <img
@@ -269,6 +279,7 @@ const StockProductos = () => {
         </div>
 
         <div className="tarjetasProductos">
+          <input type="checkbox" />
           <ul className="contenedorTarjetasPro">
             <li>
               <img
@@ -305,6 +316,7 @@ const StockProductos = () => {
         </div>
 
         <div className="tarjetasProductos">
+          <input type="checkbox" />
           <ul className="contenedorTarjetasPro">
             <li>
               <img
@@ -377,6 +389,7 @@ const StockProductos = () => {
         </div>
 
         <div className="tarjetasProductos">
+          <input type="checkbox" />
           <ul className="contenedorTarjetasPro">
             <li>
               <img
@@ -412,6 +425,7 @@ const StockProductos = () => {
           </ul>
         </div>
         <div className="tarjetasProductos">
+          <input type="checkbox" />
           <ul className="contenedorTarjetasPro">
             <li>
               <img

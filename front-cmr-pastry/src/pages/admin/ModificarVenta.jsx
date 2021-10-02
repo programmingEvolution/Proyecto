@@ -8,50 +8,67 @@ import { Link } from "react-router-dom";
 const RegistrarVenta = () => {
   return (
     <div>
-      <h2 class="dash-title">Registrar Venta</h2>
+      <h2 className="dash-title">Registrar Venta</h2>
 
       <form>
-        <div class="field large">
+        <div className="field large">
           <label for="">Id Cliente:</label>
-          <input type="number" required />
+          <input
+            className="inputForm"
+            type="number"
+            placeholder="Ingrese el id del cliente"
+            required
+          />
         </div>
-        <div class="field">
+        <div className="field">
           <label for="">Producto:</label>
-          <input type="text" required />
+          <input className="inputForm" type="text" required />
         </div>
-        <div class="field large">
+        <div className="field large">
           <label for="vendedor">ID Vendedor:</label>
-          <input name="vendedor" type="number" required />
+          <input className="inputForm" name="vendedor" type="number" required />
         </div>
-        <div class="field short">
+        <div className="field short">
           <label for="">Cantidad:</label>
-          <input type="number" required />
+          <input className="inputForm" type="number" required />
         </div>
-        <div class="field">
-          <input class="boton" type="submit" value="Agregar" />
+
+        <div className="field">
+          <input className="boton" type="submit" value="Agregar Producto" />
         </div>
+
+        <section>
+          <label className="labelForm" htmlFor="estadoUsuario">
+            Estado de venta:
+          </label>
+          <select className="selectForm" id="estadoUsuario">
+            <option>En proceso</option>
+            <option>Finalizada</option>
+            <option>Despachada</option>
+          </select>
+        </section>
       </form>
 
-      <div class="field boton fecha">
-        <label class="fecha" for="">
+      <div className="field boton fecha">
+        <label className="fecha" for="">
           Fecha de venta
         </label>
-        <input class="fecha" type="date" required />
+        <input className="fecha" type="date" required />
 
         <button>
           <a class="add" href="">
             {" "}
-            Añadir Productos
+            Guardar
           </a>
         </button>
       </div>
+
       <table class="ventas">
         <tr>
           <th>ID Producto</th>
           <th>Nombre</th>
           <th>Precio</th>
           <th>Cantidad</th>
-          <th>Estado</th>
           <th>Acciones</th>
         </tr>
         <tr>
@@ -59,13 +76,11 @@ const RegistrarVenta = () => {
           <td>Muffins</td>
           <td>$12.000</td>
           <td>2</td>
-          <td>
-            <span class="badge exitoso">Finalizada</span>
-          </td>
+
           <td>
             <span>
               <img class="icono" src={edit} alt="Editar" />
-              <img class="icono" src="/img/eliminar.png" alt="" />
+              <img class="icono" src={eliminar} alt="" />
             </span>
           </td>
         </tr>
@@ -74,9 +89,7 @@ const RegistrarVenta = () => {
           <td>Torta Grande</td>
           <td>$50.000</td>
           <td>1</td>
-          <td>
-            <span class="badge exitoso">Finalizada</span>
-          </td>
+
           <td>
             <span>
               <img class="icono" src={edit} alt="Editar" />
@@ -89,9 +102,7 @@ const RegistrarVenta = () => {
           <td>Torta de Zanahoria</td>
           <td>$60.000</td>
           <td>2</td>
-          <td>
-            <span class="badge pendiente">En despacho</span>
-          </td>
+
           <td>
             <span>
               <img class="icono" src={edit} alt="Editar" />
@@ -105,9 +116,6 @@ const RegistrarVenta = () => {
           <td>$120.000</td>
           <td>150</td>
           <td>
-            <span class="badge pendiente">En despacho</span>
-          </td>
-          <td>
             <span>
               <img class="icono" src={edit} alt="Editar" />
               <img class="icono" src={eliminar} alt="" />
@@ -119,9 +127,7 @@ const RegistrarVenta = () => {
           <td>Mil Hojas</td>
           <td>$7.500</td>
           <td>2</td>
-          <td>
-            <span class="badge exitoso">Finalizada</span>
-          </td>
+
           <td>
             <span>
               <img class="icono" src={edit} alt="Editar" />
@@ -134,9 +140,7 @@ const RegistrarVenta = () => {
           <td>Muffins</td>
           <td>$240.000</td>
           <td>40</td>
-          <td>
-            <span class="badge pendiente">En proceso</span>
-          </td>
+
           <td>
             <span>
               <img class="icono" src={edit} alt="Editar" />
