@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ContenedorTitulos from '../../components/ContenedorTitulos'
 
 const TablaVenta = () => {
     return (
         <div>
+            <section>
+              <ContenedorTitulos Titulo = "Ventas"/>
+          </section>
             <main className="ContenedorconMargen">
         <form className="contenedor">
             <select className="selección">

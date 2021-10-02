@@ -6,38 +6,40 @@ import ModificarEstadoUsuario from "./pages/admin/ModificarEstadoUsuario";
 import ModificarProducto from "./pages/admin/ModificarProducto";
 import ResgistrarCliente from "./pages/admin/RegistrarCliente";
 import RegistrarProducto from "./pages/admin/RegistrarProducto";
-import TablaVenta from "./pages/admin/TablaVenta"
-
-
+import TablaVenta from "./pages/admin/TablaVenta";
+import Index from "./pages/Index";
 
 function App() {
   return (
     <div>
       <Router>
         <Layout>
-        <Switch>
-          <Route path="/registrarproducto">
-            <RegistrarProducto></RegistrarProducto>
-          </Route>
-          <Route path="/modificarproducto">
-            <ModificarProducto></ModificarProducto>
-          </Route>
-          <Route path="/registrarcliente">
-            <ResgistrarCliente></ResgistrarCliente>
-          </Route>
-          <Route path="/modificarCliente">
-            <ModificarCliente></ModificarCliente>
-          </Route>
-          <Route path="/modificarestadousuario">
-            <ModificarEstadoUsuario></ModificarEstadoUsuario>
-          </Route>
-          <Route path="/tablaventas">
-            <TablaVenta></TablaVenta>
-          </Route>
-          
-        </Switch>
-
+          <Switch>
+            <Route path="/registrarproducto">
+              <RegistrarProducto></RegistrarProducto>
+            </Route>
+            <Route path="/modificarproducto">
+              <ModificarProducto></ModificarProducto>
+            </Route>
+            <Route path="/registrarcliente">
+              <ResgistrarCliente></ResgistrarCliente>
+            </Route>
+            <Route path="/modificarCliente">
+              <ModificarCliente></ModificarCliente>
+            </Route>
+            <Route path="/modificarestadousuario">
+              <ModificarEstadoUsuario></ModificarEstadoUsuario>
+            </Route>
+            <Route path="/tablaventas">
+              <TablaVenta></TablaVenta>
+            </Route>
+          </Switch>
         </Layout>
+        <Switch>
+          <Route path="/index">
+            <Index></Index>
+          </Route>
+        </Switch>
       </Router>
     </div>
   );

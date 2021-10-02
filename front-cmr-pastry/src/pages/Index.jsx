@@ -1,6 +1,6 @@
 import React from 'react'
 
-const home = () => {
+const Index = () => {
     return (
         <div>
             <section>
@@ -34,4 +34,4 @@ const home = () => {
     )
 }
 
-export default home
+export default Index
