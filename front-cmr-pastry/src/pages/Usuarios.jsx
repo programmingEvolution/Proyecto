@@ -1,17 +1,43 @@
 import { Link } from "react-router-dom";
 import edit from "../media/edit.png";
+import ContenedorTitulos from "../components/ContenedorTitulos";
 
 const Usuarios = () => {
   return (
-    <div className="contenedorFormulario">
+    <div>
+      <section>
+        <ContenedorTitulos Titulo="Gestión de Usuarios" />
+      </section>
       <section>
         <ul className="contenedorBotonesgrises">
-          <li className="buscadorEspecificoUsu">Buscar ID Usuario</li>
-          <li className="botonNuevoUsu">Nuevo Usuario</li>
+          <form>
+            <section>
+              <label className="labelForm" htmlFor="idUsuario">
+                Buscar Usuario:
+              </label>
+              <input
+                className="inputForm"
+                id="idusUario"
+                placeholder="Ingrese el nombre del Usuario"
+                type="ID"
+              ></input>
+            </section>
+            <section className="flex-grow justify-between">
+              <button className="buttonForm" type="submit">
+                Buscar
+              </button>
+            </section>
+          </form>
         </ul>
       </section>
 
-      <section className="correrTablaUsu">
+      <section>
+        <Link to="registrarusuario">
+          <button className="buttonForm">Nuevo Usuario</button>
+        </Link>
+      </section>
+
+      <section>
         <table>
           <tr>
             <td className="tituloColumnaUsu">IDUsuario</td>

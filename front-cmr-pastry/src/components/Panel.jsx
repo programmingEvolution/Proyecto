@@ -1,5 +1,5 @@
 import React from "react";
-
+import ContenedorTitulos from "../components/ContenedorTitulos";
 import house from "./img/house.png";
 
 import ventas from "./img/ventas.png";
@@ -10,7 +10,10 @@ import { Link } from "react-router-dom";
 
 const Panel = () => {
   return (
-    <div className="contenedorFormulario">
+    <div>
+      <section>
+        <ContenedorTitulos Titulo="Panel de control" />
+      </section>
       <h2 class="dash-title">Panel De Control</h2>
 
       <div class="dash-cards">

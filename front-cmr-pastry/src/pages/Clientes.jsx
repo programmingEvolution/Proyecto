@@ -1,19 +1,43 @@
 import { Link } from "react-router-dom";
 import edit from "../media/edit.png";
+import ContenedorTitulos from "../components/ContenedorTitulos";
 
 const Clientes = () => {
   return (
-    <div className="contenedorFormulario">
+    <div>
+      <section>
+        <ContenedorTitulos Titulo="Gestión de Clientes" />
+      </section>
       <section>
         <ul className="contenedorBotonesgrises">
-          <li className="buscadorEspecificoCliente">Buscar ID cliente</li>
-          <Link to="registrarcliente">
-            <li className="botonNuevoCliente">Nuevo Cliente</li>
-          </Link>
+          <form>
+            <section>
+              <label className="labelForm" htmlFor="idCliente">
+                Buscar Cliente:
+              </label>
+              <input
+                className="inputForm"
+                id="idCliente"
+                placeholder="Ingrese el nombre del Cliente"
+                type="ID"
+              ></input>
+            </section>
+            <section className="flex-grow justify-between">
+              <button className="buttonForm" type="submit">
+                Buscar
+              </button>
+            </section>
+          </form>
         </ul>
       </section>
 
-      <section className="correrTablaCliente">
+      <section>
+        <Link to="registrarcliente">
+          <button className="buttonForm">Nuevo Cliente</button>
+        </Link>
+      </section>
+
+      <section>
         <table>
           <tr>
             <td className="tituloColumnaCliente">ID Cliente</td>

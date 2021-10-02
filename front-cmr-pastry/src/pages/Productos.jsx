@@ -1,20 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import edit from "../media/edit.png";
+import ContenedorTitulos from "../components/ContenedorTitulos";
 
 const Productos = () => {
   return (
-    <div className="contenedorFormulario">
+    <div>
       <section>
+        <ContenedorTitulos Titulo="Gestión de productos" />
+      </section>
+      <section>
+        
         <ul className="contenedorBotonesgrises">
-          <li className="buscadorEspecifico">Buscar ID Productos</li>
-          <Link to="registrarproducto">
-            <li className="botonNuevoPro">Nuevo Producto</li>
-          </Link>
+          <form>
+            <section>
+              <label className="labelForm" htmlFor="idProducto">
+                Buscar Producto:
+              </label>
+              <input
+                className="inputForm"
+                id="idProducto"
+                placeholder="Ingrese el nombre del producto"
+                type="ID"
+              ></input>
+            </section>
+            <section className="flex-grow justify-between">
+              <button className="buttonForm" type="submit">
+                Buscar
+              </button>
+            </section>
+          </form>
         </ul>
       </section>
 
-      <section className="correrTabla">
+      <section>
+        <Link to="registrarproducto">
+          <button className="buttonForm">Nuevo Producto</button>
+        </Link>
+      </section>
+
+      <section>
         <table>
           <tr>
             <td className="tituloColumna">IDproductos</td>

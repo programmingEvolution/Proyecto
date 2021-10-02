@@ -2,13 +2,17 @@ import { Link } from "react-router-dom";
 import muffinManzana from "../media/muffinManzana.jpeg";
 import muffinZanahoria from "../media/muffinZanahoria.jpeg";
 import TortaCircularGrande from "../media/TortaCircularGrande.jpeg";
+import ContenedorTitulos from "../components/ContenedorTitulos";
 
 const StockProductos = () => {
   return (
     <div className="contenedorStock">
       <section>
+        <ContenedorTitulos Titulo="Stock de productos" />
+      </section>
+      <section>
         <ul className="contenedorBotonesgrises">
-          <form className="flex ">
+          <form>
             <section>
               <label className="labelForm" htmlFor="idProducto">
                 Buscar Producto:
@@ -16,24 +20,24 @@ const StockProductos = () => {
               <input
                 className="inputForm"
                 id="idProducto"
-                placeholder="Ingrese el id del cliente"
+                placeholder="Ingrese el nombre del producto"
                 type="ID"
               ></input>
             </section>
-            <section className="flex flex-grow justify-between">
+            <section className="flex-grow justify-between">
               <button className="buttonForm" type="submit">
                 Buscar
               </button>
-              <li>
-                <Link to="registrarventa">
-                  <button className="buttonForm">+</button>
-                </Link>
-              </li>
             </section>
           </form>
         </ul>
       </section>
 
+      <section>
+        <Link to="registrarusuario">
+          <button className="buttonForm">Añadir a la venta</button>
+        </Link>
+      </section>
       <section className="contenedorFormulario">
         <div className="tarjetasProductos">
           <input type="checkbox" />
