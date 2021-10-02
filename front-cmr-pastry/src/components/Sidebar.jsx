@@ -1,28 +1,29 @@
 import React from "react";
+import logo from "./img/logo.png";
 
 const Sidebar = () => {
   return (
     <div id="sidebar">
-      <div class="toggle-btn">
+      <div className="toggle-btn">
         <span>
           <img
             style={{ float: "left" }}
             src="/img/left-indent.png"
             alt=""
-            class="close"
+            className="close"
           />
         </span>
       </div>
       <ul>
         <li>
-          <img src="img/logo-png.png" alt="Logo Julis" class="logo" />
+          <img src={logo} alt="Logo Julis" className="logo" />
         </li>
-        <li class="active">
+        <li className="active">
           <img
             style={{ float: "left" }}
             src="img/house.png"
             alt="Logo Julis"
-            class="icono"
+            className="icono"
           />
           Dashboard
         </li>
@@ -31,7 +32,7 @@ const Sidebar = () => {
             style={{ float: "left" }}
             src="/img/caja.png"
             alt="Logo Julis"
-            class="icono"
+            className="icono"
           />{" "}
           Productos
         </li>
@@ -40,7 +41,7 @@ const Sidebar = () => {
             style={{ float: "left" }}
             src="/img/ventas.png"
             alt="Logo Julis"
-            class="icono"
+            className="icono"
           />
           <a href="/registro-venta.html">Ventas</a>
         </li>
@@ -49,7 +50,7 @@ const Sidebar = () => {
             style={{ float: "left" }}
             src="/img/grupo.png"
             alt="Logo Julis"
-            class="icono"
+            className="icono"
           />
           Usuarios
         </li>
@@ -58,7 +59,7 @@ const Sidebar = () => {
             style={{ float: "left" }}
             src="/img/clientes.png"
             alt="Logo Julis"
-            class="icono"
+            className="icono"
           />
           Clientes
         </li>
@@ -66,12 +67,12 @@ const Sidebar = () => {
       <br />
       <br />
       <ul>
-        <li class="Salir">
+        <li className="Salir">
           <img
             style={{ float: "left" }}
             src="/img/logout.png"
             alt=""
-            class="icono"
+            className="icono"
           />{" "}
           Cerrar Sesión
         </li>
