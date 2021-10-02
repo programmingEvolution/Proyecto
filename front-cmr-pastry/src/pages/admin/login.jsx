@@ -3,7 +3,7 @@ import React from 'react'
 
 export const login = () => {
     return (
-        <div>
+        <div className= "bodylogin">
             <div class="logo">
                 <img src="./media/pastrylogo.png" class="logop" />
             </div>
