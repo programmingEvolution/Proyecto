@@ -1,4 +1,4 @@
-const stockProductos = () => {
+const StockProductos = () => {
     return (
         <div>
             <section> 
@@ -268,4 +268,4 @@ const stockProductos = () => {
     )
 }
 
-export default stockProductos
+export default StockProductos
