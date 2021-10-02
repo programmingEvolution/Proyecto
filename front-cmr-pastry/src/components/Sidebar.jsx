@@ -91,7 +91,7 @@ const Sidebar = () => {
         <br />
         <ul>
 
-          <li className="mb-8 Salir">
+          <li className="mb-8 Salir"/>
 
           <Link to="/">
           <li className="Salir">
