@@ -41,7 +41,7 @@ const Sidebar = () => {
               Dashboard
             </li>
           </Link>
-          <Link to="">
+          <Link to="/">
             <li>
               <img
                 style={{ float: "left" }}
