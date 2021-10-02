@@ -53,7 +53,7 @@ const ResgistrarProducto = () => {
       
       
           <section>
-              <ContenedorTitulos Titulo = "Modificar venta"/>
+              <ContenedorTitulos Titulo = "Registrar producto"/>
           </section>
 
       {/*  //Formulario  */}

@@ -1,5 +1,13 @@
 import React from "react";
 import logo from "./img/logo.png";
+import left from "./img/left.png";
+import house from "./img/house.png";
+import caja from "./img/caja.png";
+import ventas from "./img/ventas.png";
+import logout from "./img/logout.png";
+import grupo from "./img/grupo.png";
+import clientes from "./img/clientes.png";
+
 
 const Sidebar = () => {
   return (
@@ -8,7 +16,7 @@ const Sidebar = () => {
         <span>
           <img
             style={{ float: "left" }}
-            src="/img/left-indent.png"
+            src={left}
             alt=""
             className="close"
           />
@@ -21,7 +29,7 @@ const Sidebar = () => {
         <li className="active">
           <img
             style={{ float: "left" }}
-            src="img/house.png"
+            src={house}
             alt="Logo Julis"
             className="icono"
           />
@@ -30,7 +38,7 @@ const Sidebar = () => {
         <li>
           <img
             style={{ float: "left" }}
-            src="/img/caja.png"
+            src={caja}
             alt="Logo Julis"
             className="icono"
           />{" "}
@@ -39,7 +47,7 @@ const Sidebar = () => {
         <li>
           <img
             style={{ float: "left" }}
-            src="/img/ventas.png"
+            src={ventas}
             alt="Logo Julis"
             className="icono"
           />
@@ -48,7 +56,7 @@ const Sidebar = () => {
         <li>
           <img
             style={{ float: "left" }}
-            src="/img/grupo.png"
+            src={grupo}
             alt="Logo Julis"
             className="icono"
           />
@@ -57,7 +65,7 @@ const Sidebar = () => {
         <li>
           <img
             style={{ float: "left" }}
-            src="/img/clientes.png"
+            src={clientes}
             alt="Logo Julis"
             className="icono"
           />
@@ -70,7 +78,7 @@ const Sidebar = () => {
         <li className="Salir">
           <img
             style={{ float: "left" }}
-            src="/img/logout.png"
+            src={logout}
             alt=""
             className="icono"
           />{" "}

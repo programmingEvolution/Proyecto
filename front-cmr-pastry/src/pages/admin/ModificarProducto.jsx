@@ -2,7 +2,7 @@ import React from 'react'
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
-
+import ContenedorTitulos from "../../components/ContenedorTitulos";
 
 const ModificarProducto = () => {
   const formik = useFormik({
@@ -49,9 +49,9 @@ const ModificarProducto = () => {
 
   return (
     <div className="contenedorFormulario">
-      <h2 className="text-2xl font-extrabold text-gray-800">
-        Modificar Producto
-      </h2>
+      <section>
+              <ContenedorTitulos Titulo = "Modificar producto"/>
+          </section>
 
       {/*  //Formulario  */}
 
