@@ -7,6 +7,8 @@ import ventas from "./img/ventas.png";
 import logout from "./img/logout.png";
 import grupo from "./img/grupo.png";
 import clientes from "./img/clientes.png";
+import { Link } from "react-router-dom";
+
 
 const Sidebar = () => {
   return (
@@ -23,36 +25,45 @@ const Sidebar = () => {
           </span>
         </div>
         <ul>
-          <li>
-            <img src={logo} alt="Logo Julis" className="logo" />
-          </li>
-          <li className="active">
-            <img
-              style={{ float: "left" }}
-              src={house}
-              alt="Logo Julis"
-              className="icono"
-            />
-            Dashboard
-          </li>
-          <li>
-            <img
-              style={{ float: "left" }}
-              src={caja}
-              alt="Logo Julis"
-              className="icono"
-            />{" "}
-            Productos
-          </li>
-          <li>
-            <img
-              style={{ float: "left" }}
-              src={ventas}
-              alt="Logo Julis"
-              className="icono"
-            />
-            <a href="/registro-venta.html">Ventas</a>
-          </li>
+          <Link to="/">
+            <li>
+              <img src={logo} alt="Logo Julis" className="logo" />
+            </li>
+          </Link>
+          <Link to="/">
+            <li className="active">
+              <img
+                style={{ float: "left" }}
+                src={house}
+                alt="Logo Julis"
+                className="icono"
+              />
+              Dashboard
+            </li>
+          </Link>
+          <Link to="">
+            <li>
+              <img
+                style={{ float: "left" }}
+                src={caja}
+                alt="Logo Julis"
+                className="icono"
+              />{" "}
+              Productos
+            </li>
+          </Link>
+          <Link to="/tablaventas">
+            <li>
+              <img
+                style={{ float: "left" }}
+                src={ventas}
+                alt="Logo Julis"
+                className="icono"
+              />
+              <a href="/registro-venta.html">Ventas</a>
+            </li>
+          </Link>
+          <Link to="">
           <li>
             <img
               style={{ float: "left" }}
@@ -62,6 +73,8 @@ const Sidebar = () => {
             />
             Usuarios
           </li>
+          </Link>
+          <Link to="/">
           <li>
             <img
               style={{ float: "left" }}
@@ -71,10 +84,12 @@ const Sidebar = () => {
             />
             Clientes
           </li>
+          </Link>
         </ul>
         <br />
         <br />
         <ul>
+          <Link to="/">
           <li className="Salir">
             <img
               style={{ float: "left" }}
@@ -84,6 +99,7 @@ const Sidebar = () => {
             />{" "}
             Cerrar Sesión
           </li>
+          </Link>
         </ul>
 
         <script src="main.js"></script>
