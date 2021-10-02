@@ -6,7 +6,9 @@ import ModificarEstadoUsuario from "./pages/admin/ModificarEstadoUsuario";
 import ModificarProducto from "./pages/admin/ModificarProducto";
 import ResgistrarCliente from "./pages/admin/RegistrarCliente";
 import RegistrarProducto from "./pages/admin/RegistrarProducto";
-import TablaVenta from "./pages/admin/TablaVenta";
+import TablaVenta from "./pages/admin/TablaVenta"
+
+
 
 function App() {
   return (
