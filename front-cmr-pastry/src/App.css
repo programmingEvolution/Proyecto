@@ -117,6 +117,7 @@ input[type="checkbox"]:checked + label {
 body {
   background: #f5f5f5;
 }
+
 .sidebar {
   position: fixed;
   width: 200px;

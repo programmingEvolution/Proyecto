@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <nav className="hidden sm:flex sm:w-72 border border-gray-300 h-full flex-col bg-gray-200 p-4 sidebar">
+    <nav className="hidden sm:flex sm:w-60 border border-gray-300  flex-col bg-gray-200 p-0 sidebar">
       <div id="sidebar">
         <div className="toggle-btn">
           <span>
@@ -88,11 +88,16 @@ const Sidebar = () => {
         </ul>
         <br />
         <br />
+        <br />
         <ul>
+
+          <li className="mb-8 Salir">
+
           <Link to="/">
           <li className="Salir">
+
             <img
-              style={{ float: "left" }}
+              style={{ float: "left"}}
               src={logout}
               alt=""
               className="icono"
@@ -101,8 +106,11 @@ const Sidebar = () => {
           </li>
           </Link>
         </ul>
-
-        <script src="main.js"></script>
+        <br /><br />
+        <br />
+        <br /><br />
+        <br />
+        <script src="main"></script>
       </div>
     </nav>
   );
