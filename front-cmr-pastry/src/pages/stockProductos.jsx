@@ -8,11 +8,29 @@ const StockProductos = () => {
     <div className="contenedorStock">
       <section>
         <ul className="contenedorBotonesgrises">
-          <li className="buscadoresGrises">Filtrar</li>
-          <li className="buscadoresGrises">Buscar</li>
-          <Link to="registrarventa">
-            <li className="botonesGrises">Añadir a la venta</li>
-          </Link>
+          <form className="flex ">
+            <section>
+              <label className="labelForm" htmlFor="idProducto">
+                Buscar Producto:
+              </label>
+              <input
+                className="inputForm"
+                id="idProducto"
+                placeholder="Ingrese el id del cliente"
+                type="ID"
+              ></input>
+            </section>
+            <section className="flex flex-grow justify-between">
+              <button className="buttonForm" type="submit">
+                Buscar
+              </button>
+              <li>
+                <Link to="registrarventa">
+                  <button className="buttonForm">+</button>
+                </Link>
+              </li>
+            </section>
+          </form>
         </ul>
       </section>
 
