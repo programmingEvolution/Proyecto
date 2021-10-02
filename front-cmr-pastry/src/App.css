@@ -457,16 +457,19 @@ td {
   background-color: #e9e9e9;
   color: silver;
   border: 0px;
-  padding: 5px 15px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 20px;
   width: 600px;
   height: 20px;
   border-radius: 10px;
   font-weight: bolder;
   text-align: left;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   box-shadow: 0px 4px 4px gray;
-  margin-top: 5%;
+  margin-top: 200px;
+  margin-bottom: -150px;
 }
 .buscadorEspecifico:hover {
   cursor: text;
@@ -478,7 +481,10 @@ td {
   background-color: #ffe5d9;
   color: #775c5a;
   border: 1px;
-  padding: 5px 5px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
   width: 200px;
   height: 22px;
   border-radius: 10px;
@@ -487,7 +493,9 @@ td {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 18px;
   box-shadow: 0px 4px 4px rgb(167, 165, 165);
-  margin-top: 5%;
+  margin-top: 200px;
+  margin-bottom: -150px;
+  margin-left: 15px;
 }
 .botonNuevoPro:hover {
   cursor: pointer;
@@ -495,7 +503,7 @@ td {
 }
 
 .correrTabla {
-  margin-top: 200px;
+  margin-top: 100px;
   margin-left: 15%;
   margin-right: 5%;
 }
@@ -512,8 +520,6 @@ td {
 }
 
 .filaImpar {
-  justify-items: right;
-  text-align: left;
   background-color: white;
   height: 60px;
   padding-inline: 10px;
@@ -733,9 +739,9 @@ ul {
 
 /** CSS DASHBOARD DIEGO**/
 main {
-  margin-left: 200px;
+  margin-left: 50px;
   max-width: 1500px;
-  margin-top: 0px;
+  margin-top: -20px;
   min-height: 90vh;
   padding: 1rem 3rem;
 }
@@ -744,6 +750,9 @@ main {
   margin-top: 11rem;
   color: black;
   margin-bottom: 1rem;
+  margin-right: 1200px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .dash-cards {
@@ -804,7 +813,7 @@ main {
 
 .activity-grid {
   display: grid;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 70% 30%;
   grid-column-gap: 1.5rem;
 }
 
@@ -830,7 +839,10 @@ main {
   width: 100%;
   border-collapse: collapse;
 }
-
+.activity-card{
+  margin-left: -200px;
+  margin-right: 80px;
+}
 .activity-card thead {
   background: #efefef;
   text-align: left;
@@ -877,6 +889,8 @@ tbody tr:nth-child(even) {
   margin-bottom: 1.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 .summary-card h3 {
   color: black;
@@ -914,7 +928,9 @@ tbody tr:nth-child(even) {
 .table-responsive {
   overflow-x: auto;
 }
-
+.table-responsive table{
+  margin-top: 0px;
+}
 /**FORMULARIO VENTAS**/
 body {
   background: #f5f5f5;
