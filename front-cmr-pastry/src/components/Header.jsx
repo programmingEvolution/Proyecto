@@ -5,12 +5,12 @@ const Header = () => {
   return (
     <div>
       <nav>
-        <ul class="navbar">
+        <ul className="navbar">
           <li>
-            <img class="logoGrande" src="./media/logo.png" alt="logo" />
+            <img className="logoGrande" src="./media/logo.png" alt="logo" />
           </li>
           <Link to ="/login">
-            <li class="botonLogin">Login</li>
+            <li className="botonLogin">Login</li>
           </Link>
         </ul>
       </nav>
