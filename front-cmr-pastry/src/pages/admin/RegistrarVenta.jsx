@@ -8,8 +8,9 @@ import { Link } from "react-router-dom";
 const RegistrarVenta = () => {
   return (
     <div>
-      <h2 className="dash-title">Registrar Venta</h2>
-
+      <section>
+        <ContenedorTitulos Titulo="Registrar ventas" />
+      </section>
       <form>
         <div className="field large">
           <label for="">Id Cliente:</label>

@@ -7,7 +7,7 @@ const TablaVenta = () => {
   return (
     <div>
       <section>
-        <ContenedorTitulos Titulo="Gestión de Clientes" />
+        <ContenedorTitulos Titulo="Gestión de Ventas" />
       </section>
       <section>
         <ul className="contenedorBotonesgrises">
@@ -38,7 +38,7 @@ const TablaVenta = () => {
       </section>
 
       <section>
-        <Link to="registrarcliente">
+        <Link to="registrarventa">
           <button className="buttonForm">Nueva venta</button>
         </Link>
       </section>

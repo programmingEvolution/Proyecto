@@ -34,7 +34,7 @@ const StockProductos = () => {
       </section>
 
       <section>
-        <Link to="registrarusuario">
+        <Link to="registrarventa">
           <button className="buttonForm">Añadir a la venta</button>
         </Link>
       </section>

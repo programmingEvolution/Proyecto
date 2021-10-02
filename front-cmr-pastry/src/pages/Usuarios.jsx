@@ -32,12 +32,6 @@ const Usuarios = () => {
       </section>
 
       <section>
-        <Link to="registrarusuario">
-          <button className="buttonForm">Nuevo Usuario</button>
-        </Link>
-      </section>
-
-      <section>
         <table>
           <tr>
             <td className="tituloColumnaUsu">IDUsuario</td>
