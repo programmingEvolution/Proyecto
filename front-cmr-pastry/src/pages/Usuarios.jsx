@@ -1,6 +1,6 @@
 const Usuarios = () => {
     return (
-        <div>
+        <div className="contenedorFormulario">
             <section> 
                 <ul className="contenedorBotonesgrises">
                     <li className="buscadorEspecificoUsu">Buscar ID Usuario</li>

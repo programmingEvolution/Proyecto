@@ -13,6 +13,10 @@ import Index from "./pages/Index";
 import StockProductos from "./pages/StockProductos";
 import Productos from "./pages/Productos";
 import Panel from "./components/Panel";
+import Clientes from "./pages/Clientes";
+import Usuarios from "./pages/Usuarios";
+import RegistrarVenta from "./pages/admin/RegistrarVenta";
+import ModificarVenta from "./pages/admin/ModificarVenta";
 
 function App() {
   return (
@@ -29,7 +33,12 @@ function App() {
               "/tablaventas",
               "/stock",
               "/productos",
-              "/panel"
+              "/panel",
+              "/clientes",
+              "/usuarios",
+              "/registrarventa",
+              "/modificarventa",
+             
             ]}
           >
             <Switch>
@@ -44,14 +53,26 @@ function App() {
                   <Route path="/registrarcliente">
                     <ResgistrarCliente></ResgistrarCliente>
                   </Route>
-                  <Route path="/modificarCliente">
+                  <Route path="/modificarcliente">
                     <ModificarCliente></ModificarCliente>
+                  </Route>
+                  <Route path="/modificarventa">
+                    <ModificarVenta></ModificarVenta>
+                  </Route>
+                  <Route path="/clientes">
+                    <Clientes></Clientes>
                   </Route>
                   <Route path="/modificarestadousuario">
                     <ModificarEstadoUsuario></ModificarEstadoUsuario>
                   </Route>
                   <Route path="/tablaventas">
                     <TablaVenta></TablaVenta>
+                  </Route>
+                  <Route path="/registrarventa">
+                    <RegistrarVenta></RegistrarVenta>
+                  </Route>
+                  <Route path="/usuarios">
+                    <Usuarios></Usuarios>
                   </Route>
                   <Route path="/stock">
                     <StockProductos></StockProductos>

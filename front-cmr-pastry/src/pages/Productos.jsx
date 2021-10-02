@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Productos = () => {
     return (
-        <div>
+        <div className="contenedorFormulario">
             <section> 
                 <ul className="contenedorBotonesgrises">
                     <li className="buscadorEspecifico">Buscar ID Productos</li>

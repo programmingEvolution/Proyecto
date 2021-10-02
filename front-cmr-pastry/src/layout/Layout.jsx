@@ -8,9 +8,7 @@ const Layout = ({ children }) => {
       <div className="flex flex-col md:flex-row flex-nowrap h-full w-full">
         <Sidebar />
 
-        <main className="flex w-full   items-center justify-center">
-          {children}
-        </main>
+        <main>{children}</main>
       </div>
     </div>
   );

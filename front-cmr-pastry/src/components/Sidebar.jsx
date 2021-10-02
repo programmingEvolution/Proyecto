@@ -24,7 +24,7 @@ const Sidebar = () => {
           </span>
         </div>
         <ul>
-          <Link to="/">
+          <Link to="/panel">
             <li>
               <img src={logo} alt="Logo Julis" className="logo" />
             </li>
@@ -40,7 +40,7 @@ const Sidebar = () => {
               Dashboard
             </li>
           </Link>
-          <Link to="/stock">
+          <Link to="/productos">
             <li>
               <img
                 style={{ float: "left" }}
@@ -62,7 +62,7 @@ const Sidebar = () => {
               <a href="/registro-venta.html">Ventas</a>
             </li>
           </Link>
-          <Link to="">
+          <Link to="/usuarios">
             <li>
               <img
                 style={{ float: "left" }}
@@ -73,7 +73,7 @@ const Sidebar = () => {
               Usuarios
             </li>
           </Link>
-          <Link to="/">
+          <Link to="/clientes">
             <li>
               <img
                 style={{ float: "left" }}

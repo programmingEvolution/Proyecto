@@ -9,7 +9,7 @@ import clientes from "./img/clientes.png";
 
 const Panel = () => {
   return (
-    <div>
+    <div className="contenedorFormulario">
       <h2 class="dash-title">Panel De Control</h2>
 
       <div class="dash-cards">

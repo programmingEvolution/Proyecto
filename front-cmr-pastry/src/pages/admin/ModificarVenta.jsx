@@ -1,93 +1,151 @@
-import React from 'react'
+import React from "react";
 
-const ModificarVenta = () => {
-    return (
-        <div>
-            <div class = "div1">
-                <h3>Modificar ventas</h3><br></br>
-                <form>
-                    <label for="usuario">ID Cliente:</label><br><br></br></br>
-                    <label for="usuario">ID Vendedor:</label><br><br></br></br>
-                    <label for="usuario">Fecha de Venta:</label>
-                </form>
-            </div>
-            <div class= "div2">
-                <form>
-                    <input type="text"></input><br><br></br></br>
-                    <input type="text"></input><br><br></br></br>
-                    <input type="date"></input>
-                </form>
-            </div>
+import ContenedorTitulos from "../../components/ContenedorTitulos";
+import edit from "../../media/edit.png";
+import eliminar from "../../media/eliminar.png";
+import { Link } from "react-router-dom";
 
-            <div class= "div3">
-                <form>
-                    <label for="usuario">Producto:</label><br><br></br></br>
-                    <label for="usuario">Cantidad:</label><br><br></br></br>
-                    <label for="usuario">Fecha de Pago:</label>
-                </form>
-            </div>
+const RegistrarVenta = () => {
+  return (
+    <div>
+      <h2 class="dash-title">Registrar Venta</h2>
 
-            <div class= "div4">
-                <form>
-                    <input type="text"></input><br><br></br></br>
-                    <input type="number"></input><br><br></br></br>
-                    <input class="id" type="date"></input>
-                </form>
-            </div>
-
-            <section>
-                <table>
-                    <tr>
-                        <th>ID Producto</th>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Estado</th>
-                    </tr>
-                    <tr>
-                        <td>0001</td>
-                        <td>Cupcakes</td>
-                        <td>5000</td>
-                        <td>10</td>
-                        <td>Entregado</td>
-                    </tr>
-                    <tr>
-                        <td>0002</td>
-                        <td>Cheesecake de mora</td>
-                        <td>25000</td>
-                        <td>2</td>
-                        <td>Pagado</td>
-                    </tr>
-                    <tr>
-                        <td>0003</td>
-                        <td>Cheesecake de maracuyá</td>
-                        <td>30000</td>
-                        <td>1</td>
-                        <td>Cancelado</td>
-                    </tr>
-                    <tr>
-                        <td>0004</td>
-                        <td>Torta de banano</td>
-                        <td>20000</td>
-                        <td>3</td>
-                        <td>Abonado</td>
-                    </tr>
-
-                </table>
-            </section>
-            <div class= "estado">
-                <label for="usuario">Estado:</label>
-                <input type="text">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</input>
-
-                <label for="venta">Total venta:</label>
-                <input type="number"></input>
-            </div>
-            <div class= "botones">
-                <input type="submit" value="Guardar">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</input>
-                <input type="submit" value="Cancelar"></input>
-            </div>
+      <form>
+        <div class="field large">
+          <label for="">Id Cliente:</label>
+          <input type="number" required />
         </div>
-    )
-}
+        <div class="field">
+          <label for="">Producto:</label>
+          <input type="text" required />
+        </div>
+        <div class="field large">
+          <label for="vendedor">ID Vendedor:</label>
+          <input name="vendedor" type="number" required />
+        </div>
+        <div class="field short">
+          <label for="">Cantidad:</label>
+          <input type="number" required />
+        </div>
+        <div class="field">
+          <input class="boton" type="submit" value="Agregar" />
+        </div>
+      </form>
 
-export default ModificarVenta
+      <div class="field boton fecha">
+        <label class="fecha" for="">
+          Fecha de venta
+        </label>
+        <input class="fecha" type="date" required />
+
+        <button>
+          <a class="add" href="">
+            {" "}
+            Añadir Productos
+          </a>
+        </button>
+      </div>
+      <table class="ventas">
+        <tr>
+          <th>ID Producto</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Muffins</td>
+          <td>$12.000</td>
+          <td>2</td>
+          <td>
+            <span class="badge exitoso">Finalizada</span>
+          </td>
+          <td>
+            <span>
+              <img class="icono" src={edit} alt="Editar" />
+              <img class="icono" src="/img/eliminar.png" alt="" />
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Torta Grande</td>
+          <td>$50.000</td>
+          <td>1</td>
+          <td>
+            <span class="badge exitoso">Finalizada</span>
+          </td>
+          <td>
+            <span>
+              <img class="icono" src={edit} alt="Editar" />
+              <img class="icono" src={eliminar} alt="" />
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Torta de Zanahoria</td>
+          <td>$60.000</td>
+          <td>2</td>
+          <td>
+            <span class="badge pendiente">En despacho</span>
+          </td>
+          <td>
+            <span>
+              <img class="icono" src={edit} alt="Editar" />
+              <img class="icono" src={eliminar} alt="" />
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Chocolates</td>
+          <td>$120.000</td>
+          <td>150</td>
+          <td>
+            <span class="badge pendiente">En despacho</span>
+          </td>
+          <td>
+            <span>
+              <img class="icono" src={edit} alt="Editar" />
+              <img class="icono" src={eliminar} alt="" />
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Mil Hojas</td>
+          <td>$7.500</td>
+          <td>2</td>
+          <td>
+            <span class="badge exitoso">Finalizada</span>
+          </td>
+          <td>
+            <span>
+              <img class="icono" src={edit} alt="Editar" />
+              <img class="icono" src={eliminar} alt="" />
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Muffins</td>
+          <td>$240.000</td>
+          <td>40</td>
+          <td>
+            <span class="badge pendiente">En proceso</span>
+          </td>
+          <td>
+            <span>
+              <img class="icono" src={edit} alt="Editar" />
+              <img class="icono" src={eliminar} alt="" />
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  );
+};
+export default RegistrarVenta;

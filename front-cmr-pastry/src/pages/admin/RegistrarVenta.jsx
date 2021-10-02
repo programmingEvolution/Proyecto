@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
 import ContenedorTitulos from '../../components/ContenedorTitulos'
-import edit from "./media/edit.png";
-import eliminar from "./media/eliminar.png";
+import edit from "../../media/edit.png"
+import eliminar from "../../media/eliminar.png";
 import { Link } from "react-router-dom";
 
 const RegistrarVenta = () => {
+    
     return (
         <div>
         
@@ -31,14 +32,15 @@ const RegistrarVenta = () => {
             <div class="field">
                 <input class="boton"type="submit" value="Agregar"/>
             </div>
-            </div>
         </form>
-            <><div class="field boton fecha">
+
+            <div class="field boton fecha">
                 <label class="fecha" for="">Fecha de venta</label>
                 <input class="fecha" type="date" required />
 
                 <button><a class="add" href=""> Añadir Productos</a></button>
-            </div><table class="ventas">
+            </div>
+            <table class="ventas">
                     <tr>
                         <th>ID Producto</th>
                         <th>Nombre</th>
@@ -53,16 +55,16 @@ const RegistrarVenta = () => {
                         <td>$12.000</td>
                         <td>2</td>
                         <td><span class="badge exitoso">Finalizada</span></td>
-                        <td><span><img class="icono" src={edit} alt="Editar"><img class="icono" src="/img/eliminar.png" alt=""></span></td>
-                        </tr>
+                        <td><span><img class="icono" src={edit} alt="Editar"/><img class="icono" src="/img/eliminar.png" alt=""/></span></td>
+                    </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Torta Grande</td>
                                 <td>$50.000</td>
                                 <td>1</td>
                                 <td><span class="badge exitoso">Finalizada</span></td>
-                                <td><span><img class="icono" src={edit} alt="Editar"><img class="icono" src={eliminar} alt=""></span></td>
-                                </tr>
+                                <td><span><img class="icono" src={edit} alt="Editar"/><img class="icono" src={eliminar} alt=""/></span></td>
+                            </tr>
                                     <tr>
                                         <td>3</td>
                                         <td>Torta de Zanahoria</td>
@@ -70,14 +72,14 @@ const RegistrarVenta = () => {
                                         <td>2</td>
                                         <td><span class="badge pendiente">En despacho</span></td>
                                         <td><span><img class="icono" src={edit} alt="Editar"/><img class="icono" src={eliminar} alt=""/></span></td>
-                                        </tr>
+                                    </tr>
                                             <tr>
                                                 <td>4</td>
                                                 <td>Chocolates</td>
                                                 <td>$120.000</td>
                                                 <td>150</td>
                                                 <td><span class="badge pendiente">En despacho</span></td>
-                                                <td><span><img class="icono" src={edit} alt="Editar"><img class="icono" src={eliminar} alt=""></span></td>
+                                                <td><span><img class="icono" src={edit} alt="Editar"/><img class="icono" src={eliminar} alt=""/></span></td>
                                                 </tr>
                                                     <tr>
                                                         <td>5</td>
@@ -85,22 +87,24 @@ const RegistrarVenta = () => {
                                                         <td>$7.500</td>
                                                         <td>2</td>
                                                         <td><span class="badge exitoso">Finalizada</span></td>
-                                                        <td><span><img class="icono" src={edit} alt="Editar"><img class="icono" src={eliminar} alt=""></span></td>
-                                                        </tr>
+                                                        <td><span><img class="icono" src={edit} alt="Editar"/><img class="icono" src={eliminar} alt=""/></span></td>
+                                                    </tr>
                                                             <tr>
                                                                 <td>6</td>
                                                                 <td>Muffins</td>
                                                                 <td>$240.000</td>
                                                                 <td>40</td>
                                                                 <td><span class="badge pendiente">En proceso</span></td>
-                                                                <td><span><img class="icono" src={edit} alt="Editar"><img class="icono" src={eliminar} alt=""></span></td>
-                                                                </tr>
-                                                                    
-                                                                </table>
+                                                                <td><span><img class="icono" src={edit} alt="Editar"/><img class="icono" src={eliminar} alt=""/></span></td>
                                                             </tr>
-                                                            </main>
-                                                            </tr>   
-                                                        </div>
-                                                        )
+                                                                    
+                                                                
+                                                            
+                                                          
+                                            
+                                   
+                                                    </table>                                               
+        </div>
+                                                        )}
                                                         export default RegistrarVenta;
-                                                    </></></></></></></></></></></>
+                                                   
