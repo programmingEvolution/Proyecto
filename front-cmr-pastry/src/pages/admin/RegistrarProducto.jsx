@@ -2,10 +2,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
 import React from "react";
+import ContenedorTitulos from "../../components/ContenedorTitulos";
+
 
 const ResgistrarProducto = () => {
   const formik = useFormik({
-    
     //valores iniciales para formulario con formik
     initialValues: {
       idProducto: "",
@@ -47,16 +48,18 @@ const ResgistrarProducto = () => {
   });
 
   return (
+
     <div className="contenedorFormulario">
-      <h2 className="text-2xl font-extrabold text-gray-800">
-        Registrar nuevo producto
-      </h2>
+      
+      
+          <section>
+              <ContenedorTitulos Titulo = "Registrar producto"/>
+          </section>
 
       {/*  //Formulario  */}
 
       <form className="formulario" onSubmit={formik.handleSubmit}>
         <section>
-
           <label className="labelForm" htmlFor="idProducto">
             Id Producto:
           </label>
@@ -69,7 +72,6 @@ const ResgistrarProducto = () => {
             onChange={formik.handleChange}
             value={formik.values.idProducto}
           ></input>
-
         </section>
 
         {/* validación con yup para que no deje el campo vacio */}
@@ -188,7 +190,7 @@ const ResgistrarProducto = () => {
           <button className="buttonForm" type="submit">
             Registrar
           </button>
-          <button className="buttonForm"  type="button">
+          <button className="buttonForm" type="button">
             Cancelar
           </button>
         </section>

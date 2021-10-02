@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import React from "react";
 import { useFormik } from "formik";
-
+import ContenedorTitulos from "../../components/ContenedorTitulos";
 const ModificarEstadoUsuario = () => {
   const formik = useFormik({
     //valores iniciales para formulario con formik
@@ -33,9 +33,9 @@ const ModificarEstadoUsuario = () => {
 
   return (
     <div className="contenedorFormulario">
-      <h2 className="text-2xl font-extrabold text-gray-800">
-        Modificar Usuario
-      </h2>
+      <section>
+              <ContenedorTitulos Titulo = "Modificar estado de usuario"/>
+          </section>
       <form className="formulario" onSubmit={formik.handleSubmit}>
         <section>
           <label className="labelForm" htmlFor="idUsuario">

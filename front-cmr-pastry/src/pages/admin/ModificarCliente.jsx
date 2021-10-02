@@ -1,13 +1,14 @@
 import React from "react";
+import ContenedorTitulos from "../../components/ContenedorTitulos";
 
 const ModificarCliente = () => {
   
   return (
       
     <div className="contenedorFormulario">
-      <h2 className="text-2xl font-extrabold text-gray-800">
-        Modificar datos de cliente
-      </h2>
+      <section>
+              <ContenedorTitulos Titulo = "Modificar cliente"/>
+          </section>
       <form className="formulario">
         <section>
           <label className="labelForm" htmlFor="idCliente">

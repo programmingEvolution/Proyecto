@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
 import React from "react";
-
+import ContenedorTitulos from "../../components/ContenedorTitulos";
 
 
 const ResgistrarCliente = () => {
@@ -44,9 +44,10 @@ const ResgistrarCliente = () => {
   return (
 
     <div className="contenedorFormulario">
-      <h2 className="text-2xl font-extrabold text-gray-800">
-        Registrar nuevo cliente
-      </h2>
+      <section>
+              <ContenedorTitulos Titulo = "Registrar cliente"/>
+          </section>
+
       <form className="formulario" onSubmit={formik.handleSubmit}>
         <section>
           <label className="labelForm" htmlFor="idCliente">
