@@ -29,7 +29,7 @@ const Sidebar = () => {
               <img src={logo} alt="Logo Julis" className="logo" />
             </li>
           </Link>
-          <Link to="/">
+          <Link to="/panel">
             <li className="active">
               <img
                 style={{ float: "left" }}

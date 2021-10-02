@@ -1,10 +1,15 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 const Productos = () => {
     return (
         <div>
             <section> 
                 <ul className="contenedorBotonesgrises">
                     <li className="buscadorEspecifico">Buscar ID Productos</li>
+                    <Link to="registrarproducto">
                     <li className="botonNuevoPro">Nuevo Producto</li>
+                    </Link>
                 </ul>
 
             </section>
