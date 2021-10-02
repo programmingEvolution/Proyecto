@@ -40,7 +40,7 @@ const Sidebar = () => {
               Dashboard
             </li>
           </Link>
-          <Link to="/">
+          <Link to="/stock">
             <li>
               <img
                 style={{ float: "left" }}
@@ -63,51 +63,51 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="">
-          <li>
-            <img
-              style={{ float: "left" }}
-              src={grupo}
-              alt="Logo Julis"
-              className="icono"
-            />
-            Usuarios
-          </li>
+            <li>
+              <img
+                style={{ float: "left" }}
+                src={grupo}
+                alt="Logo Julis"
+                className="icono"
+              />
+              Usuarios
+            </li>
           </Link>
           <Link to="/">
-          <li>
-            <img
-              style={{ float: "left" }}
-              src={clientes}
-              alt="Logo Julis"
-              className="icono"
-            />
-            Clientes
-          </li>
+            <li>
+              <img
+                style={{ float: "left" }}
+                src={clientes}
+                alt="Logo Julis"
+                className="icono"
+              />
+              Clientes
+            </li>
           </Link>
         </ul>
         <br />
         <br />
         <br />
         <ul>
-
-          <li className="mb-8 Salir"/>
+          <li className="mb-8 Salir" />
 
           <Link to="/">
-          <li className="Salir">
-
-            <img
-              style={{ float: "left"}}
-              src={logout}
-              alt=""
-              className="icono"
-            />{" "}
-            Cerrar Sesión
-          </li>
+            <li className="Salir">
+              <img
+                style={{ float: "left" }}
+                src={logout}
+                alt=""
+                className="icono"
+              />{" "}
+              Cerrar Sesión
+            </li>
           </Link>
         </ul>
-        <br /><br />
         <br />
-        <br /><br />
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
         <script src="main"></script>
       </div>

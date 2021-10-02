@@ -762,6 +762,7 @@ ul{
 
 }
 
+
 /** CSS DASHBOARD DIEGO**/
 main {
   margin-left: 200px;
@@ -1027,3 +1028,150 @@ form{
   cursor: pointer;
 }
 /** CSS SIDEBAR DIEGO**/
+=======
+.contenedorBotonesgrises{
+  display: flex;
+  justify-content: space-between;
+  align-items:flex-start;
+  margin-left: 15%;
+  margin-right: 2%;
+  padding: 1%;
+
+
+}
+
+.buscadoresGrises{
+  background-color :#E9E9E9;
+  color:silver;
+  border:0px;
+  padding:5px 15px ;
+  width: 500px;
+  height: 20px ;
+  border-radius: 10px;
+  font-weight: bolder;
+  text-align:left;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+  box-shadow:0px 4px 4PX gray;
+}
+
+.buscadoresGrises:hover {
+  cursor:text;
+  background-color:whitesmoke;
+}
+
+.botonesGrises{
+  margin-right:10px;
+  background-color :#FFE5D9;
+  color:#775C5A;
+  border:1px;
+  padding: 5px 5px;
+  width: 200px;
+  height: 22px ;
+  border-radius: 10px;
+  font-weight: bolder;
+  text-align: center;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+  box-shadow:0px 4px 4PX rgb(167, 165, 165);
+
+
+
+}
+.botonesGrises:hover{
+  cursor: pointer;
+  shape-outside: 4px 4px #EFB6B2;
+  background-color:#EDC0BC;
+}
+
+.tarjetasProductos{
+  margin-top: 25px;
+  margin-left: 15%;
+  margin-right:45px;
+  margin-bottom: 25px;
+  padding: 10px;
+  background-color:#FFE5D9;  
+  display: flex;
+  justify-content: space-between;
+  height: 280px;
+  box-shadow:2px 4px silver;
+  border-radius: 20px;
+}
+.tarjetasProductos:hover{
+  cursor: pointer;
+  shape-outside: 4px 4px #EFB6B2;
+  background-color:#EDC0BC;
+}
+
+.tarjetasProductosNoDispo{
+  margin-top: 25px;
+  margin-left: 15%;
+  margin-right:45px;
+  margin-bottom: 25px;
+  padding: 10px;
+  background-color:silver;  
+  display: flex;
+  justify-content: space-between;
+  height: 280px;
+  box-shadow:2px 4px silver;
+  border-radius: 20px;
+
+}
+
+.contenedorTarjetasPro{
+  display: flex;
+  justify-content: space-between;
+  text-align:justify;
+  align-items: center;
+  padding: 5px;
+  width: 100%;
+  margin-right:2%;
+  margin-left:2%;
+
+
+}
+
+.elementos1{
+  display: flex;
+  text-align: center;
+  justify-items: left;
+  width: 260px ;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  margin-left:4%;
+}
+
+.elementos2{
+  color: #775C5A;
+  font-size: medium;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  height: 260px;
+  width: 260px ;
+  display: flex;
+  justify-content: space-between;
+  text-align:left;
+  margin-top: 8%;
+  margin-bottom: 4%;
+
+
+}
+.contenidoProducto{
+  display: grid;
+  justify-items: left;
+  height: 100%;
+
+}
+.identificador{
+  display: flex;
+  justify-content: right;
+  text-align:inherit;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size:large;
+  height: 60px;
+  width: 200px ;
+  margin-right: 10px;
+  margin-top: 200px;
+}
+
