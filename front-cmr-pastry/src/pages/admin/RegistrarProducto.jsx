@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import Swal from "sweetalert2";
 import React from "react";
 import ContenedorTitulos from "../../components/ContenedorTitulos";
-
+import { crearProducto } from "../../utils/api";
 
 const ResgistrarProducto = () => {
   const formik = useFormik({
@@ -32,8 +32,17 @@ const ResgistrarProducto = () => {
 
     //Enviar valores
 
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
+      crearProducto({
+        idProducto: values.idProducto,
+        nombreProducto: values.nombreProducto,
+        proveedor: values.proveedor,
+        precioUnidad: values.precioUnidad,
+        inventario: values.inventario,
+        imagen: values.imagen,
+      });
       console.log("enviando..");
+     
       console.log(values);
 
       //alerta de swal al agregar producto
@@ -44,17 +53,16 @@ const ResgistrarProducto = () => {
         title: "El producto a sido registrado",
         timer: 1500,
       });
+
+      resetForm();
     },
   });
 
   return (
-
     <div className="contenedorFormulario">
-      
-      
-          <section>
-              <ContenedorTitulos Titulo = "Registrar producto"/>
-          </section>
+      <section>
+        <ContenedorTitulos Titulo="Registrar producto" />
+      </section>
 
       {/*  //Formulario  */}
 
