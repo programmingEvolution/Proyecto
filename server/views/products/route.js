@@ -1,6 +1,7 @@
 import Express from "express";
 import {
-
+editProduct,
+deleteProduct,
   createProduct,
   getAllProducts,
 } from "../../controllers/producto/productoController.js";
@@ -22,6 +23,14 @@ rutasProducto.route("/productos").get((req, res) => {
 
 rutasProducto.route('/productos').post((req, res) => {
   createProduct(req.body, genericCallback(res));
+});
+
+rutasProducto.route('/productos/:id').patch((req, res) => {
+  editProduct(req.params.id, req.body, genericCallback(res));
+});
+
+rutasProducto.route('/productos/:id').delete((req, res) => {
+  deleteProduct(req.params.id, genericCallback(res));
 });
 
 export default rutasProducto;
