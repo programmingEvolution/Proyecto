@@ -20,19 +20,31 @@ const RegistrarVenta = () => {
             type="number"
             placeholder="Ingrese el id del cliente"
             required
+            value="1234"
           />
         </div>
         <div className="field">
           <label for="">Producto:</label>
-          <input className="inputForm" type="text" required />
+          <input
+            className="inputForm"
+            type="text"
+            required
+            value="torta de chocolate"
+          />
         </div>
         <div className="field large">
           <label for="vendedor">ID Vendedor:</label>
-          <input className="inputForm" name="vendedor" type="number" required />
+          <input
+            className="inputForm"
+            name="vendedor"
+            type="number"
+            required
+            value="123123"
+          />
         </div>
         <div className="field short">
           <label for="">Cantidad:</label>
-          <input className="inputForm" type="number" required />
+          <input className="inputForm" type="number" required value="2" />
         </div>
 
         <div className="field">
