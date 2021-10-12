@@ -9,3 +9,9 @@ export const crearProducto = async (data, successCallback, errorCallback) => {
   };
   await axios.request(options).then(successCallback).catch(errorCallback);
 };
+
+export const obtenerProductos = async (successCallback, errorCallback) => {
+    const options = { method: 'GET', url: 'http://localhost:5000/productos/' };
+    await axios.request(options).then(successCallback).catch(errorCallback);
+    
+  };

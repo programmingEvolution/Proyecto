@@ -2,10 +2,29 @@ import React from "react";
 import { Link } from "react-router-dom";
 import edit from "../media/edit.png";
 import ContenedorTitulos from "../components/ContenedorTitulos";
+import { obtenerProductos } from "../utils/api";
+import { useState } from "react";
 
 const Productos = () => {
+
+  const [productos, setProductos] = useState([]);
+
+  obtenerProductos( (response) => {
+   
+ setProductos(response.data)
+
+ });
+  
+ console.log(productos[4])
+
   return (
+    
+  
+    
     <div>
+
+
+      
       <section>
         <ContenedorTitulos Titulo="Gestión de productos" />
       </section>
@@ -41,99 +60,32 @@ const Productos = () => {
 
       <section>
         <table>
+          <thead>
           <tr>
             <td className="tituloColumna">IDproductos</td>
             <td className="tituloColumna">Proveedor</td>
             <td className="tituloColumna">Nombre</td>
-            <td className="tituloColumna">Variantes</td>
             <td className="tituloColumna">Precio unidad</td>
             <td className="tituloColumna">Disponible</td>
             <td className="tituloColumna">Editar</td>
           </tr>
-          <tr>
-            <td className="filaImpar">0001</td>
-            <td className="filaImpar">Juli's Pastry</td>
-            <td className="filaImpar">Muffins</td>
-            <td className="filaImpar">
-              Zanahoria, manzana, banano y maracuyá.
-            </td>
-            <td className="filaImpar">$4000</td>
-            <td className="filaImpar">60</td>
+          </thead>
+          <tbody>
+          {productos.map((producto) =>(
+  <tr key={producto._id}>
+            <td className="filaImpar">{producto._id}</td>
+            <td className="filaImpar">{producto.proveedor}</td>
+            <td className="filaImpar">{producto.nombreProducto}</td>
+            <td className="filaImpar">{producto.precioUnidad}</td>
+            <td className="filaImpar">{producto.inventario}</td>
             <Link to="/modificarproducto">
               <span>
                 <img class="icono" src={edit} alt="Editar" />
               </span>
             </Link>
           </tr>
-          <tr>
-            <td className="filaPar">0002</td>
-            <td className="filaPar">Juli's Pastry</td>
-            <td className="filaPar">Mini Muffins</td>
-            <td className="filaPar">Zanahoria, manzana, banano y maracuyá.</td>
-            <td className="filaPar">$2000</td>
-            <td className="filaPar">50</td>
-            <Link to="/modificarventa">
-              <span>
-                <img class="icono" src={edit} alt="Editar" />
-              </span>
-            </Link>
-          </tr>
-          <tr>
-            <td className="filaImpar">0003</td>
-            <td className="filaImpar">Juli's Pastry</td>
-            <td className="filaImpar">Torta circular grande</td>
-            <td className="filaImpar">
-              Zanahoria, manzana, banano y maracuyá.
-            </td>
-            <td className="filaImpar">$25000</td>
-            <td className="filaImpar">20</td>
-            <Link to="/modificarventa">
-              <span>
-                <img class="icono" src={edit} alt="Editar" />
-              </span>
-            </Link>
-          </tr>
-          <tr>
-            <td className="filaPar">0004</td>
-            <td className="filaPar">Juli's Pastry</td>
-            <td className="filaPar">Torta circular mediana</td>
-            <td className="filaPar">Zanahoria, manzana, banano y maracuyá.</td>
-            <td className="filaPar">$16000</td>
-            <td className="filaPar">10</td>
-            <Link to="/modificarventa">
-              <span>
-                <img class="icono" src={edit} alt="Editar" />
-              </span>
-            </Link>
-          </tr>
-          <tr>
-            <td className="filaImpar">0005</td>
-            <td className="filaImpar">Juli's Pastry</td>
-            <td className="filaImpar">Torta circular pequeña</td>
-            <td className="filaImpar">
-              Zanahoria, manzana, banano y maracuyá.
-            </td>
-            <td className="filaImpar">$12000</td>
-            <td className="filaImpar">15</td>
-            <Link to="/modificarventa">
-              <span>
-                <img class="icono" src={edit} alt="Editar" />
-              </span>
-            </Link>
-          </tr>
-          <tr>
-            <td className="filaPar">0006</td>
-            <td className="filaPar">Juli's Pastry</td>
-            <td className="filaPar">Mini Torta</td>
-            <td className="filaPar">Zanahoria, manzana, banano y maracuyá.</td>
-            <td className="filaPar">$8000</td>
-            <td className="filaPar">6</td>
-            <Link to="/modificarventa">
-              <span>
-                <img class="icono" src={edit} alt="Editar" />
-              </span>
-            </Link>
-          </tr>
+          ))}</tbody>
+         
         </table>
       </section>
     </div>
