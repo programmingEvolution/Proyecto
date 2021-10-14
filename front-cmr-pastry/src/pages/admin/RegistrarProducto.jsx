@@ -9,7 +9,6 @@ const ResgistrarProducto = () => {
   const formik = useFormik({
     //valores iniciales para formulario con formik
     initialValues: {
-      idProducto: "",
       nombreProducto: "",
       proveedor: "",
       precioUnidad: "",
@@ -19,7 +18,6 @@ const ResgistrarProducto = () => {
 
     //Validacion de datos de formulario con yup
     validationSchema: Yup.object({
-      idProducto: Yup.string().required("El id es obligatorio"),
       nombreProducto: Yup.string().required("El nombre es obligatorio"),
       proveedor: Yup.string().required("El proveedor es obligatorio"),
       precioUnidad: Yup.string().required(
@@ -34,7 +32,6 @@ const ResgistrarProducto = () => {
 
     onSubmit: (values, { resetForm }) => {
       crearProducto({
-        idProducto: values.idProducto,
         nombreProducto: values.nombreProducto,
         proveedor: values.proveedor,
         precioUnidad: values.precioUnidad,
@@ -42,7 +39,7 @@ const ResgistrarProducto = () => {
         imagen: values.imagen,
       });
       console.log("enviando..");
-     
+
       console.log(values);
 
       //alerta de swal al agregar producto
@@ -67,29 +64,6 @@ const ResgistrarProducto = () => {
       {/*  //Formulario  */}
 
       <form className="formulario" onSubmit={formik.handleSubmit}>
-        <section>
-          <label className="labelForm" htmlFor="idProducto">
-            Id Producto:
-          </label>
-
-          <input
-            className="inputForm"
-            id="idProducto"
-            placeholder="Ingrese el id del producto"
-            type="ID"
-            onChange={formik.handleChange}
-            value={formik.values.idProducto}
-          ></input>
-        </section>
-
-        {/* validación con yup para que no deje el campo vacio */}
-        {formik.touched.idProducto && formik.errors.idProducto ? (
-          <div className="mensaje">
-            <p className="p">Error</p>
-            <p>{formik.errors.idProducto}</p>
-          </div>
-        ) : null}
-
         <section>
           <label className="labelForm" htmlFor="nombreProducto">
             Nombre Producto:
