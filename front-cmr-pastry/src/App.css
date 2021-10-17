@@ -1174,44 +1174,7 @@ form {
   background-color: #efb6b2;
 }
 
-.correrTablaUsu {
-  margin-top: 200px;
-  margin-left: 15%;
-  margin-right: 5%;
-}
 
-.tituloColumnaUsu {
-  background-color: #ffe5d9;
-  height: 40px;
-  padding-inline: 75px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaImparUsu {
-  justify-items: right;
-  background-color: white;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaParUsu {
-  background-color: #ffe5d9;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-}
 /** CSS tabla DE usuarios DANIELA**/
 
 /** CSS tabla DE clientes DANIELA**/
@@ -1257,44 +1220,7 @@ form {
   background-color: #efb6b2;
 }
 
-.correrTablaCliente {
-  margin-top: 200px;
-  margin-left: 15%;
-  margin-right: 5%;
-}
 
-.tituloColumnaCliente {
-  background-color: #ffe5d9;
-  height: 40px;
-  padding-inline: 75px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaImparCliente {
-  justify-items: right;
-  background-color: white;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaParCliente {
-  background-color: #ffe5d9;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-}
 /** CSS tabla DE clientes DANIELA**/
 
 /** CSS HEADER DANIELA**/
@@ -1346,4 +1272,22 @@ form {
   justify-content: left;
   display: block;
   align-items: flex-start;
+}
+/**Tablas**/
+.tabla th,
+.tabla td {
+  padding: 8px;
+  border:1px solid rgb(201, 195, 195);
+}
+.tabla th{
+  background-color:pink;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.tabla tr:nth-child(even){
+  background-color: rgb(248, 232, 235);
+}
+.tabla tr:hover{
+  background-color: rgb(247, 202, 208);
+  cursor: pointer;
 }

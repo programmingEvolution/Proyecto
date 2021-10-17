@@ -54,14 +54,12 @@ const Usuarios = () => {
         <ul className="contenedorBotonesgrises">
           <form>
             <section>
-              <label className="labelForm" htmlFor="idUsuario">
-                Buscar Usuario:
-              </label>
+              
               <input
                 value={busqueda}
                 className="inputForm"
                 id="idUsuario"
-                placeholder="Ingrese el nombre del usuario"
+                placeholder="Buscar Usuario"
                 type="ID"
                 onChange={(e) => setBusqueda(e.target.value)}
               ></input>
@@ -76,17 +74,17 @@ const Usuarios = () => {
       </section>
 
       <section>
-        <table>
+        <table className="tabla">
           <tr>
-            <td className="tituloColumnaUsu">IDUsuario</td>
-            <td className="tituloColumnaUsu">Nombre</td>
-            <td className="tituloColumnaUsu">Rol</td>
-            <td className="tituloColumnaUsu">Estado</td>
-            <td className="tituloColumnaUsu">Agregar Productos</td>
-            <td className="tituloColumnaUsu">Modificar Productos</td>
-            <td className="tituloColumnaUsu">Añadir usuarios</td>
-            <td className="tituloColumnaUsu">Modificar usuarios</td>
-            <td className="tituloColumnaUsu">Gestionar</td>
+            <th>IDUsuario</th>
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Agregar Productos</th>
+            <th>Modificar Productos</th>
+            <th>Añadir usuarios</th>
+            <th>Modificar usuarios</th>
+            <th>Gestionar</th>
           </tr>
           <tbody>
             {usuariosFiltrados.map((usuario) => {
@@ -172,7 +170,7 @@ const FilaUsuario = ({ usuario }) => {
   };
 
   return (
-    <tr>
+    <tr className="tabla.tr">
       {editar ? (
         <>
           {" "}

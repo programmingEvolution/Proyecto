@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <nav className="hidden sm:flex sm:w-60 border border-gray-300  flex-col bg-gray-200 p-0 sidebar">
+    <nav className="w-70 border border-gray-300 h-full flex flex-col justify-between bg-gray-200 p-0 sidebar">
       <div id="sidebar">
         <div className="toggle-btn">
           <span>
@@ -89,7 +89,6 @@ const Sidebar = () => {
         <br />
         <br />
         <ul>
-          <li className="mb-8 Salir" />
 
           <Link to="/">
             <li className="Salir">
