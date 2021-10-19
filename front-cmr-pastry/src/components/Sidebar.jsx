@@ -11,9 +11,9 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <nav className="w-70 border border-gray-300 h-full flex flex-col justify-between bg-gray-200 p-0 sidebar">
+    <nav className='hidden md:flex md:w-72 border border-gray-300 h-full flex-col justify-between bg-gray-200 p-0 sidebar'>
       <div id="sidebar">
-        <div className="toggle-btn">
+        <div className='toggle-btn'>
           <span>
             <img
               style={{ float: "left" }}

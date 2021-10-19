@@ -91,27 +91,26 @@ const Productos = () => {
         <ContenedorTitulos Titulo="Gestión de productos" />
       </section>
       <section>
-        <ul className="contenedorBotonesgrises">
-          <section>
-             <input
+        
+          
+          <section className="place-content-center flex space-x-6 ">
+            <input
               value={busqueda}
-              className="w-40 p-1 m-5  border-gray-200 border-solid border-r-5"
+              className=' w-15 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 '
               id="idProducto"
               placeholder="Buscar Producto"
               type="ID"
               onChange={(e) => setBusqueda(e.target.value)}
             ></input>
-          </section>
-          <section className="flex-grow justify-between activity-grid">
             
-            <button className="buttonForm" type="submit">
+            <button className='bg-red-100 my-7 h-10 rounded-lg border m-2 cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">
               Buscar
             </button>
             <Link to="registrarproducto">
-             <button className="buttonForm">Nuevo Producto</button>
+             <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5'>Nuevo Producto</button>
             </Link>
            </section>
-        </ul>
+        
       </section>
 
       
@@ -121,12 +120,12 @@ const Productos = () => {
                 <thead>
                   <tr>
                     <th >IDproductos</th>
-                    <th>Nombre</th>
-                    <th>Precio unidad</th>
-                    <th>Disponible</th>
+                    <th>Provedor</th>
+                    <th>Tipo de producto</th>
+                    <th>Precio Unidad</th>
+                    <th>Cantidad</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
-                    <th>Proveedor</th>
                   </tr>
                 </thead>
                 <tbody>
