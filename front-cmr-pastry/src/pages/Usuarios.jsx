@@ -71,7 +71,7 @@ const Usuarios = () => {
       </section>
 
       <section>
-        <table className="tabla place-content-center">
+        <table className="tabla">
           <tr>
             <th>IDUsuario</th>
             <th>Nombre</th>
