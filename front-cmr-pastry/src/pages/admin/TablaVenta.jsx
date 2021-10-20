@@ -2,8 +2,29 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ContenedorTitulos from "../../components/ContenedorTitulos";
 import edit from "../../media/edit.png";
+import { useState, useEffect } from "react";
+import { obtenerVentas } from "../../utils/api";
 
 const TablaVenta = () => {
+  const [ventas, setVentas] = useState([]);
+  const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+
+  useEffect(() => {
+    console.log("consulta", ejecutarConsulta);
+    if (ejecutarConsulta) {
+      obtenerVentas(
+        (response) => {
+          console.log("la respuesta que se recibio fue", response);
+          setVentas(response.data);
+        },
+        (error) => {
+          console.error("Salio un error:", error);
+        }
+      );
+      setEjecutarConsulta(false);
+    }
+  }, [ejecutarConsulta]);
+
   return (
     <div>
       <section>
@@ -45,98 +66,58 @@ const TablaVenta = () => {
 
       <section>
         <table>
-          <tr>
-            <th>ID Pedido</th>
-            <th>ID Usurario</th>
-            <th>ID clientes</th>
-            <th>Factura de Venta</th>
-            <th>Factura de Pago</th>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Valor Total</th>
-            <th>Estado</th>
-            <th>Editar</th>
-          </tr>
-          <tr>
-            <td>1000</td>
-            <td>1034567689</td>
-            <td>1002345956</td>
-            <td>N001</td>
-            <td>N002</td>
-            <td>Torta en esperial de maracuyá</td>
-            <td>2</td>
-            <td>74000</td>
-            <td>
-              <span class="badge exitoso">Finalizada</span>
-            </td>
-            <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
-              </Link>
-            </td>
-          </tr>
-          <tr>
-            <td>1001</td>
-            <td>52345567</td>
-            <td>1016567132</td>
-            <td>N002</td>
-            <td>N0043</td>
-            <td>Casecicle</td>
-            <td>20</td>
-            <td>80000</td>
-            <td>
-              <span class="badge exitoso">Finalizada</span>
-            </td>
-            <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
-              </Link>
-            </td>
-          </tr>
-          <tr>
-            <td>1045</td>
-            <td>52345567</td>
-            <td>100334567</td>
-            <td>N0673</td>
-            <td>N013</td>
-            <td>Chocolates Relleños</td>
-            <td>200</td>
-            <td>1000000</td>
-            <td>
-              <span class="badge exitoso">Finalizada</span>
-            </td>
-            <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
-              </Link>
-            </td>
-          </tr>
-          <tr>
-            <td>1300</td>
-            <td>1089345678</td>
-            <td>792345245</td>
-            <td>N0034</td>
-            <td>N1345</td>
-            <td>Muffins Grandes</td>
-            <td>40</td>
-            <td>160000</td>
-            <td>
-              <span class="badge pendiente">En despacho</span>
-            </td>
-            <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
-              </Link>
-            </td>
-          </tr>
+          <thead>
+            <tr>
+              <th>ID Venta</th>
+              <th>ID Vendedor</th>
+              <th>ID cliente</th>
+              <th>Productos</th>
+              <th>Valor</th>
+              <th>Cantidad</th>
+
+              <th>Valor Total</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ventas.map((venta) => (
+              <tr key={venta._id}>
+                <td>{venta._id}</td>
+                <td>{venta.vendedor}</td>
+                <td>{venta.cliente}</td>
+                <td>
+                  <tr>
+                    {venta.productos.map((producto) => (
+                      <tr>
+                        <td>{producto.nombre}</td>
+                      </tr>
+                    ))}
+                  </tr>
+                </td>
+                <td>
+                  <tr>
+                    {venta.productos.map((producto) => (
+                      <tr>
+                        <td>{producto.valor}</td>
+                      </tr>
+                    ))}
+                  </tr>
+                </td>
+                <td>
+                  <tr>
+                    {venta.productos.map((producto) => (
+                      <tr>
+                        <td>{producto.valor}</td>
+                      </tr>
+                    ))}
+                  </tr>
+                </td>
+                <td>{venta.fecha}</td>
+                <td class="badge exitoso">{venta.estado}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </section>
     </div>
