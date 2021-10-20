@@ -8,8 +8,10 @@ import logout from "./img/logout.png";
 import grupo from "./img/grupo.png";
 import clientes from "./img/clientes.png";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Sidebar = () => {
+  const { logout } = useAuth0();
   return (
     <nav className="hidden sm:flex sm:w-60 border border-gray-300  flex-col bg-gray-200 p-0 sidebar">
       <div id="sidebar">
@@ -99,7 +101,7 @@ const Sidebar = () => {
                 alt=""
                 className="icono"
               />{" "}
-              Cerrar Sesión
+              <button  onClick={() => logout({ returnTo: window.location.origin })}>Cerrar Sesión</button>
             </li>
           </Link>
         </ul>

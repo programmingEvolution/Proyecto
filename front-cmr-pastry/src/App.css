@@ -9,7 +9,12 @@
   align-items: center;
   justify-content: center;
 }
-
+.button-login{
+  background-color: #EDC0BC;
+  padding: 15px;
+  border-radius: 5%;
+  box-shadow: #000000 5%;
+}
 .formulario {
   width: 500px;
   padding: 16px;

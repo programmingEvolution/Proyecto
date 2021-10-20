@@ -17,97 +17,103 @@ import Clientes from "./pages/Clientes";
 import Usuarios from "./pages/Usuarios";
 import RegistrarVenta from "./pages/admin/RegistrarVenta";
 import ModificarVenta from "./pages/admin/ModificarVenta";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 function App() {
   return (
-    <div>
-      <Router>
-        <Switch>
-          <Route
-            path={[
-              "/registrarproducto",
-              "/modificarproducto",
-              "/registrarcliente",
-              "/modificarCliente",
-              "/modificarestadousuario",
-              "/tablaventas",
-              "/stock",
-              "/productos",
-              "/panel",
-              "/clientes",
-              "/usuarios",
-              "/registrarventa",
-              "/modificarventa",
-             
-            ]}
-          >
-            <Switch>
-              <Layout>
-                <Switch>
-                  <Route path="/registrarproducto">
-                    <RegistrarProducto></RegistrarProducto>
-                  </Route>
-                  <Route path="/modificarproducto">
-                    <ModificarProducto></ModificarProducto>
-                  </Route>
-                  <Route path="/registrarcliente">
-                    <ResgistrarCliente></ResgistrarCliente>
-                  </Route>
-                  <Route path="/modificarcliente">
-                    <ModificarCliente></ModificarCliente>
-                  </Route>
-                  <Route path="/modificarventa">
-                    <ModificarVenta></ModificarVenta>
-                  </Route>
-                  <Route path="/clientes">
-                    <Clientes></Clientes>
-                  </Route>
-                  <Route path="/modificarestadousuario">
-                    <ModificarEstadoUsuario></ModificarEstadoUsuario>
-                  </Route>
-                  <Route path="/tablaventas">
-                    <TablaVenta></TablaVenta>
-                  </Route>
-                  <Route path="/registrarventa">
-                    <RegistrarVenta></RegistrarVenta>
-                  </Route>
-                  <Route path="/usuarios">
-                    <Usuarios></Usuarios>
-                  </Route>
-                  <Route path="/stock">
-                    <StockProductos></StockProductos>
-                  </Route>
-                  <Route path="/productos">
-                    <Productos></Productos>
-                  </Route>
-                  <Route path="/panel">
-                    <Panel></Panel>
-                  </Route>
-                  <Route path="/login">
-                    <Login></Login>
-                  </Route>
-                </Switch>
-              </Layout>
-            </Switch>
-          </Route>
+    <Auth0Provider domain= "proyectoudea.us.auth0.com"
+    clientId="HiNKaVomBH1qVo82uVNFZmzLF002bXbF"
+    redirectUri="http://localhost:3000/panel" >
+    
+      <div>
+    <Router>
+      <Switch>
+        <Route
+          path={[
+            "/registrarproducto",
+            "/modificarproducto",
+            "/registrarcliente",
+            "/modificarCliente",
+            "/modificarestadousuario",
+            "/tablaventas",
+            "/stock",
+            "/productos",
+            "/panel",
+            "/clientes",
+            "/usuarios",
+            "/registrarventa",
+            "/modificarventa",
+           
+          ]}
+        >
+          <Switch>
+            <Layout>
+              <Switch>
+                <Route path="/registrarproducto">
+                  <RegistrarProducto></RegistrarProducto>
+                </Route>
+                <Route path="/modificarproducto">
+                  <ModificarProducto></ModificarProducto>
+                </Route>
+                <Route path="/registrarcliente">
+                  <ResgistrarCliente></ResgistrarCliente>
+                </Route>
+                <Route path="/modificarcliente">
+                  <ModificarCliente></ModificarCliente>
+                </Route>
+                <Route path="/modificarventa">
+                  <ModificarVenta></ModificarVenta>
+                </Route>
+                <Route path="/clientes">
+                  <Clientes></Clientes>
+                </Route>
+                <Route path="/modificarestadousuario">
+                  <ModificarEstadoUsuario></ModificarEstadoUsuario>
+                </Route>
+                <Route path="/tablaventas">
+                  <TablaVenta></TablaVenta>
+                </Route>
+                <Route path="/registrarventa">
+                  <RegistrarVenta></RegistrarVenta>
+                </Route>
+                <Route path="/usuarios">
+                  <Usuarios></Usuarios>
+                </Route>
+                <Route path="/stock">
+                  <StockProductos></StockProductos>
+                </Route>
+                <Route path="/productos">
+                  <Productos></Productos>
+                </Route>
+                <Route path="/panel">
+                  <Panel></Panel>
+                </Route>
+                <Route path="/login">
+                  <Login></Login>
+                </Route>
+              </Switch>
+            </Layout>
+          </Switch>
+        </Route>
 
-          <Route path={["/", "/login"]}>
-            <Switch>
-              <PublicLayout>
-                <Switch>
-                  <Route path="/login">
-                    <Login></Login>
-                  </Route>
-                  <Route path="/">
-                    <Index></Index>
-                  </Route>
-                </Switch>
-              </PublicLayout>
-            </Switch>
-          </Route>
-        </Switch>{" "}
-      </Router>
-    </div>
+        <Route path={["/", "/login"]}>
+          <Switch>
+            <PublicLayout>
+              <Switch>
+                <Route path="/login">
+                  <Login></Login>
+                </Route>
+                <Route path="/">
+                  <Index></Index>
+                </Route>
+              </Switch>
+            </PublicLayout>
+          </Switch>
+        </Route>
+      </Switch>{" "}
+    </Router>
+  </div>
+  </Auth0Provider>
   );
 }
 
