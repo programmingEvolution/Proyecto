@@ -1234,18 +1234,12 @@ form {
 /** CSS tabla DE clientes DANIELA**/
 
 /** CSS HEADER DANIELA**/
+/*
 .logoGrande {
   height: 110px;
   margin-left: 55%;
 }
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px;
-  background-color: #edc0bc;
-  height: 60px;
-}
+
 
 .estilosHeader {
   color: #775c5a;
