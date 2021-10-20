@@ -496,7 +496,6 @@ td {
 
 .correrTabla {
   margin-top: 200px;
-  margin-left: 15%;
   margin-right: 5%;
 }
 
@@ -508,7 +507,6 @@ td {
   font-size: 12 px;
   font-weight: normal;
   color: #775c5a;
-  margin-left: 15%;
 }
 
 .filaImpar {
@@ -520,7 +518,6 @@ td {
   font-size: 12 px;
   font-weight: normal;
   color: #775c5a;
-  margin-left: 15%;
 }
 
 .botones input[type="submit"] {
@@ -671,69 +668,9 @@ ul {
 }
 /** CSS tabla DE PRODUCTOS DANIELA**/
 
-.tituloHome {
-  color: #775c5a;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: 80px;
-  text-align: center;
-  margin-bottom: 90px;
-}
-
-.introduccion {
-  color: #775c5a;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: 30px;
-  text-align: center;
-  display: flex;
-  margin-right: 200px;
-  margin-left: 200px;
-}
-
-.herramientas {
-  color: #efb6b2;
-  font-family: sans-serif;
-  font-size: 40px;
-  text-align: center;
-  font-style: normal;
-  margin-top: 80px;
-  margin-bottom: 150px;
-}
-.contenedorTarjetasHome {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30%;
-}
-
-.tarjetas {
-  padding: 3px;
-  background-color: #ffe5d9;
-  width: 450px;
-  height: 500px;
-  text-align: center;
-  padding-top: 30px;
-  border-radius: 50px;
-  font-family: sans-serif;
-  color: #775c5a;
-  font-weight: bold;
-  font-size: 22px;
-  margin-left: 25px;
-  margin-right: 25px;
-  box-shadow: 2px 4px silver;
-}
-
-.fotosHome {
-  background-color: #ffe5d9;
-  width: 400px;
-  height: 400px;
-  margin-top: 30px;
-  border-radius: 15px;
-}
-
 /** CSS DASHBOARD DIEGO**/
 main {
-  margin-left: 200px;
-  max-width: 1500px;
+  /*max-width: 1500px;*/
   margin-top: 0px;
   min-height: 90vh;
   padding: 1rem 3rem;
@@ -1000,7 +937,6 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-left: 15%;
   margin-right: 2%;
   padding: 1%;
 }
@@ -1339,11 +1275,10 @@ form {
 
 /** CSS HEADER DANIELA**/
 
-.contenedorStock {
+/*.contenedorStock {
   height: 1000px;
-
   overflow-y: scroll;
   justify-content: left;
   display: block;
   align-items: flex-start;
-}
+}*/
