@@ -10,34 +10,22 @@ const StockProductos = () => {
       <section>
         <ContenedorTitulos Titulo="Stock de productos" />
       </section>
-      <section>
-        <ul className="contenedorBotonesgrises">
-          <form>
-            <section>
-              <label className="" htmlFor="idProducto">
-                Buscar Producto:
-              </label>
-              <input
-                className="inputForm"
-                id="idProducto"
-                placeholder="Ingrese el nombre del producto"
-                type="ID"
-              ></input>
-            </section>
-            <section className="flex-grow justify-between">
-              <button className="buttonForm" type="submit">
-                Buscar
-              </button>
-            </section>
-          </form>
-        </ul>
+
+      <section className="place-content-center flex space-x-6">           
+        <input
+          className='w-25 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
+          id="idProducto"
+          placeholder="Buscar Producto"
+          type="ID"
+        ></input>
+        <button className= 'bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">
+          Buscar
+        </button>
+        <Link to="registrarventa">
+          <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5'>Añadir a la venta</button>
+        </Link> 
       </section>
 
-      <section>
-        <Link to="registrarventa">
-          <button className="buttonForm">Añadir a la venta</button>
-        </Link>
-      </section>
       <section className="contenedorFormulario">
         <div className="tarjetasProductos">
           <input type="checkbox" />

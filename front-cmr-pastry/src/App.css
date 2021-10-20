@@ -186,8 +186,8 @@ body {
 }
 .sidebar .toggle-btn {
   position: absolute;
-  left: 230px;
-  top: 20px;
+  left: 280px;
+  top: 5px;
   cursor: pointer;
 }
 
@@ -202,12 +202,12 @@ body {
 /** css juliana*/
 
 .DiseñoTitulo {
-  font-size: 180%;
+  font-size: 400%;
   font-style: oblique;
   font-family: Georgia, "Times New Roman", Times, serif;
   text-align: center;
   color: #775c5a;
-  background-color: rgba(239, 182, 178, 0.897);
+  
 }
 
 /** css Cristian **/
@@ -401,28 +401,6 @@ a.gboton {
   height: 100%;
 }
 
-.botones {
-  font-family: "Roboto", sans-serif;
-  width: 30%;
-  height: 10%;
-  background: #fffff9;
-  color: #775c5a;
-  position: absolute;
-  top: 93%;
-  left: 65%;
-}
-
-.botones input[type="submit"] {
-  width: 80px;
-  height: 40px;
-  background: #ffe5d9;
-  box-shadow: 3px 3px 3px #5a4442;
-  border-radius: 5px;
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
-
 table {
   margin-top: 280px;
   margin-left: 27%;
@@ -494,31 +472,6 @@ td {
   background-color: #efb6b2;
 }
 
-.correrTabla {
-  margin-top: 200px;
-  margin-right: 5%;
-}
-
-.tituloColumna {
-  background-color: #ffe5d9;
-  height: 40px;
-  padding-inline: 75px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-}
-
-.filaImpar {
-  justify-items: right;
-  background-color: white;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-}
 
 .botones input[type="submit"] {
   width: 80px;
@@ -531,15 +484,7 @@ td {
   outline: none;
 }
 
-.filaPar {
-  background-color: #ffe5d9;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-}
+
 
 table {
   margin-top: 100px;
@@ -1107,44 +1052,7 @@ form {
   background-color: #efb6b2;
 }
 
-.correrTablaUsu {
-  margin-top: 200px;
-  margin-left: 15%;
-  margin-right: 5%;
-}
 
-.tituloColumnaUsu {
-  background-color: #ffe5d9;
-  height: 40px;
-  padding-inline: 75px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaImparUsu {
-  justify-items: right;
-  background-color: white;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaParUsu {
-  background-color: #ffe5d9;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-}
 /** CSS tabla DE usuarios DANIELA**/
 
 /** CSS tabla DE clientes DANIELA**/
@@ -1190,42 +1098,5 @@ form {
   background-color: #efb6b2;
 }
 
-.correrTablaCliente {
-  margin-top: 200px;
-  margin-left: 15%;
-  margin-right: 5%;
-}
 
-.tituloColumnaCliente {
-  background-color: #ffe5d9;
-  height: 40px;
-  padding-inline: 75px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaImparCliente {
-  justify-items: right;
-  background-color: white;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaParCliente {
-  background-color: #ffe5d9;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-}
 /** CSS tabla DE clientes DANIELA**/
