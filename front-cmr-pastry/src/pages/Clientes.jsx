@@ -8,43 +8,31 @@ const Clientes = () => {
       <section>
         <ContenedorTitulos Titulo="Gestión de Clientes" />
       </section>
-      <section>
-        <ul className="contenedorBotonesgrises">
-          <form>
-            <section>
-              <label className="labelForm" htmlFor="idCliente">
-                Buscar Cliente:
-              </label>
+      <section className="place-content-center flex space-x-6">
               <input
-                className="inputForm"
+                className= 'w-25 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
                 id="idCliente"
-                placeholder="Ingrese el nombre del Cliente"
+                placeholder="Buscar Clientes"
                 type="ID"
               ></input>
-            </section>
-            <section className="flex-grow justify-between">
-              <button className="buttonForm" type="submit">
+           
+           
+              <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit" type="submit">
                 Buscar
               </button>
-            </section>
-          </form>
-        </ul>
-      </section>
+              <Link to="registrarcliente">
+                <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">Nuevo Cliente</button>
+              </Link> 
+         </section>
 
       <section>
-        <Link to="registrarcliente">
-          <button className="buttonForm">Nuevo Cliente</button>
-        </Link>
-      </section>
-
-      <section>
-        <table>
+        <table className= "tabla">
           <tr>
-            <td className="tituloColumnaCliente">ID Cliente</td>
-            <td className="tituloColumnaCliente">Nombre</td>
-            <td className="tituloColumnaCliente">Telefono</td>
-            <td className="tituloColumnaCliente">correo</td>
-            <td className="tituloColumnaCliente">Editar</td>
+            <th>ID Cliente</th>
+            <th >Nombre</th>
+            <th >Telefono</th>
+            <th >correo</th>
+            <th >Editar</th>
           </tr>
           <tr>
             <td className="filaImparCliente">123456789123</td>

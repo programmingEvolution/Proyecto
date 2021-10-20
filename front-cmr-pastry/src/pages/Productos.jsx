@@ -91,56 +91,51 @@ const Productos = () => {
         <ContenedorTitulos Titulo="Gestión de productos" />
       </section>
       <section>
-        <ul className="contenedorBotonesgrises">
-          <section>
-            <label className="labelForm" htmlFor="idProducto">
-              Buscar Producto:
-            </label>
+        
+          
+          <section className="place-content-center flex space-x-6 ">
             <input
               value={busqueda}
-              className="inputForm"
+              className=' w-15 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 '
               id="idProducto"
-              placeholder="Ingrese el nombre del producto"
+              placeholder="Buscar Producto"
               type="ID"
               onChange={(e) => setBusqueda(e.target.value)}
             ></input>
-          </section>
-          <section className="flex-grow justify-between">
-            <button className="buttonForm" type="submit">
+            
+            <button className='bg-red-100 my-7 h-10 rounded-lg border m-2 cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">
               Buscar
             </button>
+            <Link to="registrarproducto">
+             <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5'>Nuevo Producto</button>
+            </Link>
+           </section>
+        
+      </section>
+
+      
+      <section >
+          <form ref={form} onSubmit={submitEdit}>
+              <table className="tabla">
+                <thead>
+                  <tr>
+                    <th >IDproductos</th>
+                    <th>Provedor</th>
+                    <th>Tipo de producto</th>
+                    <th>Precio Unidad</th>
+                    <th>Cantidad</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {productosFiltrados.map((producto) => {
+                    return <FilaProducto key={producto._id} producto={producto} />;
+                  })}
+                </tbody>
+              </table>
+            </form>
           </section>
-        </ul>
-      </section>
-
-      <section>
-        <Link to="registrarproducto">
-          <button className="buttonForm">Nuevo Producto</button>
-        </Link>
-      </section>
-
-      <section>
-        <form ref={form} onSubmit={submitEdit}>
-          <table>
-            <thead>
-              <tr>
-                <td className="tituloColumna">IDproductos</td>
-                <td className="tituloColumna">Proveedor</td>
-                <td className="tituloColumna">Nombre</td>
-                <td className="tituloColumna">Precio unidad</td>
-                <td className="tituloColumna">Disponible</td>
-                <td className="tituloColumna">Editar</td>
-                <td className="tituloColumna">Eliminar</td>
-              </tr>
-            </thead>
-            <tbody>
-              {productosFiltrados.map((producto) => {
-                return <FilaProducto key={producto._id} producto={producto} />;
-              })}
-            </tbody>
-          </table>
-        </form>
-      </section>
     </div>
   );
 };
@@ -242,7 +237,7 @@ const FilaProducto = ({ producto }) => {
   };
 
   return (
-    <tr>
+    <tr className="tabla.tr">
       {editar ? (
         <>
           <td>

@@ -13,9 +13,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Sidebar = () => {
   const { logout } = useAuth0();
   return (
-    <nav className="hidden sm:flex sm:w-60 border border-gray-300  flex-col bg-gray-200 p-0 sidebar">
+    <nav className='hidden md:flex md:w-72 border border-gray-300 h-full flex-col justify-between bg-gray-200 p-0 sidebar'>
       <div id="sidebar">
-        <div className="toggle-btn">
+        <div className='toggle-btn'>
           <span>
             <img
               style={{ float: "left" }}
@@ -91,7 +91,6 @@ const Sidebar = () => {
         <br />
         <br />
         <ul>
-          <li className="mb-8 Salir" />
 
           <Link to="/">
             <li className="Salir">
