@@ -6,80 +6,30 @@ import ContenedorTitulos from "../components/ContenedorTitulos";
 
 const StockProductos = () => {
   return (
-    <div className="contenedorStock">
+    <div className='max-w-full'>
       <section>
         <ContenedorTitulos Titulo="Stock de productos" />
       </section>
-      <section>
-        <ul className="contenedorBotonesgrises">
-          <form>
-            <section>
-              <label className="labelForm" htmlFor="idProducto">
-                Buscar Producto:
-              </label>
-              <input
-                className="inputForm"
-                id="idProducto"
-                placeholder="Ingrese el nombre del producto"
-                type="ID"
-              ></input>
-            </section>
-            <section className="flex-grow justify-between">
-              <button className="buttonForm" type="submit">
-                Buscar
-              </button>
-            </section>
-          </form>
-        </ul>
+
+      <section className="place-content-center flex space-x-6">           
+        <input
+          className='w-25 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
+          id="idProducto"
+          placeholder="Buscar Producto"
+          type="ID"
+        ></input>
+        <button className= 'bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">
+          Buscar
+        </button>
+        <Link to="registrarventa">
+          <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5'>Añadir a la venta</button>
+        </Link> 
       </section>
 
-      <section>
-        <Link to="registrarventa">
-          <button className="buttonForm">Añadir a la venta</button>
-        </Link>
-      </section>
       <section className="contenedorFormulario">
         <div className="tarjetasProductos">
           <input type="checkbox" />
-          <ul className="contenedorTarjetasPro">
-            <li>
-              <img
-                className="elementos1"
-                src={muffinManzana}
-                alt="foto muffin"
-              />
-            </li>
-            <li>
-              <img
-                className="elementos1"
-                src={muffinZanahoria}
-                alt="foto muffin"
-              />
-            </li>
-            <li>
-              <img
-                className="elementos1"
-                src={TortaCircularGrande}
-                alt="foto muffin"
-              />
-            </li>
-
-            <li className="elementos2">
-              <ul className="contenidoProducto">
-                Muffins
-                <li className="contenidoProducto">
-                  Sabores: Zanahoria, manzana, banano y maracuyá.{" "}
-                </li>
-                <li className="contenidoProducto">$ / unidad:</li>
-              </ul>
-            </li>
-            <li className="identificador">ID 0001</li>
-          </ul>
-        </div>
-
-        <div className="tarjetasProductos">
-          <input type="checkbox" />
-          <ul className="contenedorTarjetasPro">
+          <ul className="contenedorTarjetasPro place-content-center flex space-x-6 ">
             <li>
               <img
                 className="elementos1"
@@ -117,7 +67,7 @@ const StockProductos = () => {
 
         <div className="tarjetasProductosNoDispo">
           <input type="checkbox" disabled />
-          <ul className="contenedorTarjetasPro">
+          <ul className="contenedorTarjetasPro place-content-center flex space-x-6  ">
             <li>
               <img
                 className="elementos1"
@@ -154,7 +104,7 @@ const StockProductos = () => {
 
         <div className="tarjetasProductos">
           <input type="checkbox" />
-          <ul className="contenedorTarjetasPro">
+          <ul className="contenedorTarjetasPro place-content-center flex space-x-6  ">
             <li>
               <img
                 className="elementos1"
@@ -191,7 +141,7 @@ const StockProductos = () => {
 
         <div className="tarjetasProductos">
           <input type="checkbox" />
-          <ul className="contenedorTarjetasPro">
+          <ul className="contenedorTarjetasPro place-content-center flex space-x-6  ">
             <li>
               <img
                 className="elementos1"
@@ -228,7 +178,7 @@ const StockProductos = () => {
 
         <div className="tarjetasProductos">
           <input type="checkbox" />
-          <ul className="contenedorTarjetasPro">
+          <ul className="contenedorTarjetasPro place-content-center flex space-x-6  ">
             <li>
               <img
                 className="elementos1"
@@ -265,7 +215,7 @@ const StockProductos = () => {
 
         <div className="tarjetasProductos">
           <input type="checkbox" />
-          <ul className="contenedorTarjetasPro">
+          <ul className="contenedorTarjetasPro place-content-center flex space-x-6  ">
             <li>
               <img
                 className="elementos1"
@@ -302,7 +252,7 @@ const StockProductos = () => {
 
         <div className="tarjetasProductos">
           <input type="checkbox" />
-          <ul className="contenedorTarjetasPro">
+          <ul className="contenedorTarjetasPro place-content-center flex space-x-6  ">
             <li>
               <img
                 className="elementos1"
@@ -339,7 +289,7 @@ const StockProductos = () => {
 
         <div className="tarjetasProductos">
           <input type="checkbox" />
-          <ul className="contenedorTarjetasPro">
+          <ul className="contenedorTarjetasPro place-content-center flex space-x-6  ">
             <li>
               <img
                 className="elementos1"
@@ -374,45 +324,11 @@ const StockProductos = () => {
           </ul>
         </div>
 
-        <div className="tarjetasProductos">
-          <ul className="contenedorTarjetasPro">
-            <li>
-              <img
-                className="elementos1"
-                src={muffinManzana}
-                alt="foto muffin"
-              />
-            </li>
-            <li>
-              <img
-                className="elementos1"
-                src={muffinZanahoria}
-                alt="foto muffin"
-              />
-            </li>
-            <li>
-              <img
-                className="elementos1"
-                src={TortaCircularGrande}
-                alt="foto muffin"
-              />
-            </li>
-            <li className="elementos2">
-              <ul className="contenidoProducto">
-                Galletas de chips de chocolate
-                <li className="contenidoProducto">
-                  Sabores: Zanahoria, manzana, banano y maracuyá.{" "}
-                </li>
-                <li className="contenidoProducto">$ / unidad:</li>
-              </ul>
-            </li>
-            <li className="identificador">ID 00010</li>
-          </ul>
-        </div>
+      
 
         <div className="tarjetasProductos">
           <input type="checkbox" />
-          <ul className="contenedorTarjetasPro">
+          <ul className="contenedorTarjetasPro place-content-center flex space-x-6  ">
             <li>
               <img
                 className="elementos1"
@@ -448,7 +364,7 @@ const StockProductos = () => {
         </div>
         <div className="tarjetasProductos">
           <input type="checkbox" />
-          <ul className="contenedorTarjetasPro">
+          <ul className="contenedorTarjetasPro place-content-center flex space-x-6  ">
             <li>
               <img
                 className="elementos1"

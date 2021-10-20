@@ -44,7 +44,7 @@ const TablaVenta = () => {
       </section>
 
       <section>
-        <table>
+        <table className="tabla">
           <tr>
             <th>ID Pedido</th>
             <th>ID Usurario</th>

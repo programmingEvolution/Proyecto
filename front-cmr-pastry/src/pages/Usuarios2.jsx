@@ -12,13 +12,10 @@ const Usuarios = () => {
         <ul className="contenedorBotonesgrises">
           <form>
             <section>
-              <label className="labelForm" htmlFor="idUsuario">
-                Buscar Usuario:
-              </label>
               <input
                 className="inputForm"
                 id="idusUario"
-                placeholder="Ingrese el nombre del Usuario"
+                placeholder="Buscar Usuario"
                 type="ID"
               ></input>
             </section>

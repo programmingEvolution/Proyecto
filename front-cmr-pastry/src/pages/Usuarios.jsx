@@ -51,42 +51,37 @@ const Usuarios = () => {
         <ContenedorTitulos Titulo="Gestión de Usuarios" />
       </section>
       <section>
-        <ul className="contenedorBotonesgrises">
-          <form>
-            <section>
-              <label className="labelForm" htmlFor="idUsuario">
-                Buscar Usuario:
-              </label>
+        
+         
+            <section className="place-content-center flex space-x-6">
               <input
                 value={busqueda}
-                className="inputForm"
+                className='w-25 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
                 id="idUsuario"
-                placeholder="Ingrese el nombre del usuario"
+                placeholder="Buscar Usuario"
                 type="ID"
                 onChange={(e) => setBusqueda(e.target.value)}
               ></input>
-            </section>
-            <section className="flex-grow justify-between">
-              <button className="buttonForm" type="submit">
+              <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">
                 Buscar
               </button>
             </section>
-          </form>
-        </ul>
+          
+        
       </section>
 
       <section>
-        <table>
+        <table className="tabla">
           <tr>
-            <td className="tituloColumnaUsu">IDUsuario</td>
-            <td className="tituloColumnaUsu">Nombre</td>
-            <td className="tituloColumnaUsu">Rol</td>
-            <td className="tituloColumnaUsu">Estado</td>
-            <td className="tituloColumnaUsu">Agregar Productos</td>
-            <td className="tituloColumnaUsu">Modificar Productos</td>
-            <td className="tituloColumnaUsu">Añadir usuarios</td>
-            <td className="tituloColumnaUsu">Modificar usuarios</td>
-            <td className="tituloColumnaUsu">Gestionar</td>
+            <th>IDUsuario</th>
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Agregar Productos</th>
+            <th>Modificar Productos</th>
+            <th>Añadir usuarios</th>
+            <th>Modificar usuarios</th>
+            <th>Gestionar</th>
           </tr>
           <tbody>
             {usuariosFiltrados.map((usuario) => {
@@ -172,7 +167,7 @@ const FilaUsuario = ({ usuario }) => {
   };
 
   return (
-    <tr>
+    <tr className="tabla.tr">
       {editar ? (
         <>
           {" "}
