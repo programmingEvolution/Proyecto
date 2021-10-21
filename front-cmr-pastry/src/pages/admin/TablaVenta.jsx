@@ -1,9 +1,59 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import ContenedorTitulos from "../../components/ContenedorTitulos";
 import edit from "../../media/edit.png";
+import { useState, useEffect } from "react";
+import { obtenerVentas, editarVenta } from "../../utils/api";
+import { useUser } from "../../context/userContext";
+import { useHistory } from "react-router-dom";
+import check from "../../media/check.png";
+import { obtenerProductos } from "../../utils/api";
+import { obtenerUsuarios } from "../../utils/api";
+import Swal from "sweetalert2";
 
 const TablaVenta = () => {
+  const { setUserData } = useUser();
+  const [ventas, setVentas] = useState([]);
+  const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+  const [busqueda, setBusqueda] = useState("");
+  const [ventasFiltradas, setVentasFiltradas] = useState(ventas);
+  const form = useRef(null);
+
+  const submitEdit = (e) => {
+    e.preventDefault();
+    const fd = new FormData(form.current);
+    const formData = {};
+    fd.forEach((value, key) => {
+      formData[key] = value;
+    });
+  };
+
+  useEffect(() => {
+    console.log("consulta", ejecutarConsulta);
+    if (ejecutarConsulta) {
+      obtenerVentas(
+        (response) => {
+          console.log("la respuesta que se recibio fue", response);
+          setVentas(response.data);
+        },
+        (error) => {
+          console.error("Salio un error:", error);
+        }
+      );
+      setEjecutarConsulta(false);
+    }
+  }, [ejecutarConsulta]);
+
+  useEffect(() => {
+    setVentasFiltradas(
+      ventas.filter((elemento) => {
+        return JSON.stringify(elemento)
+          .toLowerCase()
+          .includes(busqueda.toLowerCase());
+      })
+    );
+  }, [busqueda, ventas]);
+
   return (
     <div>
       <section>
@@ -17,16 +67,13 @@ const TablaVenta = () => {
                 Buscar venta:
               </label>
               <input
+                value={busqueda}
                 className="inputForm"
-                id="idCliente"
-                placeholder="buscar venta"
+                id="idProducto"
+                placeholder="Ingrese el nombre del producto"
                 type="ID"
+                onChange={(e) => setBusqueda(e.target.value)}
               ></input>
-              <select className="selectForm">
-                <option value=""> ID Vendedor</option>
-                <option value=""> ID Cliente</option>
-                <option value=""> ID Producto</option>
-              </select>
             </section>
             <section className="flex-grow justify-between">
               <button className="buttonForm" type="submit">
@@ -44,103 +91,358 @@ const TablaVenta = () => {
       </section>
 
       <section>
-        <table>
-          <tr>
-            <th>ID Pedido</th>
-            <th>ID Usurario</th>
-            <th>ID clientes</th>
-            <th>Factura de Venta</th>
-            <th>Factura de Pago</th>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Valor Total</th>
-            <th>Estado</th>
-            <th>Editar</th>
-          </tr>
-          <tr>
-            <td>1000</td>
-            <td>1034567689</td>
-            <td>1002345956</td>
-            <td>N001</td>
-            <td>N002</td>
-            <td>Torta en esperial de maracuyá</td>
-            <td>2</td>
-            <td>74000</td>
-            <td>
-              <span class="badge exitoso">Finalizada</span>
-            </td>
-            <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
-              </Link>
-            </td>
-          </tr>
-          <tr>
-            <td>1001</td>
-            <td>52345567</td>
-            <td>1016567132</td>
-            <td>N002</td>
-            <td>N0043</td>
-            <td>Casecicle</td>
-            <td>20</td>
-            <td>80000</td>
-            <td>
-              <span class="badge exitoso">Finalizada</span>
-            </td>
-            <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
-              </Link>
-            </td>
-          </tr>
-          <tr>
-            <td>1045</td>
-            <td>52345567</td>
-            <td>100334567</td>
-            <td>N0673</td>
-            <td>N013</td>
-            <td>Chocolates Relleños</td>
-            <td>200</td>
-            <td>1000000</td>
-            <td>
-              <span class="badge exitoso">Finalizada</span>
-            </td>
-            <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
-              </Link>
-            </td>
-          </tr>
-          <tr>
-            <td>1300</td>
-            <td>1089345678</td>
-            <td>792345245</td>
-            <td>N0034</td>
-            <td>N1345</td>
-            <td>Muffins Grandes</td>
-            <td>40</td>
-            <td>160000</td>
-            <td>
-              <span class="badge pendiente">En despacho</span>
-            </td>
-            <td>
-              <Link to="/modificarventa">
-                <span>
-                  <img class="icono" src={edit} alt="Editar" />
-                </span>
-              </Link>
-            </td>
-          </tr>
-        </table>
+        <form ref={form} onSubmit={submitEdit}>
+          <table>
+            <thead>
+              <tr>
+                <th>ID Venta</th>
+                <th>ID Vendedor</th>
+                <th>ID cliente</th>
+                <th>Nombre Cliente</th>
+                <th>Productos</th>
+                <th>Valor</th>
+                <th>Cantidad</th>
+                <th>Valor Total</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Editar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ventasFiltradas.map((venta) => {
+                return <FilaVentas venta={venta} key={venta._id} />;
+              })}
+            </tbody>
+          </table>
+        </form>
       </section>
     </div>
   );
 };
 
+const FilaVentas = ({ venta, producto }) => {
+  const { setUserData } = useUser();
+  const { userData } = useUser();
+  const [usuarios, setUsuarios] = useState([]);
+  const [productosVenta, setProductosVenta] = useState([]);
+  const [ejecutarConsultaProductos, setEjecutarConsultaProductos] =
+    useState(true);
+  const [ejecutarConsultaUsuarios, setEjecutarConsultaUsuarios] =
+    useState(true);
+
+  const [editar, setEditar] = useState(false);
+
+  const [infoNuevaVenta, setinfoNuevaVenta] = useState({
+    idCliente: venta.idCliente,
+    nombreCliente: venta.nombreCliente,
+    vendedor: venta.vendedor,
+    estado: venta.estado,
+    fecha: venta.fecha,
+    valorTotal: venta.valorTotal,
+    productos: venta.productos,
+  });
+
+  let history = useHistory();
+
+  useEffect(() => {
+    console.log("consulta", ejecutarConsultaProductos);
+    if (ejecutarConsultaProductos) {
+      obtenerProductos(
+        (response) => {
+          console.log("la respuesta que se recibio fue", response);
+          setProductosVenta(response.data);
+        },
+        (error) => {
+          console.error("Salio un error:", error);
+        }
+      );
+      setEjecutarConsultaProductos(false);
+    }
+  }, [ejecutarConsultaProductos]);
+
+  useEffect(() => {
+    console.log("consulta", ejecutarConsultaUsuarios);
+    if (ejecutarConsultaUsuarios) {
+      obtenerUsuarios(
+        (response) => {
+          console.log("la respuesta que se recibio fue", response);
+          setUsuarios(response.data);
+        },
+        (error) => {
+          console.error("Salio un error:", error);
+        }
+      );
+      setEjecutarConsultaUsuarios(false);
+    }
+  }, [ejecutarConsultaUsuarios]);
+
+  const actualizarVenta = async () => {
+    console.log(infoNuevaVenta);
+
+    await editarVenta(
+      venta._id,
+      {
+        idCliente: infoNuevaVenta.idCliente,
+        nombreCliente: infoNuevaVenta.nombreCliente,
+        vendedor: infoNuevaVenta.vendedor,
+        estado: infoNuevaVenta.estado,
+        fecha: infoNuevaVenta.fecha,
+        valorTotal: infoNuevaVenta.valorTotal,
+        productos: Object.values([infoNuevaVenta.productos][0]),
+      },
+      (response) => {
+        console.log(response.data);
+        setEditar(false);
+
+        Swal.fire("Actualizado!", "Usuario actualizado con exito.", "success");
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+
+    //history.push("/modificarventa")
+  };
+  return (
+    <tr>
+      {editar ? (
+        <>
+          <td>
+            <input
+              className="inputForm"
+              type="text"
+              defaultValue={venta._id}
+              disabled
+            ></input>
+          </td>
+          <td>
+            <select
+              className="inputForm"
+              type="text"
+              defaultValue={infoNuevaVenta.vendedor}
+              onChange={(e) =>
+                setinfoNuevaVenta({
+                  ...infoNuevaVenta,
+                  vendedor: e.target.value,
+                })
+              }
+            >
+              {usuarios.map((el) => {
+                return <option value={el._id}>{el.idUsuario}</option>;
+              })}
+            </select>
+          </td>
+          <td>
+            <input
+              className="inputForm"
+              type="text"
+              defaultValue={infoNuevaVenta.idCliente}
+              onChange={(e) =>
+                setinfoNuevaVenta({
+                  ...infoNuevaVenta,
+                  idCliente: e.target.value,
+                })
+              }
+            ></input>
+          </td>
+          <td>
+            <input
+              className="inputForm"
+              type="text"
+              defaultValue={infoNuevaVenta.nombreCliente}
+              onChange={(e) =>
+                setinfoNuevaVenta({
+                  ...infoNuevaVenta,
+                  nombreCliente: e.target.value,
+                })
+              }
+            ></input>
+          </td>
+          <td>
+            <tr className="border-transparent">
+              {venta.productos.map((producto, number) => (
+                <tr key={number}>
+                  <td className="border-transparent">
+                    <select
+                      className="inputForm"
+                      type="text"
+                      defaultValue={producto.nombreProducto}
+                      onChange={(e) =>
+                        setinfoNuevaVenta({
+                          ...infoNuevaVenta,
+
+                          productos: {
+                            ...infoNuevaVenta.productos,
+
+                            [number]: productosVenta.filter(
+                              (v) => v._id === e.target.value
+                            )[0],
+                          },
+                        })
+                      }
+                    >
+                      {productosVenta.map((el) => {
+                        return (
+                          <option key={el._id} value={el._id}>
+                            {el.nombreProducto}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </td>
+                </tr>
+              ))}
+            </tr>
+          </td>
+          <td>
+            <tr className="border-transparent">
+              {venta.productos.map((producto, number) => (
+                <tr key={number}>
+                  <td className="border-transparent">
+                    <input
+                      className="inputForm"
+                      type="text"
+                      disabled
+                      defaultValue={producto.precioUnidad}
+                      onChange={(e) =>
+                        setinfoNuevaVenta({
+                          ...infoNuevaVenta,
+
+                          productos: {
+                            ...venta.productos,
+                            [number]: {
+                              ...[number],
+
+                              precioUnidad: e.target.value,
+                            },
+                          },
+                        })
+                      }
+                    ></input>
+                  </td>
+                </tr>
+              ))}
+            </tr>
+          </td>
+
+          <td>
+            <tr className="border-transparent">
+              {venta.productos.map((producto, number) => (
+                <tr key={number}>
+                  <td className="border-transparent">
+                    <input
+                      className="inputForm"
+                      type="text"
+                      defaultValue={producto.cantidad}
+                      onChange={(e) =>
+                        setinfoNuevaVenta({
+                          ...infoNuevaVenta,
+
+                          productos: {
+                            ...infoNuevaVenta.productos,
+                            [number]: {
+                              ...infoNuevaVenta.productos[number],
+
+                              cantidad: e.target.value,
+                            },
+                          },
+                        })
+                      }
+                    ></input>
+                  </td>
+                </tr>
+              ))}
+            </tr>
+          </td>
+
+          <td>
+            <input
+              className="inputForm"
+              type="text"
+              Value={venta.valorTotal}
+              disabled
+            ></input>
+          </td>
+
+          <td>
+            <input
+              className="inputForm"
+              type="date"
+              Value={venta.fecha}
+            ></input>
+          </td>
+
+          <td>
+            <select className="selectForm" type="date" Value={venta.fecha}>
+              <option>En proceso</option>
+              <option>Finalizada</option>
+              <option>Despachada</option>
+            </select>
+          </td>
+        </>
+      ) : (
+        <>
+          <td>{venta._id.slice(15)}</td>
+          <td>{venta.vendedor.slice(15)}</td>
+          <td>{venta.idCliente}</td>
+          <td>{venta.nombreCliente}</td>
+          <td>
+            <tr className="border-transparent">
+              {venta.productos.map((producto) => (
+                <tr>
+                  <td className="border-transparent">
+                    {producto.nombreProducto}
+                  </td>
+                </tr>
+              ))}
+            </tr>
+          </td>
+          <td>
+            <tr className="border-transparent">
+              {venta.productos.map((producto) => (
+                <tr>
+                  <td className="border-transparent">
+                    {producto.precioUnidad}
+                  </td>
+                </tr>
+              ))}
+            </tr>
+          </td>
+          <td>
+            <tr className="border-transparent">
+              {venta.productos.map((producto) => (
+                <tr>
+                  <td className="border-transparent">{producto.cantidad}</td>
+                </tr>
+              ))}
+            </tr>
+          </td>
+          <td>{venta.valorTotal}</td>
+          <td>{venta.fecha}</td>
+          <td className="badge exitoso">{venta.estado}</td>
+        </>
+      )}
+      <td>
+        {editar ? (
+          <i
+            onClick={() => {
+              actualizarVenta(venta);
+            }}
+          >
+            <img class="icono" src={check} alt="check" />
+          </i>
+        ) : (
+          <i
+            onClick={() => {
+              //
+              setEditar(!editar);
+            }}
+          >
+            <img class="icono" src={edit} alt="Editar" />
+          </i>
+        )}
+      </td>
+    </tr>
+  );
+};
 export default TablaVenta;
