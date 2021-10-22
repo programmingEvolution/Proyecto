@@ -132,6 +132,10 @@ const FilaVentas = ({ venta, producto }) => {
 
   const [editar, setEditar] = useState(false);
 
+  const [valor, setValor] = useState(0);
+  const [totalVentas, setTotalVentas] = useState(0);
+
+
   const [infoNuevaVenta, setinfoNuevaVenta] = useState({
     idCliente: venta.idCliente,
     nombreCliente: venta.nombreCliente,
@@ -187,7 +191,7 @@ const FilaVentas = ({ venta, producto }) => {
         vendedor: infoNuevaVenta.vendedor,
         estado: infoNuevaVenta.estado,
         fecha: infoNuevaVenta.fecha,
-        valorTotal: infoNuevaVenta.valorTotal,
+        valorTotal: totalVentas,
         productos: Object.values([infoNuevaVenta.productos][0]),
       },
       (response) => {
@@ -195,14 +199,29 @@ const FilaVentas = ({ venta, producto }) => {
         setEditar(false);
 
         Swal.fire("Actualizado!", "Usuario actualizado con exito.", "success");
+        window.location.reload();
       },
       (error) => {
         console.error(error);
       }
     );
 
+
+    
+
     //history.push("/modificarventa")
   };
+
+  useEffect(() => {
+    let total = 0;
+    Object.values(infoNuevaVenta.productos).forEach((f) => {
+      total = total + f.total;
+    });
+    setTotalVentas(total);
+    console.log(totalVentas)
+    console.log(total)
+  }, [infoNuevaVenta]);
+
   return (
     <tr>
       {editar ? (
@@ -267,7 +286,7 @@ const FilaVentas = ({ venta, producto }) => {
                       className="inputForm"
                       type="text"
                       defaultValue={producto.nombreProducto}
-                      onChange={(e) =>
+                      onChange={(e) => {
                         setinfoNuevaVenta({
                           ...infoNuevaVenta,
 
@@ -278,8 +297,8 @@ const FilaVentas = ({ venta, producto }) => {
                               (v) => v._id === e.target.value
                             )[0],
                           },
-                        })
-                      }
+                        });
+                      }}
                     >
                       {productosVenta.map((el) => {
                         return (
@@ -334,19 +353,26 @@ const FilaVentas = ({ venta, producto }) => {
                       className="inputForm"
                       type="text"
                       defaultValue={producto.cantidad}
-                      onChange={(e) =>
+                      onChange={(e) => 
+
+                        {
+                        
                         setinfoNuevaVenta({
                           ...infoNuevaVenta,
+                         
 
                           productos: {
                             ...infoNuevaVenta.productos,
                             [number]: {
+
                               ...infoNuevaVenta.productos[number],
 
                               cantidad: e.target.value,
+                              total: parseFloat(producto.precioUnidad) *
+                              parseFloat(e.target.value)
                             },
                           },
-                        })
+                        })}
                       }
                     ></input>
                   </td>
@@ -359,9 +385,11 @@ const FilaVentas = ({ venta, producto }) => {
             <input
               className="inputForm"
               type="text"
-              Value={venta.valorTotal}
+              defaultValue={totalVentas}
               disabled
+              hidden
             ></input>
+            {totalVentas}
           </td>
 
           <td>
@@ -374,16 +402,15 @@ const FilaVentas = ({ venta, producto }) => {
 
           <td>
             <select className="selectForm" type="date" Value={venta.fecha}>
-              <option>En proceso</option>
               <option>Finalizada</option>
-              <option>Despachada</option>
+              <option>Anulada</option>
             </select>
           </td>
         </>
       ) : (
         <>
           <td>{venta._id.slice(15)}</td>
-          <td>{venta.vendedor.slice(15)}</td>
+          <td>{Object.values(venta.vendedor._id).slice(15)}</td>
           <td>{venta.idCliente}</td>
           <td>{venta.nombreCliente}</td>
           <td>

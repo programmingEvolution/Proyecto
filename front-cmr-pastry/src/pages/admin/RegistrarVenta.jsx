@@ -1,54 +1,89 @@
-import React from "react";
-
 import ContenedorTitulos from "../../components/ContenedorTitulos";
-import edit from "../../media/edit.png";
-import eliminar from "../../media/eliminar.png";
-import { Link } from "react-router-dom";
-import { useUser } from "../../context/userContext";
-import { useState } from "react";
-import { useEffect } from "react";
-import { obtenerProductos } from "../../utils/api";
+import React, { useState, useEffect, useRef } from "react";
+import { crearVenta, obtenerProductos } from "../../utils/api";
 import { obtenerUsuarios } from "../../utils/api";
+import Swal from "sweetalert2";
 
 const RegistrarVenta = () => {
+  const form = useRef(null);
   const [usuarios, setUsuarios] = useState([]);
   const [productos, setProductos] = useState([]);
-  const [ejecutarConsultaProductos, setEjecutarConsultaProductos] =
-    useState(true);
-  const [ejecutarConsultaUsuarios, setEjecutarConsultaUsuarios] =
-    useState(true);
+  const [productosTabla, setProductosTabla] = useState([]);
+  const [fecha, setFecha] = useState("");
+  const [idCliente, setIdCliente] = useState("");
+  const [nombreCliente, setNombreCliente] = useState("");
 
   useEffect(() => {
-    console.log("consulta", ejecutarConsultaProductos);
-    if (ejecutarConsultaProductos) {
-      obtenerProductos(
+    const fetchUsuarios = async () => {
+      await obtenerUsuarios(
         (response) => {
-          console.log("la respuesta que se recibio fue", response);
-          setProductos(response.data);
-        },
-        (error) => {
-          console.error("Salio un error:", error);
-        }
-      );
-      setEjecutarConsultaProductos(false);
-    }
-  }, [ejecutarConsultaProductos]);
-
-  useEffect(() => {
-    console.log("consulta", ejecutarConsultaUsuarios);
-    if (ejecutarConsultaUsuarios) {
-      obtenerUsuarios(
-        (response) => {
-          console.log("la respuesta que se recibio fue", response);
           setUsuarios(response.data);
         },
         (error) => {
-          console.error("Salio un error:", error);
+          console.error(error);
         }
       );
-      setEjecutarConsultaUsuarios(false);
-    }
-  }, [ejecutarConsultaUsuarios]);
+    };
+
+    const fetchProductos = async () => {
+      await obtenerProductos(
+        (response) => {
+          setProductos(response.data);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    };
+
+    fetchUsuarios();
+    fetchProductos();
+  }, []);
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form.current);
+
+    const formData = {};
+    fd.forEach((value, key) => {
+      formData[key] = value;
+    });
+
+    console.log("form data", formData);
+
+    console.log();
+
+    const listaProductos = Object.keys(formData)
+      .map((k) => {
+        if (k.includes("producto")) {
+          return productosTabla.filter((v) => v._id === formData[k])[0];
+        }
+        return null;
+      })
+      .filter((v) => v);
+
+    const datosVenta = {
+      vendedor: usuarios.filter((v) => v._id === formData.vendedor)[0],
+      valorTotal: formData.valor,
+      productos: listaProductos,
+      fecha: fecha,
+      idCliente: idCliente,
+      nombreCliente: nombreCliente,
+      estado: "Finalizada",
+    };
+
+    await crearVenta(
+      datosVenta,
+      (response) => {
+        console.log(response);
+        Swal.fire("Registrado!", "Venta creada con exito.", "success");
+        window.location.reload();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  };
 
   return (
     <div>
@@ -56,89 +91,252 @@ const RegistrarVenta = () => {
         <ContenedorTitulos Titulo="Modificar Ventas" />
       </section>
 
-      <form>
-        <section className="flex flex-col">
-          <div className="field boton fecha">
-            <label className="fecha" form="">
-              Fecha de venta
-            </label>
-            <input className="fecha" type="date" required />
-          </div>
-          <div className="field large">
-            <label for="">Id Cliente:</label>
-            <input
-              className="inputForm"
-              type="number"
-              placeholder="Ingrese el id del cliente"
-              required
+      <form ref={form} onSubmit={submitForm} className="flex flex-col h-full">
+        <section className="flex flex-row">
+          <section className="flex flex-col">
+            <div className="field boton fecha">
+              <label className="fecha">Fecha de venta</label>
+              <input
+                className="fecha"
+                type="date"
+                name="fecha"
+                required
+                onChange={(e) => setFecha(e.target.value)}
+              />
+            </div>
+            <div className="field large">
+              <label for="">Id Cliente:</label>
+              <input
+                className="inputForm"
+                type="number"
+                placeholder="Ingrese el id del cliente"
+                onChange={(e) => setIdCliente(e.target.value)}
+                required
+              />
+            </div>
+            <div className="field large">
+              <label for="">Nombre Cliente:</label>
+              <input
+                className="inputForm"
+                type="text"
+                placeholder="Ingrese el nombre del cliente"
+                onChange={(e) => setNombreCliente(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="field large">
+              <label for="vendedor">Seleccione un Vendedor:</label>
+              <select
+                defaultValue=""
+                className="inputForm"
+                name="vendedor"
+                type="text"
+                required
+              >
+                <option disabled value="">
+                  Seleccione un Vendedor
+                </option>
+
+                {usuarios.map((el) => {
+                  return (
+                    <option key={el._id} value={el._id}>
+                      {el.idUsuario}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+          </section>
+          <section className="ml-10 mr-10">
+            <TablaProductos
+              productos={productos}
+              setProductos={setProductos}
+              setProductosTabla={setProductosTabla}
             />
+          </section>
+          <div>
+            <button type="submit" className="buttonForm">
+              Crear Venta
+            </button>
           </div>
-
-          <div className="field large">
-            <label for="vendedor">ID Vendedor:</label>
-            <select className="inputForm" name="vendedor" type="text" required>
-              {" "}
-              {usuarios.map((el) => {
-                return <option value={el._id}>{el.idUsuario}</option>;
-              })}
-            </select>
-          </div>
-          <div className="field">
-            <label form="">Producto:</label>
-            <select className="inputForm" type="text" required onChange>
-              {productos.map((el) => {
-                return <option value={el._id}>{el.nombreProducto}</option>;
-              })}
-            </select>
-            <button>Agregar</button>
-          </div>
-
-          <section><input
-              className="inputForm"
-              type="number"
-              placeholder="Ingrese el id del cliente"
-              required
-            /></section>
         </section>
-        <section>
-          <table className="ventas">
-            <thead>
-              <tr>
-                <th>ID Producto</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* {venta.productos.map((producto) => (
-              <tr>
-                <td>{producto.id}</td>
-                <td>{producto.nombre}</td>
-                <td>{producto.cantidad}</td>
-                <td>{producto.valor}</td>
-                <td>
-                  <span>
-                    <img class="icono" src={edit} alt="Editar" />
-                    <img class="icono" src={eliminar} alt="" />
-                  </span>
-                </td>
-              </tr>
-            ))} */}
-            </tbody>
-          </table>
-        </section>
-        <div>
-          <button>
-            <a class="add" href="">
-              {" "}
-              Guardar
-            </a>
-          </button>
-        </div>
       </form>
     </div>
   );
 };
+
+const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
+  const [productoAAgregar, setProductoAAgregar] = useState({});
+  const [filasTabla, setFilasTabla] = useState([]);
+  const [totalVentas, setTotalVentas] = useState(0);
+
+  useEffect(() => {
+    setProductosTabla(filasTabla);
+  }, [filasTabla, setProductosTabla]);
+
+  const agregarNuevoProducto = () => {
+    setFilasTabla([...filasTabla, productoAAgregar]);
+    setProductos(productos.filter((v) => v._id !== productoAAgregar._id));
+    setProductoAAgregar({});
+  };
+
+  const eliminarProducto = (productoAEliminar) => {
+    setFilasTabla(filasTabla.filter((v) => v._id !== productoAEliminar._id));
+    setProductos([...productos, productoAEliminar]);
+  };
+
+  const modificarProducto = (producto, cantidad) => {
+    setFilasTabla(
+      filasTabla.map((ft) => {
+        if (ft._id === producto._id) {
+          ft.cantidad = cantidad;
+          ft.total = producto.precioUnidad * cantidad;
+        }
+        return ft;
+      })
+    );
+  };
+  useEffect(() => {
+    let total = 0;
+    filasTabla.forEach((f) => {
+      total = total + f.total;
+    });
+
+    setTotalVentas(total);
+  }, [filasTabla]);
+
+  return (
+    <div>
+      <div className="flex ">
+        <label className="flex flex-col" htmlFor="producto">
+          <select
+            className="inputForm"
+            value={productoAAgregar._id ?? ""}
+            onChange={(e) =>
+              setProductoAAgregar(
+                productos.filter((v) => v._id === e.target.value)[0]
+              )
+            }
+          >
+            <option disabled value="">
+              Seleccione un Producto
+            </option>
+            {productos.map((el) => {
+              return (
+                <option key={el._id} value={el._id}>
+                  {el.nombreProducto}
+                </option>
+              );
+            })}
+          </select>
+        </label>
+        <button
+          type="button"
+          onClick={() => agregarNuevoProducto()}
+          className="buttonForm"
+        >
+          Agregar Producto
+        </button>
+      </div>
+
+      <table className="tabla">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Proveedor</th>
+            <th>Valor Unitario</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+            <th>Eliminar</th>
+            <th className="hidden">Input</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filasTabla.map((el, index) => {
+            return (
+              <FilaProducto
+                key={el._id}
+                pro={el}
+                index={index}
+                eliminarProducto={eliminarProducto}
+                modificarProducto={modificarProducto}
+              />
+            );
+          })}
+        </tbody>
+      </table>
+      <section className="mt-16">
+        {" "}
+        <label className="">
+          <span className="text-2xl font-gray-900 mr-6">
+            Valor Total Venta:
+          </span>
+          <td> {totalVentas}</td>
+          <input
+            className="inputForm"
+            type="number"
+            name="valor"
+            placeholder="Valor total de venta"
+            value={totalVentas}
+            required
+            hidden
+          ></input>
+        </label>
+      </section>
+    </div>
+  );
+};
+
+const FilaProducto = ({ pro, index, eliminarProducto, modificarProducto }) => {
+  const [producto, setProducto] = useState(pro);
+
+  useEffect(() => {
+    console.log("pro", producto);
+  }, [producto]);
+
+  return (
+    <tr>
+      <td>{producto._id}</td>
+      <td>{producto.nombreProducto}</td>
+      <td>{producto.proveedor}</td>
+      <td>{producto.precioUnidad}</td>
+      <td>
+        <input
+          className="inputForm"
+          type="number"
+          name={`cantidad_${index}`}
+          value={producto.cantidad}
+          onChange={(e) => {
+            setProducto({
+              ...pro,
+              cantidad: e.target.value === "" ? "0" : e.target.value,
+              total:
+                parseFloat(producto.precioUnidad) *
+                parseFloat(e.target.value === "" ? "0" : e.target.value),
+            });
+            modificarProducto(
+              producto,
+              e.target.value === "" ? "0" : e.target.value
+            );
+          }}
+        />
+      </td>
+      <td>{parseFloat(producto.total ?? 0)}</td>
+      <td>
+        <i
+          onClick={() => eliminarProducto(producto)}
+          className="fas fa-minus text-red-500 cursor-pointer"
+        >
+          eliminar
+        </i>
+      </td>
+      <td className="hidden">
+        <input hidden defaultValue={producto._id} name={`producto_${index}`} />
+      </td>
+    </tr>
+  );
+};
+
 export default RegistrarVenta;
