@@ -4,7 +4,7 @@ import ContenedorTitulos from "../components/ContenedorTitulos";
 
 const Clientes = () => {
   return (
-    <div>
+    <div className="ml-60">
       <section>
         <ContenedorTitulos Titulo="Gestión de Clientes" />
       </section>
@@ -26,9 +26,9 @@ const Clientes = () => {
          </section>
 
       <section>
-        <table className= "tabla">
+        <table className= "tablaPrueba">
           <tr>
-            <th>ID Cliente</th>
+            <th >ID Cliente</th>
             <th >Nombre</th>
             <th >Telefono</th>
             <th >correo</th>

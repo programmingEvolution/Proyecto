@@ -6,7 +6,7 @@ import ContenedorTitulos from "../components/ContenedorTitulos";
 
 const StockProductos = () => {
   return (
-    <div className='max-w-full'>
+    <div className='max-w-full ml-20                '>
       <section>
         <ContenedorTitulos Titulo="Stock de productos" />
       </section>

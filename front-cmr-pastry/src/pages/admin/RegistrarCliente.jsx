@@ -43,14 +43,14 @@ const ResgistrarCliente = () => {
 
   return (
 
-    <div className="contenedorFormulario">
+    <div className="contenedorFormulario w-full ml-80">
       <section>
               <ContenedorTitulos Titulo = "Registrar cliente"/>
           </section>
 
       <form className="formulario" onSubmit={formik.handleSubmit}>
         <section>
-          <label className="labelForm" htmlFor="idCliente">
+          <label className="labelForm mt-20" htmlFor="idCliente">
             Id Cliente:
           </label>
           <input
@@ -121,10 +121,10 @@ const ResgistrarCliente = () => {
           ></input>
         </section>
         <section className="flex flex-grow  justify-around">
-          <button className="buttonForm" type="submit">
+          <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5" type="submit">
             Registrar
           </button>
-          <button className="buttonForm"  type="button">
+          <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"  type="button">
             Cancelar
           </button>
         </section>
