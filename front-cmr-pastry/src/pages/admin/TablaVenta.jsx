@@ -19,6 +19,7 @@ const TablaVenta = () => {
   const [ventasFiltradas, setVentasFiltradas] = useState(ventas);
   const form = useRef(null);
 
+
   const submitEdit = (e) => {
     e.preventDefault();
     const fd = new FormData(form.current);
@@ -134,6 +135,7 @@ const FilaVentas = ({ venta, producto }) => {
 
   const [valor, setValor] = useState(0);
   const [totalVentas, setTotalVentas] = useState(0);
+  const [color, setColor] = useState(true)
 
 
   const [infoNuevaVenta, setinfoNuevaVenta] = useState({
@@ -207,6 +209,8 @@ const FilaVentas = ({ venta, producto }) => {
     );
 
 
+   
+
     
 
     //history.push("/modificarventa")
@@ -221,6 +225,11 @@ const FilaVentas = ({ venta, producto }) => {
     console.log(totalVentas)
     console.log(total)
   }, [infoNuevaVenta]);
+
+  useEffect(()=>{
+    
+  })
+
 
   return (
     <tr>
