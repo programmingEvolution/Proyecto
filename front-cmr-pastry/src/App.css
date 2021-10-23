@@ -213,6 +213,7 @@ body {
   text-align: center;
   color: #775c5a;
   
+  
 }
 
 /** css Cristian **/
@@ -994,8 +995,8 @@ form {
   text-align: left;
   margin-top: 8%;
   margin-bottom: 4%;
-  margin:
 }
+
 .contenidoProducto {
   display: grid;
   justify-items: left;
