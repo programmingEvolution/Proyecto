@@ -86,7 +86,7 @@ const Productos = () => {
   };
 
   return (
-    <div>
+    <div className="ml-96 md mx-96">
       <section>
         <ContenedorTitulos Titulo="Gestión de productos" />
       </section>
