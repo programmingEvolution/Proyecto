@@ -5,14 +5,11 @@ import ContenedorTitulos from "../components/ContenedorTitulos";
 const Clientes = () => {
   return (
 
-    <div className="flex flex-col md:flex-row flex-nowrap h-full w-full ml-96 md:mx-96">
-
-
-      <section>
+    <div className="ml-96 md:mx-96">  
         <section>
           <ContenedorTitulos Titulo="Gestión de Clientes" />
         </section>
-        <section className="flex justify-between mt-12">
+        <section className="place-content-center flex space-x-6">
                 <input
                   className= 'w-25 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
                   id="idCliente"
