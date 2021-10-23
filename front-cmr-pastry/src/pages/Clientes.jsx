@@ -4,27 +4,32 @@ import ContenedorTitulos from "../components/ContenedorTitulos";
 
 const Clientes = () => {
   return (
-    <div className="ml-60">
-      <section>
-        <ContenedorTitulos Titulo="Gestión de Clientes" />
-      </section>
-      <section className="place-content-center flex space-x-6">
-              <input
-                className= 'w-25 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
-                id="idCliente"
-                placeholder="Buscar Clientes"
-                type="ID"
-              ></input>
-           
-           
-              <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit" type="submit">
-                Buscar
-              </button>
-              <Link to="registrarcliente">
-                <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">Nuevo Cliente</button>
-              </Link> 
-         </section>
 
+    <div className="flex flex-col md:flex-row flex-nowrap h-full w-full ml-96 md:mx-96">
+
+
+      <section>
+        <section>
+          <ContenedorTitulos Titulo="Gestión de Clientes" />
+        </section>
+        <section className="flex justify-between mt-12">
+                <input
+                  className= 'w-25 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200'
+                  id="idCliente"
+                  placeholder="Buscar Clientes"
+                  type="ID">  
+                </input>
+
+
+                <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit" type="submit">
+                  Buscar
+                </button>
+                <Link to="registrarcliente">
+                  <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">Nuevo Cliente</button>
+                </Link> 
+        </section>
+
+     
       <section>
         <table className= "tablaPrueba">
           <tr>
