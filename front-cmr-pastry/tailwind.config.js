@@ -28,6 +28,7 @@ module.exports = {
   variants: {
     extend: {},
     boxShadow: ['active'],
+    maxHeight: ['focus'],
     animation: ['motion-safe'],
   },
   plugins: [],

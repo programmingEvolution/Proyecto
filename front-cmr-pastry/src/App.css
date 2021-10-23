@@ -41,6 +41,20 @@
   background-color: hsl(0, 0%, 96%);
   margin: 20px;
 }
+.inputFormPrueba{
+  padding: 8px 10px;
+  border: 1px solid #a3a2a2;
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 96%);
+  margin: 20px;
+
+}
+.inputFormPrueba:focus {
+  outline: none !important;
+  border: 1px solid #edc0bc;
+  box-shadow: 0 0 10px #719ece;
+}
+
 .inputcheck {
   width: 90px;
   padding: 8px 10px;

@@ -86,7 +86,7 @@ const Productos = () => {
   };
 
   return (
-    <div className="ml-96 md mx-96">
+    <div className="ml-72 mr-20">
       <section>
         <ContenedorTitulos Titulo="Gestión de productos" />
       </section>
@@ -242,7 +242,7 @@ const FilaProducto = ({ producto }) => {
         <>
           <td>
             <input
-              className="inputForm"
+              className="w-50"
               type="text"
               defaultValue={producto._id}
               disabled
@@ -250,7 +250,7 @@ const FilaProducto = ({ producto }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="text"
               value={infoNuevoProducto.proveedor}
               onChange={(e) =>
@@ -263,7 +263,7 @@ const FilaProducto = ({ producto }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="text"
               value={infoNuevoProducto.nombreProducto}
               onChange={(e) =>
@@ -276,7 +276,7 @@ const FilaProducto = ({ producto }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="text"
               value={infoNuevoProducto.precioUnidad}
               onChange={(e) =>
@@ -289,7 +289,7 @@ const FilaProducto = ({ producto }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="text"
               value={infoNuevoProducto.inventario}
               onChange={(e) =>
