@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const Panel = () => {
   return (
-    <div>
+    <div className="ml-48">
       <section>
           <ContenedorTitulos Titulo="Panel de control" />
       </section>

@@ -7,56 +7,58 @@ import { Link } from "react-router-dom";
 
 const RegistrarVenta = () => {
   return (
-    <div>
+    <div className="ml-20">
       <section>
         <ContenedorTitulos Titulo="Registrar ventas" />
       </section>
       <form>
-        <div className="field large">
-          <label for="">Id Cliente:</label>
+        <div className="place-content-center flex space-x-6 mt-12">
+          <label for="">Id Cliente:
           <input
             className="inputForm"
             type="number"
             placeholder="Ingrese el id del cliente"
             required
           />
-        </div>
-        <div className="field">
-          <label for="">Producto:</label>
-          <input className="inputForm" type="text" required />
-        </div>
-        <div className="field large">
-          <label for="vendedor">ID Vendedor:</label>
-          <input className="inputForm" name="vendedor" type="number" required />
-        </div>
-        <div className="field short">
-          <label for="">Cantidad:</label>
-          <input className="inputForm" type="number" required />
-        </div>
-
-        <div className="field">
-          <input className="boton" type="submit" value="Agregar Producto" />
-        </div>
-
-        <section>
-          <label className="labelForm" htmlFor="estadoUsuario">
-            Estado de venta:
           </label>
-          <select className="selectForm" id="estadoUsuario">
-            <option>En proceso</option>
-            <option>Finalizada</option>
-            <option>Despachada</option>
-          </select>
-        </section>
-      </form>
+          <label for="">Producto:
+          <input className="inputForm" type="text" required />
+          </label>
+          <label for="vendedor">ID Vendedor:
+          <input className="inputForm" name="vendedor" type="number" required />
+          </label>
+        </div>
+        <div className="place-content-center flex space-x-6">
+          <label className="flex flex-col"for="">Cantidad:
+            <input 
+            className="inputForm" 
+            type="number" 
+            required 
+          />
+          </label>
+          <label className="flex flex-col"  for="">Estado de venta:
+            <select
+              className="selectForm" 
+              id="estadoUsuario">
+                <option>En proceso</option>
+                <option>Finalizada</option>
+                <option>Despachada</option>
+            </select>
+          </label>     
+          <label className="flex flex-col"  for="">Fecha de venta:
+            <input 
+            className="selectForm" 
+            type="date" 
+            required />
+         </label>
+        </div>
+        </form>
 
-      <div className="field boton fecha">
-        <label className="fecha" for="">
-          Fecha de venta
-        </label>
-        <input className="fecha" type="date" required />
-
-        <button>
+      <div className="place-content-center flex space-x-6">
+      <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5" type="submit" value="Agregar Producto">
+        Agregar Producto
+      </button>
+        <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">
           <a class="add" href="">
             {" "}
             Guardar
