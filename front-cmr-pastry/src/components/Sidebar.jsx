@@ -4,12 +4,18 @@ import left from "./img/left.png";
 import house from "./img/house.png";
 import caja from "./img/caja.png";
 import ventas from "./img/ventas.png";
-import logout from "./img/logout.png";
+import salir from "./img/salir.png";
 import grupo from "./img/grupo.png";
 import clientes from "./img/clientes.png";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Sidebar = () => {
+  const { logout } = useAuth0();
+  const cerrarSesion = () => {
+    logout({ returnTo: window.location.origin });
+    localStorage.setItem("token", null);
+  };
   return (
     <nav className="hidden sm:flex sm:w-60 border border-gray-300  flex-col bg-gray-200 p-0 sidebar">
       <div id="sidebar">
@@ -89,19 +95,17 @@ const Sidebar = () => {
         <br />
         <br />
         <ul>
-          <li className="mb-8 Salir" />
-
-          <Link to="/">
-            <li className="Salir">
+          <li className="Salir">
+            <button onClick={() => cerrarSesion()}>
               <img
                 style={{ float: "left" }}
-                src={logout}
+                src={salir}
                 alt=""
                 className="icono"
               />{" "}
               Cerrar Sesión
-            </li>
-          </Link>
+            </button>
+          </li>
         </ul>
         <br />
         <br />
