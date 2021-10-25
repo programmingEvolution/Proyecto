@@ -114,12 +114,12 @@ const Usuarios = () => {
               );
             })}
           </tbody>
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={usuarios.length}
+            paginate={paginate}
+          />
         </table>
-        <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={usuarios.length}
-          paginate={paginate}
-        />
       </section>
     </div>
   );

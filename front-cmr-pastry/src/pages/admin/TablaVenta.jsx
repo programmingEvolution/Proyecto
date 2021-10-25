@@ -87,19 +87,23 @@ const TablaVenta = () => {
               ></input>
             </section>
             <section className="flex-grow justify-between">
-              <button className="buttonForm" type="submit">
+              <button
+                className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
+                type="submit"
+              >
                 Buscar
               </button>
             </section>
           </form>
         </ul>
       </section>
-
-      <section>
-        <Link to="registrarventa">
-          <button className="buttonForm">Nueva venta</button>
-        </Link>
-      </section>
+      <PrivateComponent roleList={(["Administrador"], ["Vendedor"])}>
+        <section>
+          <Link to="registrarventa">
+            <button className="buttonForm">Nueva venta</button>
+          </Link>
+        </section>
+      </PrivateComponent>
 
       <section>
         <form ref={form} onSubmit={submitEdit}>
