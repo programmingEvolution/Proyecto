@@ -61,7 +61,7 @@ const Panel = () => {
   return (
     <div className="ml-48">
       <section>
-          <ContenedorTitulos Titulo="Panel de control" />
+        <ContenedorTitulos Titulo="Panel de control" />
       </section>
 
       <h2 class="dash-title">Panel De Control</h2>
@@ -111,7 +111,7 @@ const Panel = () => {
       <section class="resumen">
         <div class="activity-grid">
           <div class="activity-card">
-            <h3>Últimas Ventas</h3>
+            <h3 className="font-bold">Últimas Ventas</h3>
 
             <div class="table-responsive">
               <table>

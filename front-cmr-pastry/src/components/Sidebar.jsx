@@ -21,20 +21,9 @@ const Sidebar = () => {
 
   const { usuarioData } = useUsuario();
 
-
   return (
-    <nav className='hidden md:flex md:w-72 border border-gray-300 h-full flex-col justify-between bg-gray-200 p-0 sidebar'>
+    <nav className="hidden md:flex md:w-72 border border-gray-300 h-full flex-col justify-between bg-gray-200 p-0 sidebar">
       <div id="sidebar">
-        <div className='toggle-btn'>
-          <span>
-            <img
-              style={{ float: "left" }}
-              src={left}
-              alt=""
-              className="close"
-            />
-          </span>
-        </div>
         <ul>
           <Link to="/panel">
             <li>
@@ -43,7 +32,11 @@ const Sidebar = () => {
           </Link>
 
           <li className="active">
-            <img style={{ float: "left" }} src={usuarioData.picture} className="h-7 w-7 rounded-full" />
+            <img
+              style={{ float: "left" }}
+              src={usuarioData.picture}
+              className="h-7 w-7 rounded-full"
+            />
             {usuarioData.given_name}
           </li>
           <Link to="/panel">
@@ -95,21 +88,17 @@ const Sidebar = () => {
         <br />
         <br />
         <ul>
-
           <li className="Salir">
             <button onClick={() => cerrarSesion()}>
-
               <img
                 style={{ float: "left" }}
                 src={salir}
                 alt=""
                 className="icono"
               />{" "}
-
               Cerrar Sesión
             </button>
           </li>
-
         </ul>
         <br />
         <br />

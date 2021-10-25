@@ -27,7 +27,6 @@ const Productos = () => {
   const [postsPerPage] = useState(5);
   const [color, setColor] = useState("text-black");
 
-  
   const form = useRef(null);
 
   const submitEdit = (e) => {
@@ -113,31 +112,32 @@ const Productos = () => {
         <ContenedorTitulos Titulo="Gestión de productos" />
       </section>
       <section>
-        
-          
-          <section className="place-content-center flex space-x-6 ">
-            <input
-              value={busqueda}
-              className=' w-15 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 '
-              id="idProducto"
-              placeholder="Buscar Producto"
-              type="ID"
-              onChange={(e) => setBusqueda(e.target.value)}
-            ></input>
-            
-            <button className='bg-red-100 my-7 h-10 rounded-lg border m-2 cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">
-              Buscar
-            </button>
+        <section className="place-content-center flex space-x-6 ">
+          <input
+            value={busqueda}
+            className=" w-15 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+            id="idProducto"
+            placeholder="Buscar Producto"
+            type="ID"
+            onChange={(e) => setBusqueda(e.target.value)}
+          ></input>
 
-          </section>
-        </ul>
+          <button
+            className="bg-red-100 my-7 h-10 rounded-lg border m-2 cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
+            type="submit"
+          >
+            Buscar
+          </button>
+        </section>
       </section>
 
       <PrivateComponent roleList={["Administrador"]}>
         <AgregarPrivateProduct roleList={[true]}>
           <section>
             <Link to="registrarproducto">
-              <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">Nuevo Producto</button>
+              <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">
+                Nuevo Producto
+              </button>
             </Link>
           </section>
         </AgregarPrivateProduct>
@@ -154,26 +154,24 @@ const Productos = () => {
             />
           ) : (
             <>
-              <table>
+              <table className="tabla">
                 <thead>
                   <tr>
-                    <td className="tituloColumna">IDproductos</td>
-                    <td className="tituloColumna">Proveedor</td>
-                    <td className="tituloColumna">Nombre</td>
-                    <td className="tituloColumna">Precio unidad</td>
-                    <td className="tituloColumna">Disponible</td>
+                    <th className="tituloColumna">IDproductos</th>
+                    <th className="tituloColumna">Proveedor</th>
+                    <th className="tituloColumna">Nombre</th>
+                    <th className="tituloColumna">Precio unidad</th>
+                    <th className="tituloColumna">Disponible</th>
                     <PrivateComponent roleList={["Administrador"]}>
                       <ModificarPrivateProduct roleList={[true]}>
-                        <td className="tituloColumna">Editar</td>
-                        <td className="tituloColumna">Eliminar</td>
+                        <th className="tituloColumna">Editar</th>
+                        <th className="tituloColumna">Eliminar</th>
                       </ModificarPrivateProduct>
                     </PrivateComponent>
-
                   </tr>
                 </thead>
                 <tbody>
                   {productosFiltrados.map((producto) => {
-
                     return (
                       <FilaProducto key={producto._id} producto={producto} />
                     );
@@ -189,7 +187,6 @@ const Productos = () => {
           paginate={paginate}
         />
       </section>
-
     </div>
   );
 };

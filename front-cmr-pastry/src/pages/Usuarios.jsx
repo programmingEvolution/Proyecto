@@ -53,7 +53,10 @@ const Usuarios = () => {
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = usuariosFiltrados.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = usuariosFiltrados.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -62,7 +65,6 @@ const Usuarios = () => {
         <ContenedorTitulos Titulo="Gestión de Usuarios" />
       </section>
       <section>
-
         <ul className="contenedorBotonesgrises">
           <form ref={form} onSubmit={submitEdit}>
             <section>
@@ -74,36 +76,36 @@ const Usuarios = () => {
                 className="w-25 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
                 id="name"
                 placeholder="Buscar usuario"
-
                 type="ID"
                 onChange={(e) => setBusqueda(e.target.value)}
               ></input>
-              <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">
+              <button
+                className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
+                type="submit"
+              >
                 Buscar
               </button>
             </section>
-          
-        
+          </form>
+        </ul>
       </section>
 
       <section>
         <table className="tabla">
           <tr>
-
-            <td className="tituloColumnaUsu">IDUsuario</td>
-            <td className="tituloColumnaUsu">Nombre</td>
-            <td className="tituloColumnaUsu">Rol</td>
-            <td className="tituloColumnaUsu">Estado</td>
+            <th className="tituloColumnaUsu">IDUsuario</th>
+            <th className="tituloColumnaUsu">Nombre</th>
+            <th className="tituloColumnaUsu">Rol</th>
+            <th className="tituloColumnaUsu">Estado</th>
             <PrivateComponent roleList={["Administrador"]}>
-              <td className="tituloColumnaUsu">Agregar Productos</td>
-              <td className="tituloColumnaUsu">Modificar Productos</td>
-              <td className="tituloColumnaUsu">Modificar usuarios</td>
-              <td className="tituloColumnaUsu">Modificar Ventas</td>
+              <th className="tituloColumnaUsu">Agregar Productos</th>
+              <th className="tituloColumnaUsu">Modificar Productos</th>
+              <th className="tituloColumnaUsu">Modificar usuarios</th>
+              <th className="tituloColumnaUsu">Modificar Ventas</th>
               <PrivateUsuario roleList={[true]}>
-              <td className="tituloColumnaUsu">Gestionar</td>
+                <th className="tituloColumnaUsu">Gestionar</th>
               </PrivateUsuario>
             </PrivateComponent>
-
           </tr>
           <tbody>
             {currentPosts.map((usuario) => {
@@ -114,10 +116,10 @@ const Usuarios = () => {
           </tbody>
         </table>
         <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={usuarios.length}
-            paginate={paginate}
-          />
+          postsPerPage={postsPerPage}
+          totalPosts={usuarios.length}
+          paginate={paginate}
+        />
       </section>
     </div>
   );
@@ -334,31 +336,29 @@ const FilaUsuario = ({ usuario }) => {
           </PrivateComponent>
         </>
       )}
-     <PrivateComponent roleList={["Administrador"]}>
-      <PrivateUsuario roleList={[true]}>
-
-        <td className="filaImpar">
-          {editar ? (
-            <i
-              onClick={() => {
-                actualizarUsuario();
-              }}
-            >
-              <img class="icono" src={check} alt="check" />
-            </i>
-          ) : (
-            <i
-              onClick={() => {
-                setEditar(!editar);
-              }}
-            >
-              <img class="icono" src={edit} alt="Editar" />
-            </i>
-          )}
-        </td>
+      <PrivateComponent roleList={["Administrador"]}>
+        <PrivateUsuario roleList={[true]}>
+          <td className="filaImpar">
+            {editar ? (
+              <i
+                onClick={() => {
+                  actualizarUsuario();
+                }}
+              >
+                <img class="icono" src={check} alt="check" />
+              </i>
+            ) : (
+              <i
+                onClick={() => {
+                  setEditar(!editar);
+                }}
+              >
+                <img class="icono" src={edit} alt="Editar" />
+              </i>
+            )}
+          </td>
         </PrivateUsuario>
-        </PrivateComponent>
-    
+      </PrivateComponent>
     </tr>
   );
 };

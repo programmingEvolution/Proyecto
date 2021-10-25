@@ -15,7 +15,7 @@ const RegistrarVenta = () => {
   const [nombreCliente, setNombreCliente] = useState("");
   const { usuarioData } = useUsuario();
 
-  console.log(usuarioData._id)
+  console.log(usuarioData._id);
   useEffect(() => {
     const fetchUsuarios = async () => {
       await obtenerUsuarios(
@@ -91,9 +91,8 @@ const RegistrarVenta = () => {
   return (
     <div className="ml-20">
       <section>
-        <ContenedorTitulos Titulo="Modificar Ventas" />
+        <ContenedorTitulos Titulo="Registrar Ventas" />
       </section>
-
 
       <form ref={form} onSubmit={submitForm} className="flex flex-col h-full">
         <section className="flex flex-row">
@@ -130,9 +129,8 @@ const RegistrarVenta = () => {
             </div>
 
             <div className="field large">
-
-            <label for="vendedor">Vendedor:</label>
-            <input
+              <label for="vendedor">Vendedor:</label>
+              <input
                 className="inputForm"
                 name="vendedor"
                 type="text"
@@ -140,8 +138,8 @@ const RegistrarVenta = () => {
                 defaultValue={usuarioData.name}
                 required
               />
-            <label for="vendedor">Id:</label>
-            <input
+              <label for="vendedor">Id:</label>
+              <input
                 className="inputForm"
                 name="vendedor"
                 type="text"
@@ -149,7 +147,6 @@ const RegistrarVenta = () => {
                 defaultValue={usuarioData._id}
                 required
               />
-              
             </div>
           </section>
           <section className="ml-10 mr-10">
@@ -160,8 +157,11 @@ const RegistrarVenta = () => {
             />
           </section>
           <div>
-            <button type="submit" className="buttonForm">
-              Crear Venta
+            <button
+              type="submit"
+              className="bg-red-100 mr-20 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
+            >
+              Registrar
             </button>
           </div>
         </section>
@@ -241,7 +241,6 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
           className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
         >
           Agregar Producto
-
         </button>
       </div>
 
@@ -278,7 +277,7 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
           <span className="text-2xl font-gray-900 mr-6">
             Valor Total Venta:
           </span>
-          <td> {totalVentas}</td>
+          <td className="inputForm text-lg font-bold"> {totalVentas}</td>
           <input
             className="inputForm"
             type="number"
@@ -309,7 +308,7 @@ const FilaProducto = ({ pro, index, eliminarProducto, modificarProducto }) => {
       <td>{producto.precioUnidad}</td>
       <td>
         <input
-          className="inputForm"
+          className="inputFormCantidad"
           type="number"
           name={`cantidad_${index}`}
           value={producto.cantidad}

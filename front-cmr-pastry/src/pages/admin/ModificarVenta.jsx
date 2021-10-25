@@ -169,8 +169,11 @@ const RegistrarVenta = () => {
             />
           </section>
           <div>
-            <button type="submit" className="buttonForm">
-              Modificar Venta
+            <button
+              type="submit"
+              className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
+            >
+              Modificar
             </button>
           </div>
         </section>
@@ -253,7 +256,7 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
         <button
           type="button"
           onClick={() => agregarNuevoProducto()}
-          className="buttonForm"
+          className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
         >
           Agregar Producto
         </button>
@@ -326,7 +329,7 @@ const FilaProducto = ({ pro, index, eliminarProducto, modificarProducto }) => {
         <td>{producto.precioUnidad}</td>
         <td>
           <input
-            className="inputForm"
+            className="inputFormCantidad"
             type="number"
             name={`cantidad_${index}`}
             value={producto.cantidad}

@@ -65,8 +65,6 @@ const TablaVenta = () => {
   const currentPosts = ventasFiltradas.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  
-
   return (
     <div>
       <section>
@@ -104,9 +102,8 @@ const TablaVenta = () => {
       </section>
 
       <section>
-
         <form ref={form} onSubmit={submitEdit}>
-          <table>
+          <table className="tabla">
             <thead>
               <tr>
                 <th>ID Venta</th>
@@ -119,14 +116,14 @@ const TablaVenta = () => {
                 <th>Valor Total</th>
                 <th>Fecha</th>
                 <th>Estado</th>
-<PrivateVenta roleList={[true]}>
-                <PrivateComponent roleList={["Vendedor"]}>
-                  <th>Editar</th>
-                </PrivateComponent>
-                <PrivateComponent roleList={["Administrador"]}>
-                  <th>Editar</th>
-                </PrivateComponent>
-</PrivateVenta>
+                <PrivateVenta roleList={[true]}>
+                  <PrivateComponent roleList={["Vendedor"]}>
+                    <th>Editar</th>
+                  </PrivateComponent>
+                  <PrivateComponent roleList={["Administrador"]}>
+                    <th>Editar</th>
+                  </PrivateComponent>
+                </PrivateVenta>
               </tr>
             </thead>
             <tbody>
@@ -134,14 +131,13 @@ const TablaVenta = () => {
                 return <FilaVentas venta={venta} key={venta._id} />;
               })}
             </tbody>
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={ventas.length}
+              paginate={paginate}
+            />
           </table>
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={ventas.length}
-            paginate={paginate}
-          />
         </form>
-
       </section>
     </div>
   );
@@ -492,38 +488,38 @@ const FilaVentas = ({ venta, producto }) => {
         </>
       )}
       <PrivateVenta roleList={[true]}>
-      <PrivateComponent roleList={["Vendedor"]}>
-        <td>
-          {editar ? (
+        <PrivateComponent roleList={["Vendedor"]}>
+          <td>
+            {editar ? (
+              <i
+                onClick={() => {
+                  actualizarVenta(venta);
+                }}
+              >
+                <img class="icono" src={check} alt="check" />
+              </i>
+            ) : (
+              <i
+                onClick={() => {
+                  setEditar(!editar);
+                }}
+              >
+                <img class="icono" src={edit} alt="Editar" />
+              </i>
+            )}
+          </td>
+        </PrivateComponent>
+        <PrivateComponent roleList={["Administrador"]}>
+          <td>
             <i
               onClick={() => {
-                actualizarVenta(venta);
-              }}
-            >
-              <img class="icono" src={check} alt="check" />
-            </i>
-          ) : (
-            <i
-              onClick={() => {
-                setEditar(!editar);
+                actualizarProductos(venta);
               }}
             >
               <img class="icono" src={edit} alt="Editar" />
             </i>
-          )}
-        </td>
-      </PrivateComponent>
-      <PrivateComponent roleList={["Administrador"]}>
-        <td>
-          <i
-            onClick={() => {
-              actualizarProductos(venta);
-            }}
-          >
-            <img class="icono" src={edit} alt="Editar" />
-          </i>
-        </td>
-      </PrivateComponent>
+          </td>
+        </PrivateComponent>
       </PrivateVenta>
     </tr>
   );
