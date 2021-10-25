@@ -12,6 +12,7 @@ import { obtenerUsuarios } from "../../utils/api";
 import Swal from "sweetalert2";
 import PrivateComponent from "../../components/PrivateComponent";
 import Pagination from "../../components/pagination";
+import PrivateVenta from "../../components/PrivateVenta";
 
 const TablaVenta = () => {
   const { setUserData } = useUser();
@@ -108,7 +109,7 @@ const TablaVenta = () => {
             <thead>
               <tr>
                 <th>ID Venta</th>
-                <th>ID Vendedor</th>
+                <th>Nombre Vendedor</th>
                 <th>ID cliente</th>
                 <th>Nombre Cliente</th>
                 <th>Productos</th>
@@ -117,12 +118,14 @@ const TablaVenta = () => {
                 <th>Valor Total</th>
                 <th>Fecha</th>
                 <th>Estado</th>
+<PrivateVenta roleList={[true]}>
                 <PrivateComponent roleList={["Vendedor"]}>
                   <th>Editar</th>
                 </PrivateComponent>
                 <PrivateComponent roleList={["Administrador"]}>
                   <th>Editar</th>
                 </PrivateComponent>
+</PrivateVenta>
               </tr>
             </thead>
             <tbody>
@@ -447,7 +450,7 @@ const FilaVentas = ({ venta, producto }) => {
       ) : (
         <>
           <td>{venta._id.slice(15)}</td>
-          <td>{Object.values(venta.vendedor._id).slice(15)}</td>
+          <td>{Object.values(venta.vendedor.name)}</td>
           <td>{venta.idCliente}</td>
           <td>{venta.nombreCliente}</td>
           <td>
@@ -486,6 +489,7 @@ const FilaVentas = ({ venta, producto }) => {
           <td className="badge exitoso">{venta.estado}</td>
         </>
       )}
+      <PrivateVenta roleList={[true]}>
       <PrivateComponent roleList={["Vendedor"]}>
         <td>
           {editar ? (
@@ -518,6 +522,7 @@ const FilaVentas = ({ venta, producto }) => {
           </i>
         </td>
       </PrivateComponent>
+      </PrivateVenta>
     </tr>
   );
 };

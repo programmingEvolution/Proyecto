@@ -9,13 +9,17 @@ import grupo from "./img/grupo.png";
 import clientes from "./img/clientes.png";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useUsuario } from "../context/usuarioContext";
 
 const Sidebar = () => {
-  const { logout } = useAuth0();
+  const { user, logout } = useAuth0();
   const cerrarSesion = () => {
     logout({ returnTo: window.location.origin });
     localStorage.setItem("token", null);
   };
+
+  const { usuarioData } = useUsuario();
+
   return (
     <nav className="hidden sm:flex sm:w-60 border border-gray-300  flex-col bg-gray-200 p-0 sidebar">
       <div id="sidebar">
@@ -35,6 +39,11 @@ const Sidebar = () => {
               <img src={logo} alt="Logo Julis" className="logo" />
             </li>
           </Link>
+
+          <li className="active">
+            <img style={{ float: "left" }} src={usuarioData.picture} className="h-7 w-7 rounded-full" />
+            {usuarioData.given_name}
+          </li>
           <Link to="/panel">
             <li className="active">
               <img
@@ -79,7 +88,6 @@ const Sidebar = () => {
               Usuarios
             </li>
           </Link>
-          
         </ul>
         <br />
         <br />
