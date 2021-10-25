@@ -173,6 +173,7 @@ const FilaVentas = ({ venta, producto }) => {
         (response) => {
           console.log("la respuesta que se recibio fue", response);
           setUsuarios(response.data);
+          
         },
         (error) => {
           console.error("Salio un error:", error);
@@ -182,8 +183,11 @@ const FilaVentas = ({ venta, producto }) => {
     }
   }, [ejecutarConsultaUsuarios]);
 
-  const actualizarVenta = async () => {
-    console.log(infoNuevaVenta);
+  const actualizarVenta = ( (venta) => {
+
+    setUserData(venta);
+    history.push("/modificarventa")
+    /* console.log(infoNuevaVenta);
 
     await editarVenta(
       venta._id,
@@ -206,15 +210,15 @@ const FilaVentas = ({ venta, producto }) => {
       (error) => {
         console.error(error);
       }
-    );
+    ); */
 
 
    
 
     
 
-    //history.push("/modificarventa")
-  };
+   
+  });
 
   useEffect(() => {
     let total = 0;
@@ -469,9 +473,8 @@ const FilaVentas = ({ venta, producto }) => {
           </i>
         ) : (
           <i
-            onClick={() => {
-              //
-              setEditar(!editar);
+            onClick={() => {//setEditar(!editar);
+              actualizarVenta(venta);
             }}
           >
             <img class="icono" src={edit} alt="Editar" />
