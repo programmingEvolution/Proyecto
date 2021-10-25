@@ -22,7 +22,7 @@ const TablaVenta = () => {
   const [ventasFiltradas, setVentasFiltradas] = useState(ventas);
   const form = useRef(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
+  const [postsPerPage] = useState(3);
   const [color, setColor] = useState("text-blue-400");
 
   const submitEdit = (e) => {
@@ -488,7 +488,15 @@ const FilaVentas = ({ venta, producto }) => {
           </td>
           <td>{venta.valorTotal}</td>
           <td>{venta.fecha}</td>
-          <td className="badge exitoso">{venta.estado}</td>
+          <td>
+          <td
+            className={
+              venta.estado == "Anulada" ? "bg-red-500" : "bg-green-600"
+            }
+          >
+            {venta.estado}
+          </td>
+          </td>
         </>
       )}
       <PrivateVenta roleList={[true]}>

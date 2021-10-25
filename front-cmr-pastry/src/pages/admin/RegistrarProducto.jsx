@@ -13,7 +13,6 @@ const ResgistrarProducto = () => {
       proveedor: "",
       precioUnidad: "",
       inventario: "",
-      imagen: "",
     },
 
     //Validacion de datos de formulario con yup
@@ -36,7 +35,6 @@ const ResgistrarProducto = () => {
         proveedor: values.proveedor,
         precioUnidad: values.precioUnidad,
         inventario: values.inventario,
-        imagen: values.imagen,
       });
       console.log("enviando..");
 
@@ -154,20 +152,7 @@ const ResgistrarProducto = () => {
           </div>
         ) : null}
 
-        <section>
-          <label className="labelForm" htmlFor="imagen">
-            Imagen del producto:
-          </label>
-          <input
-            className="inputForm"
-            id="imagen"
-            placeholder="Adjunte una imagen del producto"
-            type="file"
-            onChange={formik.handleChange}
-            value={formik.values.imagen}
-          ></input>
-        </section>
-
+        
         <section className="flex flex-grow  justify-around">
           <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5" type="submit">
             Registrar

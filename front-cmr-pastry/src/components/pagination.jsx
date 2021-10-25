@@ -14,7 +14,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
         {pageNumbers.map((number) => (
           <button
             key={number}
-            className="w-10 h-10 text-red-300 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-100 m-3 focus:bg-red-300 focus:text-white "
+            className="w-10 h-10 text-red-300 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-100 m-3 focus:bg-red-300 focus:text-white"
           >
             <li onClick={() => paginate(number)}>
               <span>{number}</span>

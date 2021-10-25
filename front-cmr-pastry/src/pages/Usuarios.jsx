@@ -178,7 +178,7 @@ const FilaUsuario = ({ usuario }) => {
         estadoUsuario: infoNuevoUsuario.estadoUsuario,
         modificarProducto: infoNuevoUsuario.modificarProducto,
         añadirProducto: infoNuevoUsuario.añadirProducto,
-        modificarUsuario: infoNuevoUsuario.añadirUsuario,
+        modificarUsuario: infoNuevoUsuario.modificarUsuario,
         modificarVenta: infoNuevoUsuario.modificarVenta,
       },
       (response) => {
@@ -272,7 +272,7 @@ const FilaUsuario = ({ usuario }) => {
             <input
               className="inputFormPrueba w-50"
               type="checkbox"
-              Checked={infoNuevoUsuario.modificarProducto}
+              checked={infoNuevoUsuario.modificarProducto}
               onChange={(e) =>
                 setinfoNuevoUsuario({
                   ...infoNuevoUsuario,
@@ -298,7 +298,7 @@ const FilaUsuario = ({ usuario }) => {
             <input
               className="inputFormPrueba w-50"
               type="checkbox"
-              Checked={infoNuevoUsuario.modificarVenta}
+              checked={infoNuevoUsuario.modificarVenta}
               onChange={(e) =>
                 setinfoNuevoUsuario({
                   ...infoNuevoUsuario,
