@@ -12,15 +12,24 @@ import {
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
-
-
+import ReactLoading from "react-loading";
+import PrivateComponent from "../components/PrivateComponent";
+import AgregarPrivateProduct from "../components/AgregarPrivateProduct";
+import ModificarPrivateProduct from "../components/ModificarPrivateProduct";
+import Pagination from "../components/pagination";
 
 const Productos = () => {
   const [productos, setProductos] = useState([]);
   const [busqueda, setBusqueda] = useState("");
   const [productosFiltrados, setProductosFiltrados] = useState(productos);
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+  const [color, setColor] = useState("text-black");
+
+  
   const form = useRef(null);
+
   const submitEdit = (e) => {
     e.preventDefault();
     const fd = new FormData(form.current);
@@ -28,19 +37,27 @@ const Productos = () => {
 
   const history = useHistory();
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    console.log("consulta", ejecutarConsulta);
-    if (ejecutarConsulta) {
-      obtenerProductos(
+    const fetchProductos = async () => {
+      setLoading(true);
+      await obtenerProductos(
         (response) => {
           console.log("la respuesta que se recibio fue", response);
           setProductos(response.data);
+          setEjecutarConsulta(false);
+          setLoading(false);
         },
         (error) => {
           console.error("Salio un error:", error);
+          setLoading(false);
         }
       );
-      setEjecutarConsulta(false);
+    };
+    console.log("consulta", ejecutarConsulta);
+    if (ejecutarConsulta) {
+      fetchProductos();
     }
   }, [ejecutarConsulta]);
 
@@ -54,8 +71,6 @@ const Productos = () => {
     );
   }, [busqueda, productos]);
 
-
-  
   const deleteProducto = async (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -73,17 +88,24 @@ const Productos = () => {
 
           (response) => {
             console.log(response.data);
-
-            setEjecutarConsulta(true);
           },
           (error) => {
             console.error(error);
           }
         );
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        setEjecutarConsulta(true);
       }
     });
   };
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = productosFiltrados.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="ml-72 mr-20">
@@ -106,36 +128,68 @@ const Productos = () => {
             <button className='bg-red-100 my-7 h-10 rounded-lg border m-2 cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">
               Buscar
             </button>
-            <Link to="registrarproducto">
-             <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5'>Nuevo Producto</button>
-            </Link>
-           </section>
-        
+
+          </section>
+        </ul>
       </section>
 
-      
-      <section >
-          <form ref={form} onSubmit={submitEdit}>
-              <table className="tabla">
+      <PrivateComponent roleList={["Administrador"]}>
+        <AgregarPrivateProduct roleList={[true]}>
+          <section>
+            <Link to="registrarproducto">
+              <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">Nuevo Producto</button>
+            </Link>
+          </section>
+        </AgregarPrivateProduct>
+      </PrivateComponent>
+
+      <section>
+        <form ref={form} onSubmit={submitEdit}>
+          {loading ? (
+            <ReactLoading
+              type="bars"
+              color="#ffe5d9"
+              height={"20%"}
+              width={"20%"}
+            />
+          ) : (
+            <>
+              <table>
                 <thead>
                   <tr>
-                    <th >IDproductos</th>
-                    <th>Provedor</th>
-                    <th>Tipo de producto</th>
-                    <th>Precio Unidad</th>
-                    <th>Cantidad</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
+                    <td className="tituloColumna">IDproductos</td>
+                    <td className="tituloColumna">Proveedor</td>
+                    <td className="tituloColumna">Nombre</td>
+                    <td className="tituloColumna">Precio unidad</td>
+                    <td className="tituloColumna">Disponible</td>
+                    <PrivateComponent roleList={["Administrador"]}>
+                      <ModificarPrivateProduct roleList={[true]}>
+                        <td className="tituloColumna">Editar</td>
+                        <td className="tituloColumna">Eliminar</td>
+                      </ModificarPrivateProduct>
+                    </PrivateComponent>
+
                   </tr>
                 </thead>
                 <tbody>
                   {productosFiltrados.map((producto) => {
-                    return <FilaProducto key={producto._id} producto={producto} />;
+
+                    return (
+                      <FilaProducto key={producto._id} producto={producto} />
+                    );
                   })}
                 </tbody>
               </table>
-            </form>
-          </section>
+            </>
+          )}
+        </form>
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={productos.length}
+          paginate={paginate}
+        />
+      </section>
+
     </div>
   );
 };
@@ -198,14 +252,13 @@ const FilaProducto = ({ producto }) => {
 
           (response) => {
             console.log(response.data);
-
-            setEjecutarConsulta(true);
           },
           (error) => {
             console.error(error);
           }
         );
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        setEjecutarConsulta(true);
       }
     });
   };
@@ -231,8 +284,7 @@ const FilaProducto = ({ producto }) => {
       },
       (error) => {
         console.error(error);
-      },
-
+      }
     );
   };
 
@@ -310,34 +362,38 @@ const FilaProducto = ({ producto }) => {
           <td className="filaImpar">{producto.inventario}</td>
         </>
       )}
-      <td className="filaImpar">
-        {editar ? (
-          <i
-            onClick={() => {
-              actualizarProducto();
-            }}
-          >
-            <img class="icono" src={check} alt="check" />
-          </i>
-        ) : (
-          <i
-            onClick={() => {
-              setEditar(!editar);
-            }}
-          >
-            <img class="icono" src={edit} alt="Editar" />
-          </i>
-        )}
-      </td>
-      <td className="filaImpar">
-        <button
-          onClick={() => {
-            deleteProducto(producto._id);
-          }}
-        >
-          <img class="icono" src={eliminar} alt="Eliminar" />
-        </button>
-      </td>
+      <PrivateComponent roleList={["Administrador"]}>
+        <ModificarPrivateProduct roleList={[true]}>
+          <td className="filaImpar">
+            {editar ? (
+              <i
+                onClick={() => {
+                  actualizarProducto();
+                }}
+              >
+                <img class="icono" src={check} alt="check" />
+              </i>
+            ) : (
+              <i
+                onClick={() => {
+                  setEditar(!editar);
+                }}
+              >
+                <img class="icono" src={edit} alt="Editar" />
+              </i>
+            )}
+          </td>
+          <td className="filaImpar">
+            <button
+              onClick={() => {
+                deleteProducto(producto._id);
+              }}
+            >
+              <img class="icono" src={eliminar} alt="Eliminar" />
+            </button>
+          </td>
+        </ModificarPrivateProduct>
+      </PrivateComponent>
     </tr>
   );
 };
