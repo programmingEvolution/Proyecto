@@ -9,7 +9,12 @@
   align-items: center;
   justify-content: center;
 }
-
+.button-login{
+  background-color: #EDC0BC;
+  padding: 15px;
+  border-radius: 5%;
+  box-shadow: #000000 5%;
+}
 .formulario {
   width: 500px;
   padding: 16px;
@@ -19,7 +24,7 @@
 }
 
 .labelForm {
-  width: 170px;
+  width: 400px;
   font-weight: bold;
   display: inline-block;
 }
@@ -29,13 +34,27 @@
 }
 
 .inputForm {
-  width: 180px;
+  width: 400px;
   padding: 8px 10px;
   border: 1px solid #a3a2a2;
   border-radius: 5px;
   background-color: hsl(0, 0%, 96%);
   margin: 20px;
 }
+.inputFormPrueba{
+  padding: 8px 10px;
+  border: 1px solid #a3a2a2;
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 96%);
+  margin: 20px;
+
+}
+.inputFormPrueba:focus {
+  outline: none !important;
+  border: 1px solid #edc0bc;
+  box-shadow: 0 0 10px #719ece;
+}
+
 .inputcheck {
   width: 90px;
   padding: 8px 10px;
@@ -52,7 +71,7 @@
 }
 
 .selectForm {
-  width: 180px;
+  width: 400px;
   padding: 8px 10px;
   border: 1px solid #a3a2a2;
   border-radius: 5px;
@@ -186,8 +205,8 @@ body {
 }
 .sidebar .toggle-btn {
   position: absolute;
-  left: 230px;
-  top: 20px;
+  left: 280px;
+  top: 5px;
   cursor: pointer;
 }
 
@@ -202,12 +221,13 @@ body {
 /** css juliana*/
 
 .DiseñoTitulo {
-  font-size: 180%;
+  font-size: 400%;
   font-style: oblique;
   font-family: Georgia, "Times New Roman", Times, serif;
   text-align: center;
   color: #775c5a;
-  background-color: rgba(239, 182, 178, 0.897);
+  
+  
 }
 
 /** css Cristian **/
@@ -401,28 +421,6 @@ a.gboton {
   height: 100%;
 }
 
-.botones {
-  font-family: "Roboto", sans-serif;
-  width: 30%;
-  height: 10%;
-  background: #fffff9;
-  color: #775c5a;
-  position: absolute;
-  top: 93%;
-  left: 65%;
-}
-
-.botones input[type="submit"] {
-  width: 80px;
-  height: 40px;
-  background: #ffe5d9;
-  box-shadow: 3px 3px 3px #5a4442;
-  border-radius: 5px;
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
-
 table {
   margin-top: 280px;
   margin-left: 27%;
@@ -494,34 +492,6 @@ td {
   background-color: #efb6b2;
 }
 
-.correrTabla {
-  margin-top: 200px;
-  margin-left: 15%;
-  margin-right: 5%;
-}
-
-.tituloColumna {
-  background-color: #ffe5d9;
-  height: 40px;
-  padding-inline: 75px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaImpar {
-  justify-items: right;
-  background-color: white;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
 
 .botones input[type="submit"] {
   width: 80px;
@@ -534,15 +504,7 @@ td {
   outline: none;
 }
 
-.filaPar {
-  background-color: #ffe5d9;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-}
+
 
 table {
   margin-top: 100px;
@@ -567,7 +529,7 @@ td {
   padding: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
-}
+}*/
 .buscar {
   margin-left: auto;
   margin-top: auto;
@@ -671,69 +633,9 @@ ul {
 }
 /** CSS tabla DE PRODUCTOS DANIELA**/
 
-.tituloHome {
-  color: #775c5a;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: 80px;
-  text-align: center;
-  margin-bottom: 90px;
-}
-
-.introduccion {
-  color: #775c5a;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: 30px;
-  text-align: center;
-  display: flex;
-  margin-right: 200px;
-  margin-left: 200px;
-}
-
-.herramientas {
-  color: #efb6b2;
-  font-family: sans-serif;
-  font-size: 40px;
-  text-align: center;
-  font-style: normal;
-  margin-top: 80px;
-  margin-bottom: 150px;
-}
-.contenedorTarjetasHome {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30%;
-}
-
-.tarjetas {
-  padding: 3px;
-  background-color: #ffe5d9;
-  width: 450px;
-  height: 500px;
-  text-align: center;
-  padding-top: 30px;
-  border-radius: 50px;
-  font-family: sans-serif;
-  color: #775c5a;
-  font-weight: bold;
-  font-size: 22px;
-  margin-left: 25px;
-  margin-right: 25px;
-  box-shadow: 2px 4px silver;
-}
-
-.fotosHome {
-  background-color: #ffe5d9;
-  width: 400px;
-  height: 400px;
-  margin-top: 30px;
-  border-radius: 15px;
-}
-
 /** CSS DASHBOARD DIEGO**/
 main {
-  margin-left: 200px;
-  max-width: 1500px;
+  /*max-width: 1500px;*/
   margin-top: 0px;
   min-height: 90vh;
   padding: 1rem 3rem;
@@ -954,6 +856,14 @@ form {
 }
 .field input.fecha {
   background: #ffe5d9;
+  margin-left: auto;
+  margin-right: -200px;
+}
+.field label.fecha {
+  margin-right: -100px;
+  margin-left: auto;
+  display: flex;
+
 }
 
 .field button {
@@ -991,7 +901,6 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-left: 15%;
   margin-right: 2%;
   padding: 1%;
 }
@@ -1039,8 +948,6 @@ form {
 
 .tarjetasProductos {
   margin-top: 25px;
-  margin-left: 15%;
-  margin-right: 45px;
   margin-bottom: 25px;
   padding: 10px;
   background-color: #ffe5d9;
@@ -1058,11 +965,9 @@ form {
 
 .tarjetasProductosNoDispo {
   margin-top: 25px;
-  margin-left: 15%;
-  margin-right: 45px;
   margin-bottom: 25px;
   padding: 10px;
-  background-color: silver;
+  background-color:gray;
   display: flex;
   justify-content: space-between;
   height: 280px;
@@ -1104,6 +1009,7 @@ form {
   margin-top: 8%;
   margin-bottom: 4%;
 }
+
 .contenidoProducto {
   display: grid;
   justify-items: left;
@@ -1165,44 +1071,7 @@ form {
   background-color: #efb6b2;
 }
 
-.correrTablaUsu {
-  margin-top: 200px;
-  margin-left: 15%;
-  margin-right: 5%;
-}
 
-.tituloColumnaUsu {
-  background-color: #ffe5d9;
-  height: 40px;
-  padding-inline: 75px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaImparUsu {
-  justify-items: right;
-  background-color: white;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaParUsu {
-  background-color: #ffe5d9;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-}
 /** CSS tabla DE usuarios DANIELA**/
 
 /** CSS tabla DE clientes DANIELA**/
@@ -1248,93 +1117,43 @@ form {
   background-color: #efb6b2;
 }
 
-.correrTablaCliente {
-  margin-top: 200px;
-  margin-left: 15%;
-  margin-right: 5%;
-}
 
-.tituloColumnaCliente {
-  background-color: #ffe5d9;
-  height: 40px;
-  padding-inline: 75px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaImparCliente {
-  justify-items: right;
-  background-color: white;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-  margin-left: 15%;
-}
-
-.filaParCliente {
-  background-color: #ffe5d9;
-  height: 60px;
-  padding-inline: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12 px;
-  font-weight: normal;
-  color: #775c5a;
-}
 /** CSS tabla DE clientes DANIELA**/
 
-/** CSS HEADER DANIELA**/
-.logoGrande {
-  height: 110px;
-  margin-left: 55%;
-}
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px;
-  background-color: #edc0bc;
-  height: 60px;
-}
 
-.estilosHeader {
-  color: #775c5a;
-  font-size: x-large;
+.tabla th,
+.tabla td {
+  padding: 8px;
+  border:1px solid rgb(201, 195, 195);
 }
-
-.botonLogin {
-  background-color: #ffe5d9;
-  color: #775c5a;
-  border: 0px;
-  padding: 5px 5px;
-  width: 80px;
-  height: 25px;
-  border-radius: 10px;
-  font-weight: bolder;
-  text-align: center;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 18px;
-  box-shadow: 2px 2px gray;
+.tabla th{
+  background-color:pink;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
-.botonLogin:hover {
+.tabla tr:nth-child(even){
+  background-color: rgb(248, 232, 235);
+}
+.tabla tr:hover{
+  background-color: rgb(247, 202, 208);
   cursor: pointer;
-  box-shadow: 4px 4px #efb6b2;
-  transform: scale(1.1);
-  background-color: white;
+} 
+
+.tablaPrueba th,
+.tablaPrueba td {
+  width:200px;
+  padding: 8px;
+  border:1px solid rgb(201, 195, 195);
 }
-
-/** CSS HEADER DANIELA**/
-
-.contenedorStock {
-  height: 1000px;
-
-  overflow-y: scroll;
-  justify-content: left;
-  display: block;
-  align-items: flex-start;
+.tablaPrueba th{
+  background-color:pink;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
+.tablaPrueba tr:nth-child(even){
+  background-color: rgb(248, 232, 235);
+}
+.tablaPrueba tr:hover{
+  background-color: rgb(247, 202, 208);
+  cursor: pointer;
+} 

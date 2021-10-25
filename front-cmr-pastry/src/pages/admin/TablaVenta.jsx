@@ -104,6 +104,7 @@ const TablaVenta = () => {
       </section>
 
       <section>
+
         <form ref={form} onSubmit={submitEdit}>
           <table>
             <thead>
@@ -140,6 +141,7 @@ const TablaVenta = () => {
             paginate={paginate}
           />
         </form>
+
       </section>
     </div>
   );

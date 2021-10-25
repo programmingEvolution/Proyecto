@@ -108,29 +108,27 @@ const Productos = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div>
+    <div className="ml-72 mr-20">
       <section>
         <ContenedorTitulos Titulo="Gestión de productos" />
       </section>
       <section>
-        <ul className="contenedorBotonesgrises">
-          <section>
-            <label className="labelForm" htmlFor="idProducto">
-              Buscar Producto:
-            </label>
+        
+          
+          <section className="place-content-center flex space-x-6 ">
             <input
               value={busqueda}
-              className="inputForm"
+              className=' w-15 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 '
               id="idProducto"
-              placeholder="Ingrese el nombre del producto"
+              placeholder="Buscar Producto"
               type="ID"
               onChange={(e) => setBusqueda(e.target.value)}
             ></input>
-          </section>
-          <section className="flex-grow justify-between">
-            <button className="buttonForm" type="submit">
+            
+            <button className='bg-red-100 my-7 h-10 rounded-lg border m-2 cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">
               Buscar
             </button>
+
           </section>
         </ul>
       </section>
@@ -139,7 +137,7 @@ const Productos = () => {
         <AgregarPrivateProduct roleList={[true]}>
           <section>
             <Link to="registrarproducto">
-              <button className="buttonForm">Nuevo Producto</button>
+              <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">Nuevo Producto</button>
             </Link>
           </section>
         </AgregarPrivateProduct>
@@ -170,10 +168,12 @@ const Productos = () => {
                         <td className="tituloColumna">Eliminar</td>
                       </ModificarPrivateProduct>
                     </PrivateComponent>
+
                   </tr>
                 </thead>
                 <tbody>
                   {productosFiltrados.map((producto) => {
+
                     return (
                       <FilaProducto key={producto._id} producto={producto} />
                     );
@@ -189,6 +189,7 @@ const Productos = () => {
           paginate={paginate}
         />
       </section>
+
     </div>
   );
 };
@@ -288,12 +289,12 @@ const FilaProducto = ({ producto }) => {
   };
 
   return (
-    <tr>
+    <tr className="tabla.tr">
       {editar ? (
         <>
           <td>
             <input
-              className="inputForm"
+              className="w-50"
               type="text"
               defaultValue={producto._id}
               disabled
@@ -301,7 +302,7 @@ const FilaProducto = ({ producto }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="text"
               value={infoNuevoProducto.proveedor}
               onChange={(e) =>
@@ -314,7 +315,7 @@ const FilaProducto = ({ producto }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="text"
               value={infoNuevoProducto.nombreProducto}
               onChange={(e) =>
@@ -327,7 +328,7 @@ const FilaProducto = ({ producto }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="text"
               value={infoNuevoProducto.precioUnidad}
               onChange={(e) =>
@@ -340,7 +341,7 @@ const FilaProducto = ({ producto }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="text"
               value={infoNuevoProducto.inventario}
               onChange={(e) =>

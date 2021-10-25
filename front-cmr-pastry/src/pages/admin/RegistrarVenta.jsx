@@ -89,10 +89,11 @@ const RegistrarVenta = () => {
   };
 
   return (
-    <div>
+    <div className="ml-20">
       <section>
         <ContenedorTitulos Titulo="Modificar Ventas" />
       </section>
+
 
       <form ref={form} onSubmit={submitForm} className="flex flex-col h-full">
         <section className="flex flex-row">
@@ -237,9 +238,10 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
         <button
           type="button"
           onClick={() => agregarNuevoProducto()}
-          className="buttonForm"
+          className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
         >
           Agregar Producto
+
         </button>
       </div>
 

@@ -59,10 +59,11 @@ const Panel = () => {
   console.log(ventasConsulta);
 
   return (
-    <div>
+    <div className="ml-48">
       <section>
-        <ContenedorTitulos Titulo="Panel de control" />
+          <ContenedorTitulos Titulo="Panel de control" />
       </section>
+
       <h2 class="dash-title">Panel De Control</h2>
 
       <div class="dash-cards">

@@ -17,15 +17,18 @@ import Clientes from "./pages/Clientes";
 import Usuarios from "./pages/Usuarios";
 import RegistrarVenta from "./pages/admin/RegistrarVenta";
 import ModificarVenta from "./pages/admin/ModificarVenta";
+
 import { UserContext } from "./context/userContext";
 import { useState } from "react";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { UsuarioContext } from "./context/usuarioContext";
 
+
 function App() {
   const [usuarioData, setUsuarioData] = useState({});
   const [userData, setUserData] = useState({});
   return (
+
     <Auth0Provider
       domain="julypastry.us.auth0.com"
       clientId="RP3pDTrISwYtoGFR2X7Zm4MQpBX2zoGx"
@@ -124,6 +127,7 @@ function App() {
         </UsuarioContext.Provider>
       </div>
     </Auth0Provider>
+
   );
 }
 

@@ -57,11 +57,12 @@ const Usuarios = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div>
+    <div className="ml-48 mr-20">
       <section>
         <ContenedorTitulos Titulo="Gestión de Usuarios" />
       </section>
       <section>
+
         <ul className="contenedorBotonesgrises">
           <form ref={form} onSubmit={submitEdit}>
             <section>
@@ -70,25 +71,25 @@ const Usuarios = () => {
               </label>
               <input
                 value={busqueda}
-                className="inputForm"
+                className="w-25 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
                 id="name"
-                placeholder="Ingrese el nombre del usuario"
+                placeholder="Buscar usuario"
+
                 type="ID"
                 onChange={(e) => setBusqueda(e.target.value)}
               ></input>
-            </section>
-            <section className="flex-grow justify-between">
-              <button className="buttonForm" type="submit">
+              <button className='bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5' type="submit">
                 Buscar
               </button>
             </section>
-          </form>
-        </ul>
+          
+        
       </section>
 
       <section>
-        <table>
+        <table className="tabla">
           <tr>
+
             <td className="tituloColumnaUsu">IDUsuario</td>
             <td className="tituloColumnaUsu">Nombre</td>
             <td className="tituloColumnaUsu">Rol</td>
@@ -102,6 +103,7 @@ const Usuarios = () => {
               <td className="tituloColumnaUsu">Gestionar</td>
               </PrivateUsuario>
             </PrivateComponent>
+
           </tr>
           <tbody>
             {currentPosts.map((usuario) => {
@@ -192,13 +194,13 @@ const FilaUsuario = ({ usuario }) => {
   };
 
   return (
-    <tr>
+    <tr className="tabla.tr">
       {editar ? (
         <>
           {" "}
           <td>
             <input
-              className="inputForm"
+              className="w-50"
               type="text"
               defaultValue={usuario._id}
               disabled
@@ -206,7 +208,7 @@ const FilaUsuario = ({ usuario }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="text"
               value={infoNuevoUsuario.name}
               onChange={(e) =>
@@ -219,7 +221,7 @@ const FilaUsuario = ({ usuario }) => {
           </td>
           <td>
             <select
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="text"
               value={infoNuevoUsuario.rolUsuario}
               onChange={(e) =>
@@ -236,7 +238,7 @@ const FilaUsuario = ({ usuario }) => {
           </td>
           <td>
             <select
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="text"
               value={infoNuevoUsuario.estadoUsuario}
               onChange={(e) =>
@@ -253,7 +255,7 @@ const FilaUsuario = ({ usuario }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="checkbox"
               checked={infoNuevoUsuario.añadirProducto}
               onChange={(e) =>
@@ -266,7 +268,7 @@ const FilaUsuario = ({ usuario }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="checkbox"
               Checked={infoNuevoUsuario.modificarProducto}
               onChange={(e) =>
@@ -279,7 +281,7 @@ const FilaUsuario = ({ usuario }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="checkbox"
               checked={infoNuevoUsuario.modificarUsuario}
               onChange={(e) =>
@@ -292,7 +294,7 @@ const FilaUsuario = ({ usuario }) => {
           </td>
           <td>
             <input
-              className="inputForm"
+              className="inputFormPrueba w-50"
               type="checkbox"
               Checked={infoNuevoUsuario.modificarVenta}
               onChange={(e) =>
