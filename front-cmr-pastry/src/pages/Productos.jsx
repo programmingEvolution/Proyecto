@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import ReactLoading from "react-loading";
+import PrivateComponent from "../components/PrivateComponent";
 
 const Productos = () => {
   const [productos, setProductos] = useState([]);
@@ -20,6 +21,7 @@ const Productos = () => {
   const [productosFiltrados, setProductosFiltrados] = useState(productos);
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   const form = useRef(null);
+
   const submitEdit = (e) => {
     e.preventDefault();
     const fd = new FormData(form.current);
@@ -117,11 +119,15 @@ const Productos = () => {
         </ul>
       </section>
 
+      <PrivateComponent roleList={['Administrador']}>
+
       <section>
         <Link to="registrarproducto">
           <button className="buttonForm">Nuevo Producto</button>
         </Link>
       </section>
+
+      </PrivateComponent>
 
       <section>
         <form ref={form} onSubmit={submitEdit}>
@@ -141,8 +147,10 @@ const Productos = () => {
                   <td className="tituloColumna">Nombre</td>
                   <td className="tituloColumna">Precio unidad</td>
                   <td className="tituloColumna">Disponible</td>
+                  <PrivateComponent roleList={['Administrador']}>
                   <td className="tituloColumna">Editar</td>
                   <td className="tituloColumna">Eliminar</td>
+                  </PrivateComponent>
                 </tr>
               </thead>
               <tbody>
@@ -328,6 +336,7 @@ const FilaProducto = ({ producto }) => {
           <td className="filaImpar">{producto.inventario}</td>
         </>
       )}
+       <PrivateComponent roleList={['Administrador']}>
       <td className="filaImpar">
         {editar ? (
           <i
@@ -356,6 +365,7 @@ const FilaProducto = ({ producto }) => {
           <img class="icono" src={eliminar} alt="Eliminar" />
         </button>
       </td>
+      </PrivateComponent>
     </tr>
   );
 };

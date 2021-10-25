@@ -20,8 +20,10 @@ import ModificarVenta from "./pages/admin/ModificarVenta";
 import { UserContext } from "./context/userContext";
 import { useState } from "react";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { UsuarioContext } from "./context/usuarioContext";
 
 function App() {
+  const [usuarioData, setUsuarioData] = useState({});
   const [userData, setUserData] = useState({});
   return (
     <Auth0Provider
@@ -31,7 +33,8 @@ function App() {
       audience="api-autenticacion-julyspastry"
     >
       <div>
-        <UserContext.Provider value={{ userData, setUserData }}>
+        <UsuarioContext.Provider value={{ usuarioData, setUsuarioData  }}>
+        <UserContext.Provider value={{userData, setUserData }}>
           <Router>
             <Switch>
               <Route
@@ -118,6 +121,7 @@ function App() {
             </Switch>{" "}
           </Router>
         </UserContext.Provider>
+        </UsuarioContext.Provider>
       </div>
     </Auth0Provider>
   );

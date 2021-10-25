@@ -10,6 +10,7 @@ import check from "../../media/check.png";
 import { obtenerProductos } from "../../utils/api";
 import { obtenerUsuarios } from "../../utils/api";
 import Swal from "sweetalert2";
+import PrivateComponent from "../../components/PrivateComponent";
 
 const TablaVenta = () => {
   const { setUserData } = useUser();
@@ -18,7 +19,6 @@ const TablaVenta = () => {
   const [busqueda, setBusqueda] = useState("");
   const [ventasFiltradas, setVentasFiltradas] = useState(ventas);
   const form = useRef(null);
-
 
   const submitEdit = (e) => {
     e.preventDefault();
@@ -106,7 +106,12 @@ const TablaVenta = () => {
                 <th>Valor Total</th>
                 <th>Fecha</th>
                 <th>Estado</th>
-                <th>Editar</th>
+                <PrivateComponent roleList={["Vendedor"]}>
+                  <th>Editar</th>
+                </PrivateComponent>
+                <PrivateComponent roleList={["Administrador"]}>
+                  <th>Editar</th>
+                </PrivateComponent>
               </tr>
             </thead>
             <tbody>
@@ -135,8 +140,7 @@ const FilaVentas = ({ venta, producto }) => {
 
   const [valor, setValor] = useState(0);
   const [totalVentas, setTotalVentas] = useState(0);
-  const [color, setColor] = useState(true)
-
+  const [color, setColor] = useState(true);
 
   const [infoNuevaVenta, setinfoNuevaVenta] = useState({
     idCliente: venta.idCliente,
@@ -173,7 +177,6 @@ const FilaVentas = ({ venta, producto }) => {
         (response) => {
           console.log("la respuesta que se recibio fue", response);
           setUsuarios(response.data);
-          
         },
         (error) => {
           console.error("Salio un error:", error);
@@ -183,18 +186,15 @@ const FilaVentas = ({ venta, producto }) => {
     }
   }, [ejecutarConsultaUsuarios]);
 
-  const actualizarVenta = ( (venta) => {
-
-    setUserData(venta);
-    history.push("/modificarventa")
-    /* console.log(infoNuevaVenta);
+  const actualizarVenta = async (venta) => {
+    console.log(infoNuevaVenta);
 
     await editarVenta(
       venta._id,
       {
         idCliente: infoNuevaVenta.idCliente,
         nombreCliente: infoNuevaVenta.nombreCliente,
-        vendedor: infoNuevaVenta.vendedor,
+        vendedor: usuarios.filter((v) => v._id === infoNuevaVenta.vendedor)[0],
         estado: infoNuevaVenta.estado,
         fecha: infoNuevaVenta.fecha,
         valorTotal: totalVentas,
@@ -210,15 +210,13 @@ const FilaVentas = ({ venta, producto }) => {
       (error) => {
         console.error(error);
       }
-    ); */
+    );
+  };
 
-
-   
-
-    
-
-   
-  });
+  const actualizarProductos = (venta) => {
+    setUserData(venta);
+    history.push("/modificarventa");
+  };
 
   useEffect(() => {
     let total = 0;
@@ -226,14 +224,11 @@ const FilaVentas = ({ venta, producto }) => {
       total = total + f.total;
     });
     setTotalVentas(total);
-    console.log(totalVentas)
-    console.log(total)
+    console.log(totalVentas);
+    console.log(total);
   }, [infoNuevaVenta]);
 
-  useEffect(()=>{
-    
-  })
-
+  useEffect(() => {});
 
   return (
     <tr>
@@ -251,7 +246,8 @@ const FilaVentas = ({ venta, producto }) => {
             <select
               className="inputForm"
               type="text"
-              defaultValue={infoNuevaVenta.vendedor}
+              disabled
+              defaultValue={infoNuevaVenta.vendedor._id}
               onChange={(e) =>
                 setinfoNuevaVenta({
                   ...infoNuevaVenta,
@@ -260,7 +256,7 @@ const FilaVentas = ({ venta, producto }) => {
               }
             >
               {usuarios.map((el) => {
-                return <option value={el._id}>{el.idUsuario}</option>;
+                return <option value={el._id}>{el.name}</option>;
               })}
             </select>
           </td>
@@ -298,7 +294,7 @@ const FilaVentas = ({ venta, producto }) => {
                     <select
                       className="inputForm"
                       type="text"
-                      defaultValue={producto.nombreProducto}
+                      defaultValue={producto._id}
                       onChange={(e) => {
                         setinfoNuevaVenta({
                           ...infoNuevaVenta,
@@ -366,27 +362,23 @@ const FilaVentas = ({ venta, producto }) => {
                       className="inputForm"
                       type="text"
                       defaultValue={producto.cantidad}
-                      onChange={(e) => 
-
-                        {
-                        
+                      onChange={(e) => {
                         setinfoNuevaVenta({
                           ...infoNuevaVenta,
-                         
 
                           productos: {
                             ...infoNuevaVenta.productos,
                             [number]: {
-
                               ...infoNuevaVenta.productos[number],
 
                               cantidad: e.target.value,
-                              total: parseFloat(producto.precioUnidad) *
-                              parseFloat(e.target.value)
+                              total:
+                                parseFloat(producto.precioUnidad) *
+                                parseFloat(e.target.value),
                             },
                           },
-                        })}
-                      }
+                        });
+                      }}
                     ></input>
                   </td>
                 </tr>
@@ -409,12 +401,28 @@ const FilaVentas = ({ venta, producto }) => {
             <input
               className="inputForm"
               type="date"
-              Value={venta.fecha}
+              defaultValue={venta.fecha}
+              onChange={(e) =>
+                setinfoNuevaVenta({
+                  ...infoNuevaVenta,
+                  fecha: e.target.value,
+                })
+              }
             ></input>
           </td>
 
           <td>
-            <select className="selectForm" type="date" Value={venta.fecha}>
+            <select
+              className="selectForm"
+              type="text"
+              defaultValue={venta.estado}
+              onChange={(e) =>
+                setinfoNuevaVenta({
+                  ...infoNuevaVenta,
+                  estado: e.target.value,
+                })
+              }
+            >
               <option>Finalizada</option>
               <option>Anulada</option>
             </select>
@@ -462,25 +470,38 @@ const FilaVentas = ({ venta, producto }) => {
           <td className="badge exitoso">{venta.estado}</td>
         </>
       )}
-      <td>
-        {editar ? (
+      <PrivateComponent roleList={["Vendedor"]}>
+        <td>
+          {editar ? (
+            <i
+              onClick={() => {
+                actualizarVenta(venta);
+              }}
+            >
+              <img class="icono" src={check} alt="check" />
+            </i>
+          ) : (
+            <i
+              onClick={() => {
+                setEditar(!editar);
+              }}
+            >
+              <img class="icono" src={edit} alt="Editar" />
+            </i>
+          )}
+        </td>
+      </PrivateComponent>
+      <PrivateComponent roleList={["Administrador"]}>
+        <td>
           <i
             onClick={() => {
-              actualizarVenta(venta);
-            }}
-          >
-            <img class="icono" src={check} alt="check" />
-          </i>
-        ) : (
-          <i
-            onClick={() => {//setEditar(!editar);
-              actualizarVenta(venta);
+              actualizarProductos(venta);
             }}
           >
             <img class="icono" src={edit} alt="Editar" />
           </i>
-        )}
-      </td>
+        </td>
+      </PrivateComponent>
     </tr>
   );
 };

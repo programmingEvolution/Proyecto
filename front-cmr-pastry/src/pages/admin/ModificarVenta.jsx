@@ -20,6 +20,8 @@ const RegistrarVenta = () => {
 
   let history = useHistory();
 
+  console.log(venta.vendedor);
+
   useEffect(() => {
     const fetchUsuarios = async () => {
       await obtenerUsuarios(
@@ -92,7 +94,9 @@ const RegistrarVenta = () => {
       }
     );
   };
-
+  if (venta.vendedor == undefined) {
+    return <>Error no ha seleccionado venta para modificar</>;
+  }
   return (
     <div>
       <section>
@@ -137,13 +141,22 @@ const RegistrarVenta = () => {
             </div>
 
             <div className="field large">
-              <label for="vendedor">Seleccione un Vendedor:</label>
+              <label for="vendedor">Vendedor:</label>
               <input
                 className="inputForm"
                 name="vendedor"
                 type="text"
                 disabled
-                defaultValue={venta.vendedor.idUsuario}
+                defaultValue={venta.vendedor.name}
+                required
+              />
+              <label for="vendedor">Id:</label>
+              <input
+                className="inputForm"
+                name="vendedor"
+                type="text"
+                disabled
+                defaultValue={venta.vendedor._id}
                 required
               />
             </div>

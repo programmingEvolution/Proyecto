@@ -2,9 +2,13 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import ReactLoading from "react-loading";
+import { obtenerDatosUsuario } from "../utils/api";
+import { useUsuario } from "../context/usuarioContext";
 
 const PrivateRoute = ({ children }) => {
+
   const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
+  const{ setUsuarioData } = useUsuario()
 
   useEffect(() => {
     const fetchAuth0Token = async () => {
@@ -12,6 +16,14 @@ const PrivateRoute = ({ children }) => {
         audience: `api-autenticacion-julyspastry`,
       });
       localStorage.setItem("token", accessToken);
+      console.log(accessToken)
+
+      await obtenerDatosUsuario((response)=>{
+console.log('response', response)
+setUsuarioData(response.data)
+      }, (err) => {
+        console.log('err', err);
+      })
     };
 
     if (isAuthenticated) {

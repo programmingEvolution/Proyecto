@@ -64,6 +64,15 @@ export const obtenerUsuarios = async (successCallback, errorCallback) => {
   await axios.request(options).then(successCallback).catch(errorCallback);
 };
 
+export const obtenerDatosUsuario = async (successCallback, errorCallback) => {
+  const options = { method: "GET", url: "http://localhost:5000/usuarios/self", 
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: getToken(),
+  } };
+  await axios.request(options).then(successCallback).catch(errorCallback);
+};
+
 export const editarUsuario = async (
   id,
   data,

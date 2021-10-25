@@ -6,6 +6,7 @@ import ContenedorTitulos from "../components/ContenedorTitulos";
 import { obtenerUsuarios, editarUsuario } from "../utils/api";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import PrivateComponent from "../components/PrivateComponent";
 
 const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
@@ -52,15 +53,15 @@ const Usuarios = () => {
       </section>
       <section>
         <ul className="contenedorBotonesgrises">
-          <form>
+          <form ref={form} onSubmit={submitEdit}>
             <section>
-              <label className="labelForm" htmlFor="idUsuario">
+              <label className="labelForm" htmlFor="name">
                 Buscar Usuario:
               </label>
               <input
                 value={busqueda}
                 className="inputForm"
-                id="idUsuario"
+                id="name"
                 placeholder="Ingrese el nombre del usuario"
                 type="ID"
                 onChange={(e) => setBusqueda(e.target.value)}
@@ -82,11 +83,13 @@ const Usuarios = () => {
             <td className="tituloColumnaUsu">Nombre</td>
             <td className="tituloColumnaUsu">Rol</td>
             <td className="tituloColumnaUsu">Estado</td>
-            <td className="tituloColumnaUsu">Agregar Productos</td>
-            <td className="tituloColumnaUsu">Modificar Productos</td>
-            <td className="tituloColumnaUsu">Añadir usuarios</td>
-            <td className="tituloColumnaUsu">Modificar usuarios</td>
-            <td className="tituloColumnaUsu">Gestionar</td>
+            <PrivateComponent roleList={["Administrador"]}>
+              <td className="tituloColumnaUsu">Agregar Productos</td>
+              <td className="tituloColumnaUsu">Modificar Productos</td>
+              <td className="tituloColumnaUsu">Modificar usuarios</td>
+              <td className="tituloColumnaUsu">Modificar Ventas</td>
+              <td className="tituloColumnaUsu">Gestionar</td>
+            </PrivateComponent>
           </tr>
           <tbody>
             {usuariosFiltrados.map((usuario) => {
@@ -108,13 +111,13 @@ const FilaUsuario = ({ usuario }) => {
   const [usuariosFiltrados, setUsuariosFiltrados] = useState(usuarios);
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   const [infoNuevoUsuario, setinfoNuevoUsuario] = useState({
-    idUsuario: usuario.idUsuario,
+    name: usuario.name,
     rolUsuario: usuario.rolUsuario,
     estadoUsuario: usuario.estadoUsuario,
     modificarProducto: usuario.modificarProducto,
-    modificarUsuario: usuario.modificarUsuario,
     añadirProducto: usuario.añadirProducto,
     añadirUsuario: usuario.añadirUsuario,
+    modificarVenta: usuario.modificarVenta,
   });
 
   useEffect(() => {
@@ -149,13 +152,13 @@ const FilaUsuario = ({ usuario }) => {
     await editarUsuario(
       usuario._id,
       {
-        idUsuario: infoNuevoUsuario.idUsuario,
+        name: infoNuevoUsuario.name,
         rolUsuario: infoNuevoUsuario.rolUsuario,
         estadoUsuario: infoNuevoUsuario.estadoUsuario,
         modificarProducto: infoNuevoUsuario.modificarProducto,
-        modificarUsuario: infoNuevoUsuario.modificarUsuario,
         añadirProducto: infoNuevoUsuario.añadirProducto,
         añadirUsuario: infoNuevoUsuario.añadirUsuario,
+        modificarVenta: infoNuevoUsuario.modificarVenta,
       },
       (response) => {
         console.log(response.data);
@@ -188,11 +191,11 @@ const FilaUsuario = ({ usuario }) => {
             <input
               className="inputForm"
               type="text"
-              value={infoNuevoUsuario.idUsuario}
+              value={infoNuevoUsuario.name}
               onChange={(e) =>
                 setinfoNuevoUsuario({
                   ...infoNuevoUsuario,
-                  idUsuario: e.target.value,
+                  name: e.target.value,
                 })
               }
             ></input>
@@ -274,11 +277,11 @@ const FilaUsuario = ({ usuario }) => {
             <input
               className="inputForm"
               type="checkbox"
-              Checked={infoNuevoUsuario.modificarUsuario}
+              Checked={infoNuevoUsuario.modificarVenta}
               onChange={(e) =>
                 setinfoNuevoUsuario({
                   ...infoNuevoUsuario,
-                  modificarUsuario: e.target.checked,
+                  modificarVenta: e.target.checked,
                 })
               }
             ></input>
@@ -287,49 +290,52 @@ const FilaUsuario = ({ usuario }) => {
       ) : (
         <>
           <td className="filaImpar">{usuario._id}</td>
-          <td className="filaImpar">{usuario.idUsuario}</td>
+          <td className="filaImpar">{usuario.name}</td>
           <td className="filaImpar">{usuario.rolUsuario}</td>
           <td className="filaImpar">{usuario.estadoUsuario}</td>
-          <td className="filaImpar">
-            <input type="checkbox" checked={usuario.añadirProducto} />{" "}
-            <label className="labelcheck">{`${usuario.añadirProducto}`}</label>
-          </td>
-          <td className="filaImpar">
-            <input type="checkbox" checked={usuario.modificarProducto} />{" "}
-            <label className="labelcheck">{`${usuario.modificarProducto}`}</label>
-          </td>
-          <td className="filaImpar">
-            {" "}
-            <input type="checkbox" checked={usuario.añadirUsuario} />{" "}
-            <label className="labelcheck">{`${usuario.añadirUsuario}`}</label>
-          </td>
-          <td className="filaImpar">
-            {" "}
-            <input type="checkbox" checked={usuario.modificarUsuario} />{" "}
-            <label className="labelcheck">{`${usuario.modificarUsuario}`}</label>
-          </td>
+          <PrivateComponent roleList={["Administrador"]}>
+            <td className="filaImpar">
+              <input type="checkbox" checked={usuario.añadirProducto} />{" "}
+              <label className="labelcheck">{`${usuario.añadirProducto}`}</label>
+            </td>
+            <td className="filaImpar">
+              <input type="checkbox" checked={usuario.modificarProducto} />{" "}
+              <label className="labelcheck">{`${usuario.modificarProducto}`}</label>
+            </td>
+            <td className="filaImpar">
+              {" "}
+              <input type="checkbox" checked={usuario.añadirUsuario} />{" "}
+              <label className="labelcheck">{`${usuario.añadirUsuario}`}</label>
+            </td>
+            <td className="filaImpar">
+              {" "}
+              <input type="checkbox" checked={usuario.modificarVenta} />{" "}
+              <label className="labelcheck">{`${usuario.modificarVenta}`}</label>
+            </td>
+          </PrivateComponent>
         </>
       )}
-      <td className="filaImpar">
-        {editar ? (
-          <i
-            
-            onClick={() => {
-              actualizarUsuario();
-            }}
-          >
-            <img class="icono" src={check} alt="check" />
-          </i>
-        ) : (
-          <i
-            onClick={() => {
-              setEditar(!editar);
-            }}
-          >
-            <img class="icono" src={edit} alt="Editar" />
-          </i>
-        )}
-      </td>
+      <PrivateComponent roleList={["Administrador"]}>
+        <td className="filaImpar">
+          {editar ? (
+            <i
+              onClick={() => {
+                actualizarUsuario();
+              }}
+            >
+              <img class="icono" src={check} alt="check" />
+            </i>
+          ) : (
+            <i
+              onClick={() => {
+                setEditar(!editar);
+              }}
+            >
+              <img class="icono" src={edit} alt="Editar" />
+            </i>
+          )}
+        </td>
+      </PrivateComponent>
     </tr>
   );
 };
