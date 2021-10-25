@@ -11,6 +11,7 @@ import { obtenerProductos } from "../../utils/api";
 import { obtenerUsuarios } from "../../utils/api";
 import Swal from "sweetalert2";
 import PrivateComponent from "../../components/PrivateComponent";
+import Pagination from "../../components/pagination";
 
 const TablaVenta = () => {
   const { setUserData } = useUser();
@@ -19,6 +20,9 @@ const TablaVenta = () => {
   const [busqueda, setBusqueda] = useState("");
   const [ventasFiltradas, setVentasFiltradas] = useState(ventas);
   const form = useRef(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+  const [color, setColor] = useState("text-blue-400");
 
   const submitEdit = (e) => {
     e.preventDefault();
@@ -54,6 +58,13 @@ const TablaVenta = () => {
       })
     );
   }, [busqueda, ventas]);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = ventasFiltradas.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  
 
   return (
     <div>
@@ -115,11 +126,16 @@ const TablaVenta = () => {
               </tr>
             </thead>
             <tbody>
-              {ventasFiltradas.map((venta) => {
+              {currentPosts.map((venta) => {
                 return <FilaVentas venta={venta} key={venta._id} />;
               })}
             </tbody>
           </table>
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={ventas.length}
+            paginate={paginate}
+          />
         </form>
       </section>
     </div>

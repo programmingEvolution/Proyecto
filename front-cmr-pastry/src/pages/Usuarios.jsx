@@ -7,12 +7,17 @@ import { obtenerUsuarios, editarUsuario } from "../utils/api";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import PrivateComponent from "../components/PrivateComponent";
+import modificarVenta from "../components/PrivateUsuario";
+import PrivateUsuario from "../components/PrivateUsuario";
+import Pagination from "../components/pagination";
 
 const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [busqueda, setBusqueda] = useState("");
   const [usuariosFiltrados, setUsuariosFiltrados] = useState(usuarios);
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
 
   const form = useRef(null);
   const submitEdit = (e) => {
@@ -45,6 +50,11 @@ const Usuarios = () => {
       })
     );
   }, [busqueda, usuarios]);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = usuariosFiltrados.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
@@ -88,17 +98,24 @@ const Usuarios = () => {
               <td className="tituloColumnaUsu">Modificar Productos</td>
               <td className="tituloColumnaUsu">Modificar usuarios</td>
               <td className="tituloColumnaUsu">Modificar Ventas</td>
+              <PrivateUsuario roleList={[true]}>
               <td className="tituloColumnaUsu">Gestionar</td>
+              </PrivateUsuario>
             </PrivateComponent>
           </tr>
           <tbody>
-            {usuariosFiltrados.map((usuario) => {
+            {currentPosts.map((usuario) => {
               return (
                 <FilaUsuario key={usuario._id} usuario={usuario}></FilaUsuario>
               );
             })}
           </tbody>
         </table>
+        <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={usuarios.length}
+            paginate={paginate}
+          />
       </section>
     </div>
   );
@@ -116,7 +133,7 @@ const FilaUsuario = ({ usuario }) => {
     estadoUsuario: usuario.estadoUsuario,
     modificarProducto: usuario.modificarProducto,
     añadirProducto: usuario.añadirProducto,
-    añadirUsuario: usuario.añadirUsuario,
+    modificarUsuario: usuario.añadirUsuario,
     modificarVenta: usuario.modificarVenta,
   });
 
@@ -157,7 +174,7 @@ const FilaUsuario = ({ usuario }) => {
         estadoUsuario: infoNuevoUsuario.estadoUsuario,
         modificarProducto: infoNuevoUsuario.modificarProducto,
         añadirProducto: infoNuevoUsuario.añadirProducto,
-        añadirUsuario: infoNuevoUsuario.añadirUsuario,
+        modificarUsuario: infoNuevoUsuario.añadirUsuario,
         modificarVenta: infoNuevoUsuario.modificarVenta,
       },
       (response) => {
@@ -264,11 +281,11 @@ const FilaUsuario = ({ usuario }) => {
             <input
               className="inputForm"
               type="checkbox"
-              checked={infoNuevoUsuario.añadirUsuario}
+              checked={infoNuevoUsuario.modificarUsuario}
               onChange={(e) =>
                 setinfoNuevoUsuario({
                   ...infoNuevoUsuario,
-                  añadirUsuario: e.target.checked,
+                  modificarUsuario: e.target.checked,
                 })
               }
             ></input>
@@ -304,8 +321,8 @@ const FilaUsuario = ({ usuario }) => {
             </td>
             <td className="filaImpar">
               {" "}
-              <input type="checkbox" checked={usuario.añadirUsuario} />{" "}
-              <label className="labelcheck">{`${usuario.añadirUsuario}`}</label>
+              <input type="checkbox" checked={usuario.modificarUsuario} />{" "}
+              <label className="labelcheck">{`${usuario.modificarUsuario}`}</label>
             </td>
             <td className="filaImpar">
               {" "}
@@ -315,7 +332,9 @@ const FilaUsuario = ({ usuario }) => {
           </PrivateComponent>
         </>
       )}
-      <PrivateComponent roleList={["Administrador"]}>
+     <PrivateComponent roleList={["Administrador"]}>
+      <PrivateUsuario roleList={[true]}>
+
         <td className="filaImpar">
           {editar ? (
             <i
@@ -335,7 +354,9 @@ const FilaUsuario = ({ usuario }) => {
             </i>
           )}
         </td>
-      </PrivateComponent>
+        </PrivateUsuario>
+        </PrivateComponent>
+    
     </tr>
   );
 };

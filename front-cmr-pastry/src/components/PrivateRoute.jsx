@@ -5,7 +5,7 @@ import ReactLoading from "react-loading";
 import { obtenerDatosUsuario } from "../utils/api";
 import { useUsuario } from "../context/usuarioContext";
 
-const PrivateRoute = ({ children }) => {
+const PrivateRoute = ({roleList, children }) => {
 
   const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
   const{ setUsuarioData } = useUsuario()

@@ -14,12 +14,20 @@ import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import ReactLoading from "react-loading";
 import PrivateComponent from "../components/PrivateComponent";
+import AgregarPrivateProduct from "../components/AgregarPrivateProduct";
+import ModificarPrivateProduct from "../components/ModificarPrivateProduct";
+import Pagination from "../components/pagination";
 
 const Productos = () => {
   const [productos, setProductos] = useState([]);
   const [busqueda, setBusqueda] = useState("");
   const [productosFiltrados, setProductosFiltrados] = useState(productos);
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+  const [color, setColor] = useState("text-black");
+
+  
   const form = useRef(null);
 
   const submitEdit = (e) => {
@@ -91,6 +99,14 @@ const Productos = () => {
     });
   };
 
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = productosFiltrados.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  );
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div>
       <section>
@@ -119,14 +135,14 @@ const Productos = () => {
         </ul>
       </section>
 
-      <PrivateComponent roleList={['Administrador']}>
-
-      <section>
-        <Link to="registrarproducto">
-          <button className="buttonForm">Nuevo Producto</button>
-        </Link>
-      </section>
-
+      <PrivateComponent roleList={["Administrador"]}>
+        <AgregarPrivateProduct roleList={[true]}>
+          <section>
+            <Link to="registrarproducto">
+              <button className="buttonForm">Nuevo Producto</button>
+            </Link>
+          </section>
+        </AgregarPrivateProduct>
       </PrivateComponent>
 
       <section>
@@ -139,30 +155,39 @@ const Productos = () => {
               width={"20%"}
             />
           ) : (
-            <table>
-              <thead>
-                <tr>
-                  <td className="tituloColumna">IDproductos</td>
-                  <td className="tituloColumna">Proveedor</td>
-                  <td className="tituloColumna">Nombre</td>
-                  <td className="tituloColumna">Precio unidad</td>
-                  <td className="tituloColumna">Disponible</td>
-                  <PrivateComponent roleList={['Administrador']}>
-                  <td className="tituloColumna">Editar</td>
-                  <td className="tituloColumna">Eliminar</td>
-                  </PrivateComponent>
-                </tr>
-              </thead>
-              <tbody>
-                {productosFiltrados.map((producto) => {
-                  return (
-                    <FilaProducto key={producto._id} producto={producto} />
-                  );
-                })}
-              </tbody>
-            </table>
+            <>
+              <table>
+                <thead>
+                  <tr>
+                    <td className="tituloColumna">IDproductos</td>
+                    <td className="tituloColumna">Proveedor</td>
+                    <td className="tituloColumna">Nombre</td>
+                    <td className="tituloColumna">Precio unidad</td>
+                    <td className="tituloColumna">Disponible</td>
+                    <PrivateComponent roleList={["Administrador"]}>
+                      <ModificarPrivateProduct roleList={[true]}>
+                        <td className="tituloColumna">Editar</td>
+                        <td className="tituloColumna">Eliminar</td>
+                      </ModificarPrivateProduct>
+                    </PrivateComponent>
+                  </tr>
+                </thead>
+                <tbody>
+                  {productosFiltrados.map((producto) => {
+                    return (
+                      <FilaProducto key={producto._id} producto={producto} />
+                    );
+                  })}
+                </tbody>
+              </table>
+            </>
           )}
         </form>
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={productos.length}
+          paginate={paginate}
+        />
       </section>
     </div>
   );
@@ -336,35 +361,37 @@ const FilaProducto = ({ producto }) => {
           <td className="filaImpar">{producto.inventario}</td>
         </>
       )}
-       <PrivateComponent roleList={['Administrador']}>
-      <td className="filaImpar">
-        {editar ? (
-          <i
-            onClick={() => {
-              actualizarProducto();
-            }}
-          >
-            <img class="icono" src={check} alt="check" />
-          </i>
-        ) : (
-          <i
-            onClick={() => {
-              setEditar(!editar);
-            }}
-          >
-            <img class="icono" src={edit} alt="Editar" />
-          </i>
-        )}
-      </td>
-      <td className="filaImpar">
-        <button
-          onClick={() => {
-            deleteProducto(producto._id);
-          }}
-        >
-          <img class="icono" src={eliminar} alt="Eliminar" />
-        </button>
-      </td>
+      <PrivateComponent roleList={["Administrador"]}>
+        <ModificarPrivateProduct roleList={[true]}>
+          <td className="filaImpar">
+            {editar ? (
+              <i
+                onClick={() => {
+                  actualizarProducto();
+                }}
+              >
+                <img class="icono" src={check} alt="check" />
+              </i>
+            ) : (
+              <i
+                onClick={() => {
+                  setEditar(!editar);
+                }}
+              >
+                <img class="icono" src={edit} alt="Editar" />
+              </i>
+            )}
+          </td>
+          <td className="filaImpar">
+            <button
+              onClick={() => {
+                deleteProducto(producto._id);
+              }}
+            >
+              <img class="icono" src={eliminar} alt="Eliminar" />
+            </button>
+          </td>
+        </ModificarPrivateProduct>
       </PrivateComponent>
     </tr>
   );

@@ -1,9 +1,9 @@
 import React from 'react'
 import { useUsuario } from '../context/usuarioContext';
 
-const PrivateComponent = ({roleList, children}) => {
+const ModificarPrivateProduct = ({roleList, children}) => {
     const { usuarioData }= useUsuario();
-  if(roleList.includes(usuarioData.rolUsuario)){
+  if(roleList.includes(usuarioData.modificarProducto)){
       return children;
   }
 
@@ -12,4 +12,4 @@ const PrivateComponent = ({roleList, children}) => {
   return <></>
 }
 
-export default PrivateComponent
+export default ModificarPrivateProduct

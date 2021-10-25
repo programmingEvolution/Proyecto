@@ -79,17 +79,7 @@ const Sidebar = () => {
               Usuarios
             </li>
           </Link>
-          <Link to="/clientes">
-            <li>
-              <img
-                style={{ float: "left" }}
-                src={clientes}
-                alt="Logo Julis"
-                className="icono"
-              />
-              Clientes
-            </li>
-          </Link>
+          
         </ul>
         <br />
         <br />
