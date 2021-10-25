@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { crearVenta, obtenerProductos } from "../../utils/api";
 import { obtenerUsuarios } from "../../utils/api";
 import Swal from "sweetalert2";
+import { useUsuario } from "../../context/usuarioContext";
 
 const RegistrarVenta = () => {
   const form = useRef(null);
@@ -12,7 +13,9 @@ const RegistrarVenta = () => {
   const [fecha, setFecha] = useState("");
   const [idCliente, setIdCliente] = useState("");
   const [nombreCliente, setNombreCliente] = useState("");
+  const { usuarioData } = useUsuario();
 
+  console.log(usuarioData._id);
   useEffect(() => {
     const fetchUsuarios = async () => {
       await obtenerUsuarios(
@@ -63,7 +66,7 @@ const RegistrarVenta = () => {
       .filter((v) => v);
 
     const datosVenta = {
-      vendedor: usuarios.filter((v) => v._id === formData.vendedor)[0],
+      vendedor: usuarios.filter((v) => v._id === usuarioData._id)[0],
       valorTotal: formData.valor,
       productos: listaProductos,
       fecha: fecha,
@@ -86,9 +89,9 @@ const RegistrarVenta = () => {
   };
 
   return (
-    <div>
+    <div className="ml-20">
       <section>
-        <ContenedorTitulos Titulo="Modificar Ventas" />
+        <ContenedorTitulos Titulo="Registrar Ventas" />
       </section>
 
       <form ref={form} onSubmit={submitForm} className="flex flex-col h-full">
@@ -126,26 +129,24 @@ const RegistrarVenta = () => {
             </div>
 
             <div className="field large">
-              <label for="vendedor">Seleccione un Vendedor:</label>
-              <select
-                defaultValue=""
+              <label for="vendedor">Vendedor:</label>
+              <input
                 className="inputForm"
                 name="vendedor"
                 type="text"
+                disabled
+                defaultValue={usuarioData.name}
                 required
-              >
-                <option disabled value="">
-                  Seleccione un Vendedor
-                </option>
-
-                {usuarios.map((el) => {
-                  return (
-                    <option key={el._id} value={el._id}>
-                      {el.idUsuario}
-                    </option>
-                  );
-                })}
-              </select>
+              />
+              <label for="vendedor">Id:</label>
+              <input
+                className="inputForm"
+                name="vendedor"
+                type="text"
+                disabled
+                defaultValue={usuarioData._id}
+                required
+              />
             </div>
           </section>
           <section className="ml-10 mr-10">
@@ -156,8 +157,11 @@ const RegistrarVenta = () => {
             />
           </section>
           <div>
-            <button type="submit" className="buttonForm">
-              Crear Venta
+            <button
+              type="submit"
+              className="bg-red-100 mr-20 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
+            >
+              Registrar
             </button>
           </div>
         </section>
@@ -234,7 +238,7 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
         <button
           type="button"
           onClick={() => agregarNuevoProducto()}
-          className="buttonForm"
+          className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
         >
           Agregar Producto
         </button>
@@ -273,7 +277,7 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
           <span className="text-2xl font-gray-900 mr-6">
             Valor Total Venta:
           </span>
-          <td> {totalVentas}</td>
+          <td className="inputForm text-lg font-bold"> {totalVentas}</td>
           <input
             className="inputForm"
             type="number"
@@ -304,7 +308,7 @@ const FilaProducto = ({ pro, index, eliminarProducto, modificarProducto }) => {
       <td>{producto.precioUnidad}</td>
       <td>
         <input
-          className="inputForm"
+          className="inputFormCantidad"
           type="number"
           name={`cantidad_${index}`}
           value={producto.cantidad}

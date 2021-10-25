@@ -10,6 +10,9 @@ import check from "../../media/check.png";
 import { obtenerProductos } from "../../utils/api";
 import { obtenerUsuarios } from "../../utils/api";
 import Swal from "sweetalert2";
+import PrivateComponent from "../../components/PrivateComponent";
+import Pagination from "../../components/pagination";
+import PrivateVenta from "../../components/PrivateVenta";
 
 const TablaVenta = () => {
   const { setUserData } = useUser();
@@ -18,6 +21,9 @@ const TablaVenta = () => {
   const [busqueda, setBusqueda] = useState("");
   const [ventasFiltradas, setVentasFiltradas] = useState(ventas);
   const form = useRef(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+  const [color, setColor] = useState("text-blue-400");
 
   const submitEdit = (e) => {
     e.preventDefault();
@@ -53,6 +59,11 @@ const TablaVenta = () => {
       })
     );
   }, [busqueda, ventas]);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = ventasFiltradas.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
@@ -92,11 +103,11 @@ const TablaVenta = () => {
 
       <section>
         <form ref={form} onSubmit={submitEdit}>
-          <table>
+          <table className="tabla">
             <thead>
               <tr>
                 <th>ID Venta</th>
-                <th>ID Vendedor</th>
+                <th>Nombre Vendedor</th>
                 <th>ID cliente</th>
                 <th>Nombre Cliente</th>
                 <th>Productos</th>
@@ -105,14 +116,26 @@ const TablaVenta = () => {
                 <th>Valor Total</th>
                 <th>Fecha</th>
                 <th>Estado</th>
-                <th>Editar</th>
+                <PrivateVenta roleList={[true]}>
+                  <PrivateComponent roleList={["Vendedor"]}>
+                    <th>Editar</th>
+                  </PrivateComponent>
+                  <PrivateComponent roleList={["Administrador"]}>
+                    <th>Editar</th>
+                  </PrivateComponent>
+                </PrivateVenta>
               </tr>
             </thead>
             <tbody>
-              {ventasFiltradas.map((venta) => {
+              {currentPosts.map((venta) => {
                 return <FilaVentas venta={venta} key={venta._id} />;
               })}
             </tbody>
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={ventas.length}
+              paginate={paginate}
+            />
           </table>
         </form>
       </section>
@@ -134,7 +157,7 @@ const FilaVentas = ({ venta, producto }) => {
 
   const [valor, setValor] = useState(0);
   const [totalVentas, setTotalVentas] = useState(0);
-
+  const [color, setColor] = useState(true);
 
   const [infoNuevaVenta, setinfoNuevaVenta] = useState({
     idCliente: venta.idCliente,
@@ -180,7 +203,7 @@ const FilaVentas = ({ venta, producto }) => {
     }
   }, [ejecutarConsultaUsuarios]);
 
-  const actualizarVenta = async () => {
+  const actualizarVenta = async (venta) => {
     console.log(infoNuevaVenta);
 
     await editarVenta(
@@ -188,7 +211,7 @@ const FilaVentas = ({ venta, producto }) => {
       {
         idCliente: infoNuevaVenta.idCliente,
         nombreCliente: infoNuevaVenta.nombreCliente,
-        vendedor: infoNuevaVenta.vendedor,
+        vendedor: usuarios.filter((v) => v._id === infoNuevaVenta.vendedor)[0],
         estado: infoNuevaVenta.estado,
         fecha: infoNuevaVenta.fecha,
         valorTotal: totalVentas,
@@ -205,11 +228,11 @@ const FilaVentas = ({ venta, producto }) => {
         console.error(error);
       }
     );
+  };
 
-
-    
-
-    //history.push("/modificarventa")
+  const actualizarProductos = (venta) => {
+    setUserData(venta);
+    history.push("/modificarventa");
   };
 
   useEffect(() => {
@@ -218,9 +241,11 @@ const FilaVentas = ({ venta, producto }) => {
       total = total + f.total;
     });
     setTotalVentas(total);
-    console.log(totalVentas)
-    console.log(total)
+    console.log(totalVentas);
+    console.log(total);
   }, [infoNuevaVenta]);
+
+  useEffect(() => {});
 
   return (
     <tr>
@@ -238,7 +263,8 @@ const FilaVentas = ({ venta, producto }) => {
             <select
               className="inputForm"
               type="text"
-              defaultValue={infoNuevaVenta.vendedor}
+              disabled
+              defaultValue={infoNuevaVenta.vendedor._id}
               onChange={(e) =>
                 setinfoNuevaVenta({
                   ...infoNuevaVenta,
@@ -247,7 +273,7 @@ const FilaVentas = ({ venta, producto }) => {
               }
             >
               {usuarios.map((el) => {
-                return <option value={el._id}>{el.idUsuario}</option>;
+                return <option value={el._id}>{el.name}</option>;
               })}
             </select>
           </td>
@@ -285,7 +311,7 @@ const FilaVentas = ({ venta, producto }) => {
                     <select
                       className="inputForm"
                       type="text"
-                      defaultValue={producto.nombreProducto}
+                      defaultValue={producto._id}
                       onChange={(e) => {
                         setinfoNuevaVenta({
                           ...infoNuevaVenta,
@@ -353,27 +379,23 @@ const FilaVentas = ({ venta, producto }) => {
                       className="inputForm"
                       type="text"
                       defaultValue={producto.cantidad}
-                      onChange={(e) => 
-
-                        {
-                        
+                      onChange={(e) => {
                         setinfoNuevaVenta({
                           ...infoNuevaVenta,
-                         
 
                           productos: {
                             ...infoNuevaVenta.productos,
                             [number]: {
-
                               ...infoNuevaVenta.productos[number],
 
                               cantidad: e.target.value,
-                              total: parseFloat(producto.precioUnidad) *
-                              parseFloat(e.target.value)
+                              total:
+                                parseFloat(producto.precioUnidad) *
+                                parseFloat(e.target.value),
                             },
                           },
-                        })}
-                      }
+                        });
+                      }}
                     ></input>
                   </td>
                 </tr>
@@ -396,12 +418,28 @@ const FilaVentas = ({ venta, producto }) => {
             <input
               className="inputForm"
               type="date"
-              Value={venta.fecha}
+              defaultValue={venta.fecha}
+              onChange={(e) =>
+                setinfoNuevaVenta({
+                  ...infoNuevaVenta,
+                  fecha: e.target.value,
+                })
+              }
             ></input>
           </td>
 
           <td>
-            <select className="selectForm" type="date" Value={venta.fecha}>
+            <select
+              className="selectForm"
+              type="text"
+              defaultValue={venta.estado}
+              onChange={(e) =>
+                setinfoNuevaVenta({
+                  ...infoNuevaVenta,
+                  estado: e.target.value,
+                })
+              }
+            >
               <option>Finalizada</option>
               <option>Anulada</option>
             </select>
@@ -410,7 +448,7 @@ const FilaVentas = ({ venta, producto }) => {
       ) : (
         <>
           <td>{venta._id.slice(15)}</td>
-          <td>{Object.values(venta.vendedor._id).slice(15)}</td>
+          <td>{Object.values(venta.vendedor.name)}</td>
           <td>{venta.idCliente}</td>
           <td>{venta.nombreCliente}</td>
           <td>
@@ -449,26 +487,40 @@ const FilaVentas = ({ venta, producto }) => {
           <td className="badge exitoso">{venta.estado}</td>
         </>
       )}
-      <td>
-        {editar ? (
-          <i
-            onClick={() => {
-              actualizarVenta(venta);
-            }}
-          >
-            <img class="icono" src={check} alt="check" />
-          </i>
-        ) : (
-          <i
-            onClick={() => {
-              //
-              setEditar(!editar);
-            }}
-          >
-            <img class="icono" src={edit} alt="Editar" />
-          </i>
-        )}
-      </td>
+      <PrivateVenta roleList={[true]}>
+        <PrivateComponent roleList={["Vendedor"]}>
+          <td>
+            {editar ? (
+              <i
+                onClick={() => {
+                  actualizarVenta(venta);
+                }}
+              >
+                <img class="icono" src={check} alt="check" />
+              </i>
+            ) : (
+              <i
+                onClick={() => {
+                  setEditar(!editar);
+                }}
+              >
+                <img class="icono" src={edit} alt="Editar" />
+              </i>
+            )}
+          </td>
+        </PrivateComponent>
+        <PrivateComponent roleList={["Administrador"]}>
+          <td>
+            <i
+              onClick={() => {
+                actualizarProductos(venta);
+              }}
+            >
+              <img class="icono" src={edit} alt="Editar" />
+            </i>
+          </td>
+        </PrivateComponent>
+      </PrivateVenta>
     </tr>
   );
 };

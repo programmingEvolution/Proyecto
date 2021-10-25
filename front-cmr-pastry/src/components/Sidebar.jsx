@@ -4,31 +4,41 @@ import left from "./img/left.png";
 import house from "./img/house.png";
 import caja from "./img/caja.png";
 import ventas from "./img/ventas.png";
-import logout from "./img/logout.png";
+import salir from "./img/salir.png";
 import grupo from "./img/grupo.png";
 import clientes from "./img/clientes.png";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+
+import { useUsuario } from "../context/usuarioContext";
 
 const Sidebar = () => {
+  const { user, logout } = useAuth0();
+  const cerrarSesion = () => {
+    logout({ returnTo: window.location.origin });
+    localStorage.setItem("token", null);
+  };
+
+  const { usuarioData } = useUsuario();
+
   return (
-    <nav className="hidden sm:flex sm:w-60 border border-gray-300  flex-col bg-gray-200 p-0 sidebar">
+    <nav className="hidden md:flex md:w-72 border border-gray-300 h-full flex-col justify-between bg-gray-200 p-0 sidebar">
       <div id="sidebar">
-        <div className="toggle-btn">
-          <span>
-            <img
-              style={{ float: "left" }}
-              src={left}
-              alt=""
-              className="close"
-            />
-          </span>
-        </div>
         <ul>
           <Link to="/panel">
             <li>
               <img src={logo} alt="Logo Julis" className="logo" />
             </li>
           </Link>
+
+          <li className="active">
+            <img
+              style={{ float: "left" }}
+              src={usuarioData.picture}
+              className="h-7 w-7 rounded-full"
+            />
+            {usuarioData.given_name}
+          </li>
           <Link to="/panel">
             <li className="active">
               <img
@@ -51,7 +61,7 @@ const Sidebar = () => {
               Productos
             </li>
           </Link>
-          <Link to="/stock">
+          <Link to="/tablaventas">
             <li>
               <img
                 style={{ float: "left" }}
@@ -73,35 +83,22 @@ const Sidebar = () => {
               Usuarios
             </li>
           </Link>
-          <Link to="/clientes">
-            <li>
-              <img
-                style={{ float: "left" }}
-                src={clientes}
-                alt="Logo Julis"
-                className="icono"
-              />
-              Clientes
-            </li>
-          </Link>
         </ul>
         <br />
         <br />
         <br />
         <ul>
-          <li className="mb-8 Salir" />
-
-          <Link to="/">
-            <li className="Salir">
+          <li className="Salir">
+            <button onClick={() => cerrarSesion()}>
               <img
                 style={{ float: "left" }}
-                src={logout}
+                src={salir}
                 alt=""
                 className="icono"
               />{" "}
               Cerrar Sesión
-            </li>
-          </Link>
+            </button>
+          </li>
         </ul>
         <br />
         <br />
