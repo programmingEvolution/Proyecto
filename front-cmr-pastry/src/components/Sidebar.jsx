@@ -4,24 +4,14 @@ import left from "./img/left.png";
 import house from "./img/house.png";
 import caja from "./img/caja.png";
 import ventas from "./img/ventas.png";
-import salir from "./img/salir.png";
+import logout from "./img/logout.png";
 import grupo from "./img/grupo.png";
 import clientes from "./img/clientes.png";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import { useUsuario } from "../context/usuarioContext";
-
 const Sidebar = () => {
-  const { user, logout } = useAuth0();
-  const cerrarSesion = () => {
-    logout({ returnTo: window.location.origin });
-    localStorage.setItem("token", null);
-  };
-
-  const { usuarioData } = useUsuario();
-
-
+  const { logout } = useAuth0();
   return (
     <nav className='hidden md:flex md:w-72 border border-gray-300 h-full flex-col justify-between bg-gray-200 p-0 sidebar'>
       <div id="sidebar">
@@ -41,11 +31,6 @@ const Sidebar = () => {
               <img src={logo} alt="Logo Julis" className="logo" />
             </li>
           </Link>
-
-          <li className="active">
-            <img style={{ float: "left" }} src={usuarioData.picture} className="h-7 w-7 rounded-full" />
-            {usuarioData.given_name}
-          </li>
           <Link to="/panel">
             <li className="active">
               <img
@@ -68,7 +53,7 @@ const Sidebar = () => {
               Productos
             </li>
           </Link>
-          <Link to="/tablaventas">
+          <Link to="/stock">
             <li>
               <img
                 style={{ float: "left" }}
@@ -90,26 +75,34 @@ const Sidebar = () => {
               Usuarios
             </li>
           </Link>
+          <Link to="/clientes">
+            <li>
+              <img
+                style={{ float: "left" }}
+                src={clientes}
+                alt="Logo Julis"
+                className="icono"
+              />
+              Clientes
+            </li>
+          </Link>
         </ul>
         <br />
         <br />
         <br />
         <ul>
 
-          <li className="Salir">
-            <button onClick={() => cerrarSesion()}>
-
+          <Link to="/">
+            <li className="Salir">
               <img
                 style={{ float: "left" }}
-                src={salir}
+                src={logout}
                 alt=""
                 className="icono"
               />{" "}
-
-              Cerrar Sesión
-            </button>
-          </li>
-
+              <button  onClick={() => logout({ returnTo: window.location.origin })}>Cerrar Sesión</button>
+            </li>
+          </Link>
         </ul>
         <br />
         <br />
