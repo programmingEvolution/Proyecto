@@ -126,7 +126,7 @@ const Panel = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {ventasConsulta.slice(-5).map((venta) => (
+                  {ventasConsulta.slice(-3).map((venta) => (
                     <tr key={venta._id}>
                       <td>{venta._id}</td>
                       <td>{venta.vendedor.name}</td>

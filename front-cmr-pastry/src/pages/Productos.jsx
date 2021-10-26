@@ -26,6 +26,7 @@ const Productos = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
   const [color, setColor] = useState("text-black");
+  
 
   const form = useRef(null);
 
@@ -171,7 +172,7 @@ const Productos = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {productosFiltrados.map((producto) => {
+                  {currentPosts.map((producto) => {
                     return (
                       <FilaProducto key={producto._id} producto={producto} />
                     );
@@ -185,6 +186,7 @@ const Productos = () => {
           postsPerPage={postsPerPage}
           totalPosts={productos.length}
           paginate={paginate}
+          currentPage={currentPage}
         />
       </section>
     </div>
@@ -277,7 +279,7 @@ const FilaProducto = ({ producto }) => {
 
         Swal.fire("Actualizado!", "Producto actualizado con exito.", "success");
         setEjecutarConsulta(true);
-        window.location.reload();
+
       },
       (error) => {
         console.error(error);

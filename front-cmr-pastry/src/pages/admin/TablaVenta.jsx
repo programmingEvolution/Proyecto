@@ -22,8 +22,10 @@ const TablaVenta = () => {
   const [ventasFiltradas, setVentasFiltradas] = useState(ventas);
   const form = useRef(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
+  const [postsPerPage] = useState(3);
   const [color, setColor] = useState("text-blue-400");
+
+  const [loading, setLoading] = useState(false);
 
   const submitEdit = (e) => {
     e.preventDefault();
@@ -35,18 +37,24 @@ const TablaVenta = () => {
   };
 
   useEffect(() => {
-    console.log("consulta", ejecutarConsulta);
-    if (ejecutarConsulta) {
-      obtenerVentas(
+    const fetchVentas = async () => {
+      setLoading(true);
+      await obtenerVentas(
         (response) => {
           console.log("la respuesta que se recibio fue", response);
           setVentas(response.data);
+          setEjecutarConsulta(false);
+          setLoading(false);
         },
         (error) => {
           console.error("Salio un error:", error);
+          setLoading(false);
         }
       );
-      setEjecutarConsulta(false);
+    };
+    console.log("consulta", ejecutarConsulta);
+    if (ejecutarConsulta) {
+      fetchVentas();
     }
   }, [ejecutarConsulta]);
 
@@ -87,23 +95,31 @@ const TablaVenta = () => {
               ></input>
             </section>
             <section className="flex-grow justify-between">
-              <button className="buttonForm" type="submit">
+              <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">
                 Buscar
               </button>
             </section>
           </form>
         </ul>
       </section>
-
-      <section>
-        <Link to="registrarventa">
-          <button className="buttonForm">Nueva venta</button>
-        </Link>
-      </section>
-
+      <PrivateComponent roleList={["Vendedor", "Administrador"]}>
+        <section>
+          <Link to="registrarventa">
+            <button className="buttonForm">Nueva venta</button>
+          </Link>
+        </section>
+      </PrivateComponent>
       <section>
         <form ref={form} onSubmit={submitEdit}>
-          <table className="tabla">
+          <section className="mt-20 ml-16 mb-6">
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={ventas.length}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
+          </section>
+          <table className="tabla mt-2">
             <thead>
               <tr>
                 <th>ID Venta</th>
@@ -131,11 +147,6 @@ const TablaVenta = () => {
                 return <FilaVentas venta={venta} key={venta._id} />;
               })}
             </tbody>
-            <Pagination
-              postsPerPage={postsPerPage}
-              totalPosts={ventas.length}
-              paginate={paginate}
-            />
           </table>
         </form>
       </section>
@@ -222,7 +233,6 @@ const FilaVentas = ({ venta, producto }) => {
         setEditar(false);
 
         Swal.fire("Actualizado!", "Usuario actualizado con exito.", "success");
-        window.location.reload();
       },
       (error) => {
         console.error(error);
@@ -484,7 +494,17 @@ const FilaVentas = ({ venta, producto }) => {
           </td>
           <td>{venta.valorTotal}</td>
           <td>{venta.fecha}</td>
-          <td className="badge exitoso">{venta.estado}</td>
+          <td>
+            <td
+              className={
+                venta.estado == "Anulada"
+                  ? "bg-red-500 text-white"
+                  : "bg-green-500 text-white"
+              }
+            >
+              {venta.estado}
+            </td>
+          </td>
         </>
       )}
       <PrivateVenta roleList={[true]}>

@@ -1124,7 +1124,6 @@ form {
 .tabla th,
 .tabla td {
   padding: 8px;
-
 }
 .tabla th {
   background-color: pink;
@@ -1138,9 +1137,6 @@ form {
   background-color: rgb(247, 202, 208);
   cursor: pointer;
 }
-
-
-
 
 .tablaPrueba th,
 .tablaPrueba td {

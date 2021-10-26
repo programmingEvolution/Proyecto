@@ -18,6 +18,7 @@ const Usuarios = () => {
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
+  const [loading, setLoading] = useState(false);
 
   const form = useRef(null);
   const submitEdit = (e) => {
@@ -26,18 +27,24 @@ const Usuarios = () => {
   };
 
   useEffect(() => {
-    console.log("consulta", ejecutarConsulta);
-    if (ejecutarConsulta) {
-      obtenerUsuarios(
+    const fetchUsuarios = async () => {
+      setLoading(true);
+      await obtenerUsuarios(
         (response) => {
-          console.log("la respuesta que se recibio fue", response);
+          console.log('la respuesta que se recibio fue', response);
           setUsuarios(response.data);
+          setEjecutarConsulta(false);
+          setLoading(false);
         },
         (error) => {
-          console.error("Salio un error:", error);
+          console.error('Salio un error:', error);
+          setLoading(false);
         }
       );
-      setEjecutarConsulta(false);
+    };
+    console.log('consulta', ejecutarConsulta);
+    if (ejecutarConsulta) {
+      fetchUsuarios();
     }
   }, [ejecutarConsulta]);
 
@@ -119,6 +126,7 @@ const Usuarios = () => {
           postsPerPage={postsPerPage}
           totalPosts={usuarios.length}
           paginate={paginate}
+          currentPage={currentPage}
         />
       </section>
     </div>
@@ -187,7 +195,7 @@ const FilaUsuario = ({ usuario }) => {
 
         Swal.fire("Actualizado!", "Usuario actualizado con exito.", "success");
         setEjecutarConsulta(true);
-        window.location.reload();
+
       },
       (error) => {
         console.error(error);
@@ -272,7 +280,7 @@ const FilaUsuario = ({ usuario }) => {
             <input
               className="inputFormPrueba w-50"
               type="checkbox"
-              Checked={infoNuevoUsuario.modificarProducto}
+              checked={infoNuevoUsuario.modificarProducto}
               onChange={(e) =>
                 setinfoNuevoUsuario({
                   ...infoNuevoUsuario,
@@ -298,7 +306,7 @@ const FilaUsuario = ({ usuario }) => {
             <input
               className="inputFormPrueba w-50"
               type="checkbox"
-              Checked={infoNuevoUsuario.modificarVenta}
+              checked={infoNuevoUsuario.modificarVenta}
               onChange={(e) =>
                 setinfoNuevoUsuario({
                   ...infoNuevoUsuario,

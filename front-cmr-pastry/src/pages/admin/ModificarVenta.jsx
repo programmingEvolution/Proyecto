@@ -17,6 +17,7 @@ const RegistrarVenta = () => {
   const [fecha, setFecha] = useState(venta.fecha);
   const [idCliente, setIdCliente] = useState(venta.idCliente);
   const [nombreCliente, setNombreCliente] = useState(venta.nombreCliente);
+  const [estado, setEstado] = useState(venta.estado);
 
   let history = useHistory();
 
@@ -78,7 +79,7 @@ const RegistrarVenta = () => {
       fecha: fecha,
       idCliente: idCliente,
       nombreCliente: nombreCliente,
-      estado: "Finalizada",
+      estado: estado,
     };
 
     await editarVenta(
@@ -87,7 +88,6 @@ const RegistrarVenta = () => {
       (response) => {
         console.log(response);
         Swal.fire("Registrado!", "Venta creada con exito.", "success");
-        history.push("/tablaventas");
       },
       (error) => {
         console.error(error);
@@ -139,6 +139,19 @@ const RegistrarVenta = () => {
                 required
               />
             </div>
+
+            <label for="">Estado:</label>
+            <select
+              className="selectForm"
+              type="text"
+              defaultValue={venta.estado}
+              onChange={(e) => setEstado(e.target.value)}
+              
+            >
+              <option>Finalizada</option>
+              <option>Anulada</option>
+            </select>
+          
 
             <div className="field large">
               <label for="vendedor">Vendedor:</label>

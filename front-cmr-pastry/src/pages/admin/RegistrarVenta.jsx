@@ -80,7 +80,6 @@ const RegistrarVenta = () => {
       (response) => {
         console.log(response);
         Swal.fire("Registrado!", "Venta creada con exito.", "success");
-        window.location.reload();
       },
       (error) => {
         console.error(error);
