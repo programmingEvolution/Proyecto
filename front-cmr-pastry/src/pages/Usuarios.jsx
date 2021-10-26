@@ -31,18 +31,18 @@ const Usuarios = () => {
       setLoading(true);
       await obtenerUsuarios(
         (response) => {
-          console.log('la respuesta que se recibio fue', response);
+          console.log("la respuesta que se recibio fue", response);
           setUsuarios(response.data);
           setEjecutarConsulta(false);
           setLoading(false);
         },
         (error) => {
-          console.error('Salio un error:', error);
+          console.error("Salio un error:", error);
           setLoading(false);
         }
       );
     };
-    console.log('consulta', ejecutarConsulta);
+    console.log("consulta", ejecutarConsulta);
     if (ejecutarConsulta) {
       fetchUsuarios();
     }
@@ -71,34 +71,28 @@ const Usuarios = () => {
       <section>
         <ContenedorTitulos Titulo="Gestión de Usuarios" />
       </section>
-      <section>
-        <ul className="contenedorBotonesgrises">
-          <form ref={form} onSubmit={submitEdit}>
-            <section>
-              <label className="labelForm" htmlFor="name">
-                Buscar Usuario:
-              </label>
-              <input
-                value={busqueda}
-                className="w-25 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                id="name"
-                placeholder="Buscar usuario"
-                type="ID"
-                onChange={(e) => setBusqueda(e.target.value)}
-              ></input>
-              <button
-                className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
-                type="submit"
-              >
-                Buscar
-              </button>
-            </section>
-          </form>
-        </ul>
+
+      <section className="flex justify-end mt-6 mb-6">
+        <section>
+          <input
+            value={busqueda}
+            className="w-25 h-10 mr-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            id="name"
+            placeholder="Buscar usuario"
+            type="ID"
+            onChange={(e) => setBusqueda(e.target.value)}
+          ></input>
+          <button
+            className="bg-red-100  h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
+            type="submit"
+          >
+            Buscar
+          </button>
+        </section>
       </section>
 
       <section>
-        <table className="tabla">
+        <table className="tabla mt-2">
           <tr>
             <th className="tituloColumnaUsu">IDUsuario</th>
             <th className="tituloColumnaUsu">Nombre</th>
@@ -122,12 +116,14 @@ const Usuarios = () => {
             })}
           </tbody>
         </table>
-        <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={usuarios.length}
-          paginate={paginate}
-          currentPage={currentPage}
-        />
+        <section className="ml-6 mt-6">
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={usuarios.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        </section>
       </section>
     </div>
   );
@@ -195,7 +191,6 @@ const FilaUsuario = ({ usuario }) => {
 
         Swal.fire("Actualizado!", "Usuario actualizado con exito.", "success");
         setEjecutarConsulta(true);
-
       },
       (error) => {
         console.error(error);

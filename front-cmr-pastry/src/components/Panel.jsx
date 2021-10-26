@@ -64,49 +64,49 @@ const Panel = () => {
         <ContenedorTitulos Titulo="Panel de control" />
       </section>
 
-      <h2 class="dash-title">Panel De Control</h2>
+      <section className="flex  mt-6 mb-6">
+        <div class="dash-cards">
+          <div class="card-single">
+            <Link to="/tablaventas">
+              <div class="card-body">
+                <span>
+                  <img src={ventas} alt="" />
+                </span>
+                <div>
+                  <h5>{ventasConsulta.length}</h5>
+                  <h4>Ventas</h4>
+                </div>
+              </div>
+            </Link>
+          </div>
 
-      <div class="dash-cards">
-        <div class="card-single">
-          <Link to="/tablaventas">
+          <div class="card-single">
+            <Link to="/usuarios">
+              <div class="card-body">
+                <span>
+                  <img src={clientes} alt="" />
+                </span>
+                <div>
+                  <h5>{usuariosConsulta.length}</h5>
+                  <h4>Usuarios</h4>
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          <div class="card-single">
             <div class="card-body">
               <span>
-                <img src={ventas} alt="" />
+                <img src={house} alt="" />
               </span>
               <div>
-                <h5>{ventasConsulta.length}</h5>
-                <h4>Ventas</h4>
+                <h5>{totalVentas}</h5>
+                <h4>Ingresos</h4>
               </div>
-            </div>
-          </Link>
-        </div>
-
-        <div class="card-single">
-          <Link to="/usuarios">
-            <div class="card-body">
-              <span>
-                <img src={clientes} alt="" />
-              </span>
-              <div>
-                <h5>{usuariosConsulta.length}</h5>
-                <h4>Usuarios</h4>
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        <div class="card-single">
-          <div class="card-body">
-            <span>
-              <img src={house} alt="" />
-            </span>
-            <div>
-              <h5>{totalVentas}</h5>
-              <h4>Ingresos</h4>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <section class="resumen">
         <div class="activity-grid">

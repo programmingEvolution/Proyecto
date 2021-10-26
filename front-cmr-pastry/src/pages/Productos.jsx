@@ -26,7 +26,6 @@ const Productos = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
   const [color, setColor] = useState("text-black");
-  
 
   const form = useRef(null);
 
@@ -109,40 +108,41 @@ const Productos = () => {
 
   return (
     <div className="ml-72 mr-20">
-      <section>
+      <section className="">
         <ContenedorTitulos Titulo="Gestión de productos" />
       </section>
       <section>
-        <section className="place-content-center flex space-x-6 ">
-          <input
-            value={busqueda}
-            className=" w-15 h-10 my-7 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 "
-            id="idProducto"
-            placeholder="Buscar Producto"
-            type="ID"
-            onChange={(e) => setBusqueda(e.target.value)}
-          ></input>
+        <section className="flex justify-between mt-6 mb-6">
+          <section>
+            <PrivateComponent roleList={["Administrador"]}>
+              <AgregarPrivateProduct roleList={[true]}>
+                <Link to="registrarproducto">
+                  <button className="bg-red-100 h-10 ml-4  rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">
+                    Nuevo Producto
+                  </button>
+                </Link>
+              </AgregarPrivateProduct>
+            </PrivateComponent>
+          </section>
+          <section>
+            <input
+              value={busqueda}
+              className=" w-15 h-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+              id="idProducto"
+              placeholder="Buscar Producto"
+              type="ID"
+              onChange={(e) => setBusqueda(e.target.value)}
+            ></input>
 
-          <button
-            className="bg-red-100 my-7 h-10 rounded-lg border m-2 cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
-            type="submit"
-          >
-            Buscar
-          </button>
+            <button
+              className="bg-red-100  h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5"
+              type="submit"
+            >
+              Buscar
+            </button>
+          </section>
         </section>
       </section>
-
-      <PrivateComponent roleList={["Administrador"]}>
-        <AgregarPrivateProduct roleList={[true]}>
-          <section>
-            <Link to="registrarproducto">
-              <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">
-                Nuevo Producto
-              </button>
-            </Link>
-          </section>
-        </AgregarPrivateProduct>
-      </PrivateComponent>
 
       <section>
         <form ref={form} onSubmit={submitEdit}>
@@ -155,7 +155,7 @@ const Productos = () => {
             />
           ) : (
             <>
-              <table className="tabla">
+              <table className="tabla mt-2">
                 <thead>
                   <tr>
                     <th className="tituloColumna">IDproductos</th>
@@ -182,12 +182,14 @@ const Productos = () => {
             </>
           )}
         </form>
-        <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={productos.length}
-          paginate={paginate}
-          currentPage={currentPage}
-        />
+        <section className="mt-6 ml-6">
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={productos.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        </section>
       </section>
     </div>
   );
@@ -279,7 +281,6 @@ const FilaProducto = ({ producto }) => {
 
         Swal.fire("Actualizado!", "Producto actualizado con exito.", "success");
         setEjecutarConsulta(true);
-
       },
       (error) => {
         console.error(error);

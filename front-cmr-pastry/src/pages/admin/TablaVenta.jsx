@@ -74,51 +74,42 @@ const TablaVenta = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div>
+    <div className="ml-48 mr-20">
       <section>
         <ContenedorTitulos Titulo="Gestión de Ventas" />
       </section>
       <section>
-        <ul className="contenedorBotonesgrises">
-          <form>
-            <section>
-              <label className="labelForm" htmlFor="idventa">
-                Buscar venta:
-              </label>
-              <input
-                value={busqueda}
-                className="inputForm"
-                id="idProducto"
-                placeholder="Ingrese el nombre del producto"
-                type="ID"
-                onChange={(e) => setBusqueda(e.target.value)}
-              ></input>
-            </section>
-            <section className="flex-grow justify-between">
-              <button className="bg-red-100 my-7 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">
-                Buscar
-              </button>
-            </section>
-          </form>
-        </ul>
-      </section>
-      <PrivateComponent roleList={["Vendedor", "Administrador"]}>
-        <section>
-          <Link to="registrarventa">
-            <button className="buttonForm">Nueva venta</button>
-          </Link>
+        <section className="flex justify-between mt-6 mb-6">
+          <section>
+            <PrivateComponent roleList={["Vendedor", "Administrador"]}>
+              <section>
+                <Link to="registrarventa">
+                  <button className="bg-red-100 h-10   ml-4 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">
+                    Nueva venta
+                  </button>
+                </Link>
+              </section>
+            </PrivateComponent>
+          </section>
+          <section>
+            <input
+              value={busqueda}
+              className=" h-10 mr-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+              id="idProducto"
+              placeholder="Ingrese el nombre del producto"
+              type="ID"
+              onChange={(e) => setBusqueda(e.target.value)}
+            ></input>
+
+            <button className="bg-red-100 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">
+              Buscar
+            </button>
+          </section>
         </section>
-      </PrivateComponent>
+      </section>
+
       <section>
         <form ref={form} onSubmit={submitEdit}>
-          <section className="mt-20 ml-16 mb-6">
-            <Pagination
-              postsPerPage={postsPerPage}
-              totalPosts={ventas.length}
-              paginate={paginate}
-              currentPage={currentPage}
-            />
-          </section>
           <table className="tabla mt-2">
             <thead>
               <tr>
@@ -148,6 +139,14 @@ const TablaVenta = () => {
               })}
             </tbody>
           </table>
+          <section className="mt-8 ml-16">
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={ventas.length}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
+          </section>
         </form>
       </section>
     </div>
