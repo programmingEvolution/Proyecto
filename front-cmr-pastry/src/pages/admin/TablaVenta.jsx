@@ -82,9 +82,9 @@ const TablaVenta = () => {
         <section className="flex justify-between mt-6 mb-6">
           <section>
             <PrivateComponent roleList={["Vendedor", "Administrador"]}>
-              <section>
+              <section className="  ml-16">
                 <Link to="registrarventa">
-                  <button className="bg-red-100 h-10   ml-4 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">
+                  <button className="bg-red-100 h-10 rounded-lg border cursor-pointer hover:bg-red-200 p-2 pl-5 pr-5">
                     Nueva venta
                   </button>
                 </Link>
@@ -96,7 +96,7 @@ const TablaVenta = () => {
               value={busqueda}
               className=" h-10 mr-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 "
               id="idProducto"
-              placeholder="Ingrese el nombre del producto"
+              placeholder="Ingrese id o nombre"
               type="ID"
               onChange={(e) => setBusqueda(e.target.value)}
             ></input>

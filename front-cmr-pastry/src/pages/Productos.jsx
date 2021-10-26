@@ -127,7 +127,7 @@ const Productos = () => {
           <section>
             <input
               value={busqueda}
-              className=" w-15 h-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+              className=" w-15  mr-10 h-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 "
               id="idProducto"
               placeholder="Buscar Producto"
               type="ID"

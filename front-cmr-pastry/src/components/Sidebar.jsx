@@ -35,7 +35,7 @@ const Sidebar = () => {
             <img
               style={{ float: "left" }}
               src={usuarioData.picture}
-              className="h-7 w-7 rounded-full"
+              className="ml-4 h-8 w-8 rounded-full"
             />
             {usuarioData.given_name}
           </li>
@@ -51,7 +51,7 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/productos">
-            <li>
+            <li className="active">
               <img
                 style={{ float: "left" }}
                 src={caja}
@@ -62,7 +62,7 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/tablaventas">
-            <li>
+            <li className="active">
               <img
                 style={{ float: "left" }}
                 src={ventas}
@@ -73,7 +73,7 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/usuarios">
-            <li>
+            <li className="active">
               <img
                 style={{ float: "left" }}
                 src={grupo}
